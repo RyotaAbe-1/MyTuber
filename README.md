@@ -20,7 +20,9 @@ YouTubeを見ていてかつSNSを利用する人(主に若年層)
 このYouTuberは面白いと感じた時や、このYouTuberがおすすめであると発信したくなった時。
 
 ## 設計書
-[pf_機能.pdf](https://github.com/RyotaAbe-1/MyTuber/files/6928713/pf_.pdf)
+・機能一覧
+![pf_機能](https://user-images.githubusercontent.com/85055215/128125052-6b1dbba0-feee-4af9-ac59-162b2f5f4e37.jpg)
+・er図
 ![pf_er](https://user-images.githubusercontent.com/85055215/128124805-6489fc73-664a-4deb-a5de-6e682aef82c4.jpg)
 
 ## チャレンジ要素一覧
