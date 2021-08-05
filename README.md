@@ -21,7 +21,7 @@ YouTubeを見ていてかつSNSを利用する人(主に若年層)
 
 ## 設計書
 ・機能一覧
-![pf_機能](https://user-images.githubusercontent.com/85055215/128302311-fd540727-de88-4fe7-a2db-ee82cbff0443.jpg)
+![pf_機能](https://user-images.githubusercontent.com/85055215/128303409-38afc18c-0fbb-46f3-b037-f2e71d971d51.jpg)
 ・er図
 ![pf_er](https://user-images.githubusercontent.com/85055215/128302299-c05beb0d-b61a-4be7-813d-fa73dc13778f.jpg)
 ## チャレンジ要素一覧
