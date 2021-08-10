@@ -20,18 +20,18 @@
         <% if user_signed_in? %>
 
         <% elsif admin_signed_in? %>
-
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav__btn" %>
         <% else %>
           <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
           <%= link_to "サインアップ", new_user_registration_path, class: "nav__btn"  %>
         <% end %>
       </div>
     </div>
-    
+
     <div class="main">
       <%= yield %>
     </div>
-    
+
 
     <div class="footer">
 
