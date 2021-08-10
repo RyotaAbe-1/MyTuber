@@ -1,7 +1,9 @@
+@import "reset";
 @import "headder";
 @import "nav";
 @import "main";
 @import "footer";
+@import "log-in"
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -17,8 +19,3 @@
  *= require_tree .
  *= require_self
  */
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
