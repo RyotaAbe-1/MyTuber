@@ -1,0 +1,2 @@
+class YoutuberGenre < ApplicationRecord
+end
