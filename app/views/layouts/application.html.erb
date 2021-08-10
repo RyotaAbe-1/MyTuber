@@ -10,6 +10,32 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="headder">
+      <div class="hedder__logo">
+        <%= link_to image_tag("pf_icon1.png"), root_path %>
+      </div>
+
+      <div class="nav">
+        <% if user_signed_in? %>
+
+        <% elsif admin_signed_in? %>
+
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
+          <%= link_to "サインアップ", new_user_registration_path, class: "nav__btn"  %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="main">
+      <%= yield %>
+    </div>
+    
+
+    <div class="footer">
+
+    </div>
+
   </body>
 </html>

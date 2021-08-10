@@ -1,0 +1,22 @@
+.nav {
+  &__btn{
+    padding: 5px;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 5%;
+    text-decoration: none;
+    box-shadow: 3px 3px gray;
+  }
+  &__btn:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: 4px 4px gray;
+  }
+  &__btn:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    box-shadow: none;
+  }
+}
