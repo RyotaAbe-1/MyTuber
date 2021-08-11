@@ -6,6 +6,7 @@ class Admin::GenresController < ApplicationController
 
   def create
     genre = Genre.new(genre_params)
+    genre.application_status = true
     genre.save
     redirect_to new_admin_genre_path
   end
