@@ -1,6 +1,7 @@
 <div class="admin-add-genre">
-  <div class="left">ジャンル登録画面</div>
-  <div class="center">
+  <div class="left"></div>
+  <div class="center admin-center">
+    <div class="admin-center__title">ジャンル登録画面</div>
     <% @genres.each do |genre| %>
       <div>
         <%= genre.genre_name %>
@@ -30,9 +31,9 @@
     </div>
 
   </div>
-  <div class="right">
-    <div class="admin-genre-index">
-      <div class="admin-genre-index__title">登録ジャンル一覧</div>
+  <div class="right admin-right">
+    <div>
+      <div class="admin-right__title">登録ジャンル一覧</div>
       <% @genre_all.each do |genre| %>
         <ul class="list">
           <li>
