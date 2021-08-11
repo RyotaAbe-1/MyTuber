@@ -31,6 +31,15 @@
 
   </div>
   <div class="right">
-    <div>登録ジャンル一覧</div>
+    <div class="admin-genre-index">
+      <div class="admin-genre-index__title">登録ジャンル一覧</div>
+      <% @genre_all.each do |genre| %>
+        <ul class="list">
+          <li>
+            <%= genre.genre_name %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>
