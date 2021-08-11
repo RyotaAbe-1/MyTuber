@@ -3,7 +3,8 @@
   <div class="center">
     <% @genres.each do |genre| %>
       <div>
-        <%= link_to "追加", admin_genre_path(genre), method: :patch %>
+        <%= genre.genre_name %>
+        <%= link_to "追加", admin_genre_path(genre, params: {genre: {application_status: true}}), method: :patch %>
         <%= link_to "拒否", admin_genre_path(genre), method: :delete %>
       </div>
     <% end %>
