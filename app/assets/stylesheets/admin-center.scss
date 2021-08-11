@@ -1,0 +1,12 @@
+.admin-center {
+  border: 1px solid black;
+  box-shadow: 5px 5px red;
+  &__title {
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 1px solid black;
+  }
+}

@@ -9,14 +9,14 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     passwords: 'public/passwords'
   }
-  
+
   namespace :admin do
     resources :users, only: [:index, :show, :update]
     resources :youtubers, only: [:index, :show, :destroy]
-    resources :genres, except: [:index, :show]
+    resources :genres, except: [:index, :show, :edit]
     resources :comments, only: [:destroy]
   end
-  
+
   scope module: :public do
     root to: "homes#top"
     get "/users/confirm" => "users#confirm"
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
