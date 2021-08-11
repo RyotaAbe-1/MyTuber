@@ -1,4 +1,33 @@
+$lg: 1920px;
+$md: 1200px;
+$sm: 767px;
+@mixin large {
+  @media screen and (max-width: $lg) {
+    @content
+  }
+}
+@mixin middle {
+  @media screen and (max-width: $md) {
+    @content
+  }
+}
+@mixin small {
+  @media screen and (max-width: $sm) {
+    @content
+  }
+}
 .main {
-  width: 70%;
-  margin: 20px auto;
+  @include large {
+    width: 80%;
+    margin: 0 auto;
+  }
+  @include middle {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @include small {
+    width: 95%;
+    margin: 0 auto;
+  }
+
 }

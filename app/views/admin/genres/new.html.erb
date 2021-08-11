@@ -1,0 +1,21 @@
+<div class="admin-add-genre">
+  <h2>ジャンル登録画面</h2>
+  <div>
+    <% @genres.each do |genre| %>
+      <div>
+        <%= genre.genre_name %>
+        <%= form_with model: genre, local: true do |f| %>
+          <%= f.hidden.field :application_status, value: "true" %>
+          <%= f.submit "追加"%>
+        <% end %>
+        <%= link_to "拒否", admin_genre_path, method: :delete %>
+      </div>
+    <% end %>
+    
+    
+    
+  </div>
+  <div>
+    <h2>登録ジャンル一覧</h2>
+  </div>
+</div>
