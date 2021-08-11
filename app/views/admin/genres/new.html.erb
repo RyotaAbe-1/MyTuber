@@ -3,11 +3,7 @@
   <div class="center">
     <% @genres.each do |genre| %>
       <div>
-        <%= genre.genre_name %>
-        <%= form_with model:[:admin, genre], local: true do |f| %>
-          <%= f.hidden_field :application_status, value: "true" %>
-          <%= f.submit "追加"%>
-        <% end %>
+        <%= link_to "追加", admin_genre_path(genre), method: :patch %>
         <%= link_to "拒否", admin_genre_path(genre), method: :delete %>
       </div>
     <% end %>
