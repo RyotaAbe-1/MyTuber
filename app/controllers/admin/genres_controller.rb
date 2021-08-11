@@ -17,6 +17,12 @@ class Admin::GenresController < ApplicationController
     redirect_to new_admin_genre_path
   end
 
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to new_admin_genre_path
+  end
+
   private
   def genre_params
     params.require(:genre).permit(:genre_name, :application_status)
