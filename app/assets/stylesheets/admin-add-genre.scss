@@ -1,3 +1,15 @@
 .admin-add-genre {
   display: flex;
+  margin: 0 auto;
+
+  &__form-block {
+    width: 95%;
+    margin: 30px auto;
+    padding-top: 20px;
+    border-top: 2px solid black;
+  }
+  &__form {
+    width: 60%;
+    margin: 0 auto;
+  }
 }

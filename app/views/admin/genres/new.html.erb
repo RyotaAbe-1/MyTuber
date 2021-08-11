@@ -1,21 +1,39 @@
 <div class="admin-add-genre">
-  <h2>ジャンル登録画面</h2>
-  <div>
+  <div class="left">ジャンル登録画面</div>
+  <div class="center">
     <% @genres.each do |genre| %>
       <div>
         <%= genre.genre_name %>
-        <%= form_with model: genre, local: true do |f| %>
-          <%= f.hidden.field :application_status, value: "true" %>
+        <%= form_with model:[:admin, genre], local: true do |f| %>
+          <%= f.hidden_field :application_status, value: "true" %>
           <%= f.submit "追加"%>
         <% end %>
-        <%= link_to "拒否", admin_genre_path, method: :delete %>
+        <%= link_to "拒否", admin_genre_path(genre), method: :delete %>
       </div>
     <% end %>
-    
-    
-    
+    <div class="admin-add-genre__form-block">
+      <table class="admin-add-genre__form">
+        <%= form_with model: [:admin, @genre], local: true do |f| %>
+          <tr>
+            <td>
+              ジャンル
+            </td>
+            <td>
+              <%= f.text_field :genre_name %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= f.submit "新規登録" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
   </div>
-  <div>
-    <h2>登録ジャンル一覧</h2>
+  <div class="right">
+    <div>登録ジャンル一覧</div>
   </div>
 </div>
