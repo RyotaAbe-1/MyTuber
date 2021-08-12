@@ -1,5 +1,19 @@
 .log-in {
+  width: 60%;
+  margin: 0 auto;
+
   &__title {
-    margin-bottom: 20px;
+    margin: 20px 0;
+  }
+  &__form {
+    width: 50%;
+    margin: 0 auto;
+  }
+  &__form-item {
+    padding: 10px 30px 10px 0;
+  }
+  &__form-input {
+    width: 200px;
+    height: 30px;
   }
 }
