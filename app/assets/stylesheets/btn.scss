@@ -1,6 +1,6 @@
 .btn {
-  
-  
+
+
   &--sign-up {
     width: 100px;
     height: 30px;
@@ -10,7 +10,15 @@
     border: none;
     box-shadow: 3px 3px gray;
   }
-  
+  &--log-in {
+    width: 100px;
+    height: 30px;
+    background-color: rgb(20, 80, 201);
+    border-radius: 5px;
+    color: white;
+    border: none;
+    box-shadow: 3px 3px gray;
+  }
   &:hover {
     position: relative;
     top: -1px;
