@@ -1,12 +1,13 @@
 .log-in {
   width: 60%;
-  margin: 0 auto;
+  margin: 30px auto;
 
   &__title {
     margin: 20px 0;
   }
   &__form {
     width: 50%;
+    padding: 0 10px;
     margin: 0 auto;
   }
   &__form-item {
