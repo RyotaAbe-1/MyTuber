@@ -1,0 +1,15 @@
+<div class="genre-serch">
+  <div>ジャンル検索</div>
+  <div>
+    <%= link_to "ジャンルを追加+", new_genre_path %>
+    <!--ジャンルごとのリンクを設定するのは後日-->
+    <%= link_to "全てのジャンル", youtuber_path %>
+    <% @genres.each do |genre| %>
+      <ul>
+        <li>
+          <%= link_to "#{genre.genre_name}", youtuber_path %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
