@@ -5,7 +5,7 @@
     <%= form_with model: @user, local: true do |f| %>
       <div class="mypage-edit__top">
         <div class="mypage-edit__image">
-          <%= attachment_image_tag @user, :image, size:"300x300", fallback: "pf_top.jpg", size:"300x300" %>
+          <%= attachment_image_tag @user, :image, size:"300x300", fallback: "no_image.jpg", size:"300x300" %>
         </div>
 
         <table>
@@ -40,8 +40,6 @@
     <% end %>
   </div>
 
-  <div class="mypage-edit__genre">
-
-  </div>
+  <%= render "common/genre_search_bar" %>
 
 </div>
