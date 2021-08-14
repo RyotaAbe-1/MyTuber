@@ -25,7 +25,10 @@
 
       </div>
       <div class="mypage-edit__middle">
-
+        <!--???-->
+        <%= f.fields_for :user_genres do |user_genre| %>
+          <%= user_genre.collection_check_boxes(:genre_ids, @genres, :id, :genre_name)%>
+        <% end %>
       </div>
       <div class="mypage-edit__bottom">
         <div>自己紹介</div>
