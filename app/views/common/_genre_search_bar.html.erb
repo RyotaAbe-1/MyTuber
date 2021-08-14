@@ -3,11 +3,11 @@
   <div>
     <%= link_to "ジャンルを追加+", new_genre_path %>
     <!--ジャンルごとのリンクを設定するのは後日-->
-    <%= link_to "全てのジャンル", youtuber_path %>
+    <%= link_to "全てのジャンル", youtubers_path %>
     <% @genres.each do |genre| %>
       <ul>
         <li>
-          <%= link_to "#{genre.genre_name}", youtuber_path %>
+          <%= link_to "#{genre.genre_name}", youtubers_path %>
         </li>
       </ul>
     <% end %>
