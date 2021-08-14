@@ -1,0 +1,20 @@
+<def class="user-index">
+
+  <%= render "common/profile_bar" %>
+
+  <div class="user-index__center">
+    <div>ユーザー一覧</div>
+    <div>
+      <% @users.each do |user| %>
+        <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+        <%= user.user_name %>
+        <% user.genres.each do |genre| %>
+          <%= genre.genre_name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "common/genre_search_bar" %>
+
+</def>

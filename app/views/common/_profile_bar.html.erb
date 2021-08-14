@@ -1,19 +1,18 @@
-<div>
+<div class="profile">
   <div>
     <% if @user.id == current_user.id %>
-      <div>マイページ</div>
+      <div class="profile__title">マイプロフィール</div>
     <% else %>
       <%= "#{@user.user_name}さんのプロフィール" %>
     <% end %>
-    
+
     <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "" %>
     <%= @user.user_name %>
     <% @user.genres.each do |genre| %>
       <%= genre.genre_name %>
     <% end %>
     <%= @user.introduce %>
-    <%= @user.follows.follow_user_id.length %>
-    <%= @user.follows.followed_user_id.length %>
+
   </div>
   <div>
     <%= link_to "お気に入り一覧へ",youtubers_path %>

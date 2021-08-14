@@ -1,4 +1,10 @@
 class Public::UsersController < ApplicationController
+  def index
+    @users = User.where.not(id: current_user.id)
+    @user = User.find(current_user.id)
+    @genres = Genre.where(application_status: true)
+  end
+
   def show
   end
 
