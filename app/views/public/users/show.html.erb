@@ -7,6 +7,7 @@
         <div>
           <%= youtuber.name %>
           <%= youtuber.genre.genre_name %>
+          <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
           <%= "#{youtuber.evaluation}/5" %>
           <%= "コメント#{youtuber.comments.count}件" %>
           <%= "お気に入り#{youtuber.favorites.count}件" %>
@@ -21,3 +22,15 @@
   </div>
   <%= render "common/genre_search_bar", genres: @genres %>
 </div>
+
+<script>
+$('.review-evaluation').empty();
+  $('.review-evaluation').raty({
+    readOnly: true,
+    number: 5,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
