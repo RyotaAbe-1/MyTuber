@@ -6,7 +6,7 @@
       <% @youtubers.each do |youtuber| %>
         <div>
           <%= youtuber.name %>
-          <%= youtuber.grnre.genre_name %>
+          <%= youtuber.genre.genre_name %>
           <%= "#{youtuber.evaluation}/5" %>
           <%= "コメント#{youtuber.comments.count}件" %>
           <%= "お気に入り#{youtuber.favorites.count}件" %>
