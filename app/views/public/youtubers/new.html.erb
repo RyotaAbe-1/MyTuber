@@ -1,0 +1,53 @@
+<div class="post">
+  <%= render "common/profile_bar", user: @user_profile %>
+  <div class="post__center">
+    <div class="post__title">新規投稿画面</div>
+
+      <%= form_with model: @youtuber, local: true do |f| %>
+      　<table>
+          <tr>
+            <td>YouTuberの名前</td>
+            <td>
+              <%= f.text_field :name %>
+            </td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <%= f.collection_select(:genre_id, @genres, :id, :genre_name, {prompt: "ジャンルを選択してください"}) %>
+            </td>
+          </tr>
+          <tr>
+            <td>評価</td>
+            <td id="evaluate">
+              <%= f.hidden_field :evaluation, value: 'score' %>
+            </td>
+          </tr>
+          <tr>
+            <td>おすすめポイント</td>
+            <td>
+              <%= f.text_area :content %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= f.submit "投稿" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+
+  </div>
+  <%= render "common/genre_search_bar", genres: @genres %>
+</div>
+
+<script>
+  $('#evaluate').raty ({
+    starOn: "<%= asset_path("star-on.png") %>",
+    starOff: "<%= asset_path("star-off.png") %>",
+    starHalf: "<%= asset_path("star-half.png") %>",
+    scoreName: 'youtuber[evaluation]',
+    half: true
+  });
+</script>
