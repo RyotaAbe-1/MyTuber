@@ -13,6 +13,11 @@
         </div>
       <% end %>
     </div>
+
+    <%= link_to new_youtuber_path do %>
+      <button class="create-post">+</button>
+    <% end %>
+
   </div>
   <%= render "common/genre_search_bar", genres: @genres %>
 </div>
