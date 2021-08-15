@@ -76,15 +76,9 @@ ActiveRecord::Schema.define(version: 2021_08_10_054424) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "youtuber_genres", force: :cascade do |t|
-    t.integer "youtuber_id", null: false
-    t.integer "genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "youtubers", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "genre_id", null: false
     t.string "name", null: false
     t.float "evaluation", null: false
     t.text "content", null: false
