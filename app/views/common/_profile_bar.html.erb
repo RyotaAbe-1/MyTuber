@@ -1,17 +1,17 @@
 <div class="profile">
   <div>
-    <% if @user.id == current_user.id %>
+    <% if user.id == current_user.id %>
       <div class="profile__title">マイプロフィール</div>
     <% else %>
-      <%= "#{@user.user_name}さんのプロフィール" %>
+      <%= "#{user.user_name}さんのプロフィール" %>
     <% end %>
 
-    <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "" %>
-    <%= @user.user_name %>
-    <% @user.genres.each do |genre| %>
+    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+    <%= user.user_name %>
+    <% user.genres.each do |genre| %>
       <%= genre.genre_name %>
     <% end %>
-    <%= @user.introduce %>
+    <%= user.introduce %>
 
   </div>
   <div>
@@ -19,7 +19,7 @@
   </div>
   <div>
     <div>自分のコメント</div>
-    <% @user.comments.each do |comment| %>
+    <% user.comments.each do |comment| %>
       <%= comment.content %>
     <% end %>
   </div>

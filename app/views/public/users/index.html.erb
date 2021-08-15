@@ -1,6 +1,6 @@
 <def class="user-index">
 
-  <%= render "common/profile_bar" %>
+  <%= render "common/profile_bar", user: @user %>
 
   <div class="user-index__center">
     <div>ユーザー一覧</div>
@@ -15,6 +15,6 @@
     </div>
   </div>
 
-  <%= render "common/genre_search_bar" %>
+  <%= render "common/genre_search_bar", genres: @genres %>
 
 </def>

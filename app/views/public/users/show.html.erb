@@ -1,0 +1,18 @@
+<div class="user-show">
+  <%= render "common/profile_bar", user: @user %>
+  <div class="user-show__center">
+    <div class="user-show__title">おすすめ</div>
+    <div>
+      <% @youtubers.each do |youtuber| %>
+        <div>
+          <%= youtuber.name %>
+          <%= youtuber.grnre.genre_name %>
+          <%= "#{youtuber.evaluation}/5" %>
+          <%= "コメント#{youtuber.comments.count}件" %>
+          <%= "お気に入り#{youtuber.favorites.count}件" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render "common/genre_search_bar", genres: @genres %>
+</div>

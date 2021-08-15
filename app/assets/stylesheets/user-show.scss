@@ -1,0 +1,15 @@
+.user-show {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+  
+  &__title {
+    
+  }
+  &__center {
+    width: 58%;
+    margin: 0 1%;
+    border: 1px solid black;
+  }
+}

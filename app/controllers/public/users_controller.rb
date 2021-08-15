@@ -6,6 +6,9 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @youtubers = Youtuber.where(user_id: current_user.id)
+    @user = User.find(params[:id])
+    @genres = Genre.where(application_status: true)
   end
 
   def edit
