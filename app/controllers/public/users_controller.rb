@@ -6,6 +6,8 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @genres = Genre.where(application_status: true)
   end
 
   def edit
