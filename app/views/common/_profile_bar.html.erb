@@ -3,7 +3,7 @@
     <% if user.id == current_user.id %>
       <div class="profile__title">マイプロフィール</div>
     <% else %>
-      <%= "#{user.user_name}さんのプロフィール" %>
+      <div class="profile__title"><%= "#{user.user_name}さんのプロフィール" %></div>
     <% end %>
 
     <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
