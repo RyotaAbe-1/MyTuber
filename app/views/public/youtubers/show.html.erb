@@ -32,6 +32,28 @@
       </div>
 
     </div>
+    <div class="comment">
+      <div class="comment__top">
+        <%= "#{@youtuber.comments.count}件のコメント" %>
+        <%= link_to "コメントを投稿", {anchor: "comment"} %>
+      </div>
+      <div class="comment__index">
+        <% @youtuber.comments.each do |comment| %>
+          <%= attachment_iamge_tag comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
+          <%= comment.user.user_name %>
+          <%= comment.content %>
+          <% if comment.user.id == current_user.id %>
+            <%= link_to "削除", comment_path(comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="comment__form" id="comment">
+        
+      </div>
+    </div>
+
+
+
     <%= link_to new_youtuber_path do %>
       <button class="create-post">+</button>
     <% end %>
