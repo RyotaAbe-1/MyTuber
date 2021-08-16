@@ -1,0 +1,32 @@
+<div class="user-add-genre">
+
+  <%= render "common/profile_bar", user: @user_profile %>
+
+  <div class="user-add-genre__center">
+    <div class="user-add-genre__title">ジャンル追加申請フォーム</div>
+    <div class="user-add-genre__form">
+      <%= form_with model: @genre, local: true do |f| %>
+        <table>
+          <tr>
+            <td colspan="2">まだ登録されていないジャンルを申請してください</td>
+          </tr>
+          <tr>
+            <td>ジャンル名</td>
+            <td>
+              <%= f.text_field :genre_name %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= f.submit "ジャンル追加申請" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>
