@@ -22,11 +22,12 @@ Rails.application.routes.draw do
     get "/users/confirm" => "users#confirm"
     patch "/users/withdraw" => "users#withdraw"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :youtubers
+    resources :youtubers do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :genres, only: [:new, :create]
     resource :follows, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
