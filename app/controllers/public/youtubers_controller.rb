@@ -11,7 +11,13 @@ class Public::YoutubersController < ApplicationController
     youtuber.save
     redirect_to youtuber_path(youtuber)
   end
-
+  
+  def show
+    @youtuber = Youtuber.find(params[:id])
+    @user_profile = User.find(@youtuber.user.id)
+    @genres = Genre.where(application_status: true)
+  end
+  
   def edit
     @youtuber = Youtuber.find(params[:id])
     @user_profile = User.find(current_user.id)

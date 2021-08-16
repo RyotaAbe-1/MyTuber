@@ -1,0 +1,54 @@
+<div class="post-show">
+
+  <%= render "common/profile_bar", user: @user_profile %>
+
+  <div class="post-show__center">
+    <div class="post-show__title"><%= "#{@user_profile.user_name}さんの投稿詳細" %></div>
+    <div class="post-show__content">
+
+      <div class="post-show__main">
+        <h2>
+          <%= @youtuber.name %>
+        </h2>
+        <div>
+          <%= "ジャンル：#{@youtuber.genre.genre_name}" %>
+        </div>
+        <div>
+          <span class ="review-evaluation" data-score="<%= @youtuber.evaluation %>"></span>
+          <span><%= "#{@youtuber.evaluation}/5" %></span>
+        </div>
+        <div>
+          <%= @youtuber.content %>
+        </div>
+      </div>
+
+      <div class="post-show__sub">
+        <div>
+          <%= link_to "編集", edit_youtuber_path(@youtuber) %>
+        </div>
+        <div>
+          <%= link_to "削除", youtuber_path(@youtuber), method: :delete %>
+        </div>
+      </div>
+
+    </div>
+    <%= link_to new_youtuber_path do %>
+      <button class="create-post">+</button>
+    <% end %>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>
+
+<script>
+$('.review-evaluation').empty();
+  $('.review-evaluation').raty({
+    readOnly: true,
+    number: 5,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

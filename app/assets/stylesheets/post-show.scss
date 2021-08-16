@@ -1,0 +1,35 @@
+.post-show {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+
+  &__title {
+    width: 25%;
+    padding: 2px 0;
+    margin: 1%;
+    border: 1px solid black;
+    text-align: center;
+  }
+  &__center {
+    width: 58%;
+    margin: 0 1%;
+    position: relative;
+    border: 1px solid black;
+  }
+  &__content {
+    width: 95%;
+    margin: 2% auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__main {
+    width: 60%;
+    text-align: center;
+  }
+  &__sub {
+    width: 20%;
+    text-align: center;
+  }
+}
