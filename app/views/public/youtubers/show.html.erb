@@ -39,16 +39,19 @@
       </div>
       <div class="comment__index">
         <% @youtuber.comments.each do |comment| %>
-          <%= attachment_iamge_tag comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
+          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
           <%= comment.user.user_name %>
           <%= comment.content %>
           <% if comment.user.id == current_user.id %>
-            <%= link_to "削除", comment_path(comment), method: :delete %>
+            <%= link_to "削除", youtuber_comment_path(comment), method: :delete %>
           <% end %>
         <% end %>
       </div>
       <div class="comment__form" id="comment">
-        
+        <%= form_with model: [@youtuber, @comment], local: true do |f| %>
+          <%= f.text_area :content %>
+          <%= f.submit "コメント投稿" %>
+        <% end %>
       </div>
     </div>
 
