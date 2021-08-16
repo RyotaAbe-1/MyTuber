@@ -4,14 +4,15 @@ class Public::GenresController < ApplicationController
     @user_profile = User.find(current_user.id)
     @genres = Genre.where(application_status: true)
   end
-  
+
   def create
     genre = Genre.new(genre_params)
     genre.save
     redirect_to new_genre_path
   end
-  
+
   private
+
   def genre_params
     params.require(:genre).permit(:genre_name)
   end

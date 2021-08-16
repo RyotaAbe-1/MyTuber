@@ -24,6 +24,7 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
   # ???
   def user_params
     params.require(:user).permit(:user_name, :image, :introduce, user_genres_attributes: [:genre_ids])

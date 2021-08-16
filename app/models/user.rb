@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   attachment :image
-  
+
   has_many :user_genres
   has_many :genres, through: :user_genres
   has_many :favorites
