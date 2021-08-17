@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :genres, only: [:new, :create]
-    resource :follows, only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
