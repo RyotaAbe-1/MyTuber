@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :genres, only: [:new, :create]
+    post 'follow/:id' => 'relationships#follow', as: 'follow'
+    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :relationships, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
