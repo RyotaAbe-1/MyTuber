@@ -11,6 +11,13 @@
         <% user.genres.each do |genre| %>
           <%= genre.genre_name %>
         <% end %>
+
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー中", unfollow_path(user, page: "user-index"), method: :post %>
+        <% else %>
+          <%= link_to "フォローする", follow_path(user, page: "user-index"), method: :post %>
+        <% end %>
+
       <% end %>
     </div>
   </div>
