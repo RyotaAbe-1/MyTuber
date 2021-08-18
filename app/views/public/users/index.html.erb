@@ -18,6 +18,10 @@
           <%= link_to "フォローする", follow_path(user, page: "user-index"), method: :post %>
         <% end %>
 
+        <% if current_user.followed?(user) %>
+          <div>フォローされています</div>
+        <% end %>
+
       <% end %>
     </div>
   </div>
