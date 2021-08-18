@@ -7,6 +7,23 @@
     <% end %>
 
     <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+
+    <% if user.id != current_user.id %>
+      <% if @youtuber %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー中", unfollow_path(user, page: page, youtuber_id: @youtuber.id), method: :post %>
+        <% else %>
+          <%= link_to "フォローする", follow_path(user, page: page, youtuber_id: @youtuber.id), method: :post %>
+        <% end %>
+      <% else %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー中", unfollow_path(user, page: page), method: :post %>
+        <% else %>
+          <%= link_to "フォローする", follow_path(user, page: page), method: :post %>
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%= user.user_name %>
     <% user.genres.each do |genre| %>
       <%= genre.genre_name %>

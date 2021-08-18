@@ -3,10 +3,13 @@ class Public::RelationshipsController < ApplicationController
     current_user.follow(params[:id])
     page = params[:page]
     if page == "user-index"
-      @users = User.where.not(id: current_user.id)
-      @user_profile = User.find(current_user.id)
-      @genres = Genre.where(application_status: true)
       redirect_to users_path
+    elsif page == "user-show"
+      user = User.find(params[:id])
+      redirect_to user_path(user)
+    elsif page == "post-show"
+      youtuber = Youtuber.find(params[:youtuber_id])
+      redirect_to youtuber_path(youtuber)
     end
   end
 
@@ -14,10 +17,14 @@ class Public::RelationshipsController < ApplicationController
     current_user.unfollow(params[:id])
     page = params[:page]
     if page == "user-index"
-      @users = User.where.not(id: current_user.id)
-      @user_profile = User.find(current_user.id)
-      @genres = Genre.where
       redirect_to users_path
+    elsif page == "user-show"
+      user = User.find(params[:id])
+      redirect_to user_path(user)
+    elsif page == "post-show"
+      youtuber = Youtuber.find(params[:youtuber_id])
+      redirect_to youtuber_path(youtuber)
     end
   end
+
 end
