@@ -32,4 +32,12 @@ class User < ApplicationRecord
     followeds.include?(user)
   end
   
+  def number_of_followers
+    follower_relationships.count
+  end
+  
+  def number_of_followed
+    followed_relationships.count
+  end
+  
 end
