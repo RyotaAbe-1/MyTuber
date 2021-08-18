@@ -4,6 +4,7 @@
 
   <div class="post-show__center">
     <div class="post-show__title"><%= "#{@user_profile.user_name}さんの投稿詳細" %></div>
+
     <div class="post-show__content">
 
       <div class="post-show__main">
@@ -29,9 +30,17 @@
         <div>
           <%= link_to "削除", youtuber_path(@youtuber), method: :delete %>
         </div>
+        <div>
+          <% if @youtuber.favorited_by?(current_user) %>
+            <%= link_to "お気に入り解除#{@youtuber.number_of_favorites}", youtuber_favorites_path(@youtuber), method: :delete %>
+          <% else %>
+            <%= link_to "お気に入り登録#{@youtuber.number_of_favorites}", youtuber_favorites_path(@youtuber), method: :post %>
+          <% end %>
+        </div>
       </div>
 
     </div>
+
     <div class="comment">
       <div class="comment__top">
         <%= "#{@youtuber.comments.count}件のコメント" %>
