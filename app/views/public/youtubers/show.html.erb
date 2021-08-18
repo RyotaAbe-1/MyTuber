@@ -24,12 +24,14 @@
       </div>
 
       <div class="post-show__sub">
-        <div>
-          <%= link_to "編集", edit_youtuber_path(@youtuber) %>
-        </div>
-        <div>
-          <%= link_to "削除", youtuber_path(@youtuber), method: :delete %>
-        </div>
+        <% if @youtuber.user == current_user %>
+          <div>
+            <%= link_to "編集", edit_youtuber_path(@youtuber) %>
+          </div>
+          <div>
+            <%= link_to "削除", youtuber_path(@youtuber), method: :delete %>
+          </div>
+        <% end %>
         <div>
           <% if @youtuber.favorited_by?(current_user) %>
             <%= link_to "お気に入り解除#{@youtuber.number_of_favorites}", youtuber_favorites_path(@youtuber), method: :delete %>

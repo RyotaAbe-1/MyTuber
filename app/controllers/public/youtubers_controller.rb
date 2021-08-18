@@ -31,6 +31,12 @@ class Public::YoutubersController < ApplicationController
     redirect_to youtuber_path(youtuber)
   end
 
+  def destroy
+    youtuber = Youtuber.find(params[:id])
+    youtuber.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def youtuber_params
