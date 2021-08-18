@@ -8,6 +8,13 @@ class Public::CommentsController < ApplicationController
     redirect_to youtuber_path(youtuber)
   end
 
+  def destroy
+    youtuber = Youtuber.find(params[:youtuber_id])
+    comment = Comment.find_by(id: params[:id], youtuber_id: youtuber.id)
+    comment.destroy
+    redirect_to youtuber_path(youtuber)
+  end
+
   private
 
   def comment_params

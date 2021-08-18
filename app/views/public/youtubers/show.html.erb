@@ -54,7 +54,7 @@
           <%= comment.user.user_name %>
           <%= comment.content %>
           <% if comment.user.id == current_user.id %>
-            <%= link_to "削除", youtuber_comment_path(comment), method: :delete %>
+            <%= link_to "削除", youtuber_comment_path(comment.youtuber, comment), method: :delete %>
           <% end %>
         <% end %>
       </div>
