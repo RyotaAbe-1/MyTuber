@@ -10,7 +10,7 @@
           <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
           <%= "#{youtuber.evaluation}/5" %>
           <%= "コメント#{youtuber.comments.count}件" %>
-          <%= "お気に入り#{youtuber.favorites.count}件" %>
+          <%= "お気に入り#{youtuber.number_of_favorites}件" %>
         </div>
       <% end %>
     </div>
