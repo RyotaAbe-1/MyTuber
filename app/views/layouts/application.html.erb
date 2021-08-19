@@ -18,6 +18,9 @@
 
       <div class="nav">
         <% if user_signed_in? %>
+          <%= link_to "マイページ", user_path(current_user), class: "nav__btn" %>
+          <%= link_to "ユーザー一覧", users_path, class: "nav__btn" %>
+          <%= link_to "タイムライン", youtubers_path, class: "nav__btn" %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__btn" %>
         <% elsif admin_signed_in? %>
           <%= link_to "ジャンル追加", new_admin_genre_path, class: "nav__btn" %>
