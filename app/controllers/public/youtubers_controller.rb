@@ -12,6 +12,21 @@ class Public::YoutubersController < ApplicationController
     redirect_to youtuber_path(youtuber)
   end
 
+  def index
+    sort = params[:sort]
+    if sort == "timeline"
+      @youtubers = Youtuber.all.order("created_at DESC")
+      @user_profile = User.find(current_user.id)
+      @genres = Genre.where(application_status: true)
+    elsif sort == "genre-search"
+      
+    elsif sort == "favorite"
+
+    end
+
+
+  end
+
   def show
     @youtuber = Youtuber.find(params[:id])
     @comment = Comment.new
