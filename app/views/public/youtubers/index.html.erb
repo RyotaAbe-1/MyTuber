@@ -4,7 +4,7 @@
 
   <div class="post-index__center">
     <div class="post-index__title"></div>
-    
+
     <div>
       <% @youtubers.each do |youtuber| %>
         <% if @users %>
@@ -33,6 +33,17 @@
               <%= youtuber.user.user_name %>
             </div>
           <% end %>
+        <% else %>
+          <div>
+            <%= youtuber.name %>
+            <%= youtuber.genre.genre_name %>
+            <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+            <%= "#{youtuber.evaluation}/5" %>
+            <%= "コメント#{youtuber.number_of_comments}件" %>
+            <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+            <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+            <%= youtuber.user.user_name %>
+          </div>
         <% end %>
       <% end %>
     </div>
