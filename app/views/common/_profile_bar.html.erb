@@ -34,7 +34,7 @@
     <%= "フォロワー#{current_user.number_of_followed}人" %>
   </div>
   <div>
-    <%= link_to "お気に入り一覧へ",youtubers_path %>
+    <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite") %>
   </div>
   <div>
     <div>自分のコメント</div>
