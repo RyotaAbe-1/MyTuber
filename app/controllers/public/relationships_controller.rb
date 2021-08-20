@@ -10,6 +10,14 @@ class Public::RelationshipsController < ApplicationController
     elsif page == "post-show"
       youtuber = Youtuber.find(params[:youtuber_id])
       redirect_to youtuber_path(youtuber)
+    elsif page == "post-index"
+      sort = params[:sort]
+      if sort == "genre-search"
+        genre = Genre.find(params[:genre_id])
+        redirect_to youtubers_path(sort: sort, genre_id: genre.id)
+      elsif sort == "genre-search-all"
+        redirect_to youtubers_path(sort: sort)
+      end
     end
   end
 
@@ -24,6 +32,16 @@ class Public::RelationshipsController < ApplicationController
     elsif page == "post-show"
       youtuber = Youtuber.find(params[:youtuber_id])
       redirect_to youtuber_path(youtuber)
+    elsif page == "post-index"
+      sort = params[:sort]
+      if sort == "genre-search"
+        genre = Genre.find(params[:genre_id])
+        redirect_to youtubers_path(sort: sort, genre_id: genre.id)
+      elsif sort == "genre-search-all"
+        redirect_to youtubers_path(sort: sort)
+      else
+        redirect_to youtubers_path(sort: sort)
+      end
     end
   end
 

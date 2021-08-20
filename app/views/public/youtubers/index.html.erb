@@ -1,0 +1,102 @@
+<div class="post-index">
+
+  <%= render "common/profile_bar", user: @user_profile, page: "user-show" %>
+
+  <div class="post-index__center">
+    <div class="post-index__title"></div>
+
+    <div>
+      <% @youtubers.each do |youtuber| %>
+        <% if @users %>
+          <% if current_user.following?(youtuber.user) %>
+            <div>
+              <%= youtuber.name %>
+              <%= youtuber.genre.genre_name %>
+              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+              <%= "#{youtuber.evaluation}/5" %>
+              <%= "コメント#{youtuber.number_of_comments}件" %>
+              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+              <%= youtuber.user.user_name %>
+              <% if current_user.following?(youtuber.user) %>
+                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "timeline"), method: :post %>
+              <% else %>
+                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "timeline"), method: :post %>
+              <% end %>
+            </div>
+          <% end %>
+        <% elsif @favorites %>
+          <% if youtuber.favorited_by?(current_user) %>
+            <div>
+              <%= youtuber.name %>
+              <%= youtuber.genre.genre_name %>
+              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+              <%= "#{youtuber.evaluation}/5" %>
+              <%= "コメント#{youtuber.number_of_comments}件" %>
+              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+              <%= youtuber.user.user_name %>
+              <% if current_user.following?(youtuber.user) %>
+                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "favorite"), method: :post %>
+              <% else %>
+                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "favorite"), method: :post %>
+              <% end %>
+            </div>
+          <% end %>
+        <% elsif @genre %>
+          <% if youtuber.genre_id == @genre.id %>
+            <div>
+              <%= youtuber.name %>
+              <%= youtuber.genre.genre_name %>
+              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+              <%= "#{youtuber.evaluation}/5" %>
+              <%= "コメント#{youtuber.number_of_comments}件" %>
+              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+              <%= youtuber.user.user_name %>
+              <% if current_user.following?(youtuber.user) %>
+                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "genre-search", genre_id: youtuber.genre.id), method: :post %>
+              <% else %>
+                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "genre-search", genre_id: youtuber.genre.id), method: :post %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div>
+              <%= youtuber.name %>
+              <%= youtuber.genre.genre_name %>
+              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+              <%= "#{youtuber.evaluation}/5" %>
+              <%= "コメント#{youtuber.number_of_comments}件" %>
+              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+              <%= youtuber.user.user_name %>
+              <% if current_user.following?(youtuber.user) %>
+                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "genre-search-all"), method: :post %>
+              <% else %>
+                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "genre-search-all"), method: :post %>
+              <% end %>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= link_to new_youtuber_path do %>
+      <button class="create-post">+</button>
+    <% end %>
+
+  </div>
+  <%= render "common/genre_search_bar", genres: @genres %>
+</div>
+
+<script>
+$('.review-evaluation').empty();
+  $('.review-evaluation').raty({
+    readOnly: true,
+    number: 5,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
