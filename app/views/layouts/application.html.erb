@@ -18,10 +18,19 @@
 
       <div class="nav">
         <% if user_signed_in? %>
-          <%= link_to "マイページ", user_path(current_user), class: "nav__btn" %>
-          <%= link_to "ユーザー一覧", users_path, class: "nav__btn" %>
-          <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "nav__btn" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__btn" %>
+          <div class="nav__upper">
+            <%= link_to "マイページ", user_path(current_user), class: "nav__btn" %>
+            <%= link_to "ユーザー一覧", users_path, class: "nav__btn" %>
+            <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "nav__btn" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__btn" %>
+          </div>
+          <div class="nav__lower search">
+            <%= form_with url: youtubers_path, method: :get, local: true do |f| %>
+              <%= f.hidden_field :sort, value: "search" %>
+              <%= f.text_field :keyword %>
+              <%= f.submit "検索" %>
+            <% end %>
+          </div>
         <% elsif admin_signed_in? %>
           <%= link_to "ジャンル追加", new_admin_genre_path, class: "nav__btn" %>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav__btn" %>
