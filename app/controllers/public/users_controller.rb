@@ -24,6 +24,16 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def confirm
+  end
+
+  def withdraw
+    user = User.find(current_user.id)
+    user.update(is_active: "false")
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   # ???
