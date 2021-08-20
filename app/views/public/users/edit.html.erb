@@ -25,9 +25,11 @@
 
       </div>
       <div class="mypage-edit__middle">
-        <!--???-->
-        <%= f.fields_for :user_genres do |user_genre| %>
-          <%= user_genre.collection_check_boxes(:genre_ids, @genres, :id, :genre_name)%>
+        <%= f.fields_for :genre do |g| %>
+          <% @genres.each do |genre| %>
+            <%= g.check_box genre.genre_name,{}, true, false %>
+            <%= g.label genre.genre_name %>
+          <% end %>
         <% end %>
       </div>
       <div class="mypage-edit__bottom">
