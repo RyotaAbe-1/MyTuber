@@ -1,7 +1,9 @@
 <div class="genre-search">
   <div>ジャンル検索</div>
   <div>
-    <%= link_to "ジャンルを追加+", new_genre_path %>
+    <% if user_signed_in? %>
+      <%= link_to "ジャンルを追加+", new_genre_path %>
+    <% end %>
     <%= link_to "全てのジャンル", youtubers_path(sort: "genre-search-all") %>
     <% genres.each do |genre| %>
       <ul>
