@@ -33,11 +33,26 @@
     <%= "フォロー中#{current_user.number_of_followers}人" %>
     <%= "フォロワー#{current_user.number_of_followed}人" %>
   </div>
+
+  <div>
+    <% if user.id != current_user.id %>
+      <div>共通のジャンル</div>
+      <% user.user_genres.each do |user_genre| %>
+        <% current_user.user_genres.each do |current_user_genre| %>
+          <% if user_genre.genre_id == current_user_genre.genre_id %>
+            <%= user_genre.genre.genre_name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div>
     <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite") %>
   </div>
   <div>
     <% if user.id == current_user.id %>
+      <%= link_to "プロフィール編集", edit_user_path(current_user) %>
       <%= link_to "退会", users_confirm_path %>
     <% end %>
   </div>

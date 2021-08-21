@@ -21,6 +21,15 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(user_params)
+    if params[:user][:genre]
+      UserGenre.where(user_id: current_user.id).destroy_all
+      params[:user][:genre].each do |key, value|
+        if value == "true"
+          genre_id = Genre.find_by(genre_name: key).id
+          UserGenre.create(user_id: current_user.id, genre_id: genre_id)
+        end
+      end
+    end
     redirect_to user_path(user)
   end
 
@@ -36,8 +45,7 @@ class Public::UsersController < ApplicationController
 
   private
 
-  # ???
   def user_params
-    params.require(:user).permit(:user_name, :image, :introduce, user_genres_attributes: [:genre_ids])
+    params.require(:user).permit(:user_name, :image, :introduce)
   end
 end
