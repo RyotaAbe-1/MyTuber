@@ -32,6 +32,7 @@
             <% end %>
           </div>
         <% elsif admin_signed_in? %>
+          <%= link_to "投稿一覧", admin_youtubers_path, class: "nav__btn" %>
           <%= link_to "ジャンル追加", new_admin_genre_path, class: "nav__btn" %>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav__btn" %>
         <% else %>

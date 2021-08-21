@@ -3,12 +3,18 @@
   <div>
     <% if user_signed_in? %>
       <%= link_to "ジャンルを追加+", new_genre_path %>
+      <%= link_to "全てのジャンル", youtubers_path(sort: "genre-search-all") %>
+    <% elsif admin_signed_in? %>
+      <%= link_to "全てのジャンル", admin_youtubers_path(sort: "genre-search-all") %>
     <% end %>
-    <%= link_to "全てのジャンル", youtubers_path(sort: "genre-search-all") %>
     <% genres.each do |genre| %>
       <ul>
         <li>
-          <%= link_to "#{genre.genre_name}", youtubers_path(genre_id: genre.id ,sort: "genre-search") %>
+          <% if user_signed_in? %>
+            <%= link_to "#{genre.genre_name}", youtubers_path(genre_id: genre.id ,sort: "genre-search") %>
+          <% elsif admin_signed_in? %>
+            <%= link_to "#{genre.genre_name}", admin_youtubers_path(genre_id: genre.id ,sort: "genre-search") %>
+          <% end %>
         </li>
       </ul>
     <% end %>
