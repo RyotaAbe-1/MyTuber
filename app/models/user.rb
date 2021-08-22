@@ -40,4 +40,8 @@ class User < ApplicationRecord
     followed_relationships.count
   end
   
+  def self.search(keyword)
+    where(["user_name like?", "%#{keyword}%"])
+  end
+  
 end
