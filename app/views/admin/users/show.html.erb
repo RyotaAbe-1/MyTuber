@@ -1,0 +1,35 @@
+<div class="user-show">
+  
+  <%= render "common/admin_profile_bar", user: @user_profile, page: "user-show" %>
+  
+  <div class="user-show__center">
+    <div class="user-show__title">おすすめ</div>
+    <div>
+      <% @youtubers.each do |youtuber| %>
+        <div>
+          <%= youtuber.name %>
+          <%= youtuber.genre.genre_name %>
+          <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+          <%= "#{youtuber.evaluation}/5" %>
+          <%= "コメント#{youtuber.number_of_comments}件" %>
+          <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <%= render "common/genre_search_bar", genres: @genres %>
+  
+</div>
+
+<script>
+$('.review-evaluation').empty();
+  $('.review-evaluation').raty({
+    readOnly: true,
+    number: 5,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
