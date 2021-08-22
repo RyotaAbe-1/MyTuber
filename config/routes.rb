@@ -16,20 +16,21 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :genres, except: [:index, :show, :edit]
+    get '/search' => 'searches#search', as: 'search'
   end
 
   scope module: :public do
     root to: "homes#top"
-    get "/users/confirm" => "users#confirm"
-    patch "/users/withdraw" => "users#withdraw"
+    get '/users/confirm' => 'users#confirm'
+    patch '/users/withdraw' => 'users#withdraw'
     resources :users, only: [:index, :show, :edit, :update]
     resources :youtubers do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :genres, only: [:new, :create]
-    post 'follow/:id' => 'relationships#follow', as: 'follow'
-    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+    post '/follow/:id' => 'relationships#follow', as: 'follow'
+    post '/unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
