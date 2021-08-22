@@ -21,10 +21,12 @@
     <% else %>
       <div>退会</div>
     <% end %>
-    <%= form_with model: user, local: true do |f| %>
+    
+    <%= form_with model: [:admin, user], url: admin_user_path(page: page, youtuber_id: @youtuber), local: true do |f| %>
       <%= f.radio_button :is_active, "true" %>有効
       <%= f.radio_button :is_active, "false" %>退会
       <%= f.submit "変更" %>
     <% end %>
+    
   </div>
 </div>
