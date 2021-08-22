@@ -1,0 +1,22 @@
+<def class="user-index">
+  <div class="user-index__center">
+    <div>ユーザー一覧</div>
+    <div>
+      <% @users.each do |user| %>
+        <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+        <%= user.user_name %>
+        <% user.genres.each do |genre| %>
+          <%= genre.genre_name %>
+        <% end %>
+        <% if user.is_active == true %>
+          <div>有効</div>
+        <% elsif user.is_active == false %>
+          <div>退会</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</def>

@@ -1,4 +1,9 @@
 class Admin::UsersController < ApplicationController
+  def index
+    @users = User.all
+    @genres = Genre.where(application_status: true)
+  end
+  
   def update
     user = User.find(params[:id])
     user.update(user_params)
