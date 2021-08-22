@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :update]
-    resources :youtubers, only: [:index, :show, :destroy]
+    resources :youtubers, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
     resources :genres, except: [:index, :show, :edit]
-    resources :comments, only: [:destroy]
   end
 
   scope module: :public do

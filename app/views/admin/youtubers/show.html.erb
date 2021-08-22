@@ -39,7 +39,7 @@
           <%= comment.user.user_name %>
           <%= comment.content %>
           
-          <%= link_to "削除", admin_comment_path(comment), method: :delete %>
+          <%= link_to "削除", admin_youtuber_comment_path(@youtuber, comment), method: :delete %>
           
         <% end %>
       </div>
