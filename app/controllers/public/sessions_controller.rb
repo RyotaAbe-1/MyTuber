@@ -3,6 +3,10 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_inactive_user, only: [:create]
+  
+  def after_sign_in_path_for(resource)
+    youtubers_path(sort: "timeline")
+  end
 
   def reject_inactive_user
     user = User.find_by(email: params[:user][:email])
