@@ -1,0 +1,30 @@
+<div class="profile">
+  <div>
+    <div class="profile__title"><%= "#{user.user_name}さんのプロフィール" %></div>
+
+    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+
+    <%= user.user_name %>
+    <% user.genres.each do |genre| %>
+      <%= genre.genre_name %>
+    <% end %>
+    <%= user.introduce %>
+
+    <%= "フォロー中#{user.number_of_followers}人" %>
+    <%= "フォロワー#{user.number_of_followed}人" %>
+  </div>
+
+  <div>
+    <div>会員ステータス</div>
+    <% if user.is_active == true %>
+      <div>有効</div>
+    <% else %>
+      <div>退会</div>
+    <% end %>
+    <%= form_with model: user, local: true do |f| %>
+      <%= f.radio_button :is_active, "true" %>有効
+      <%= f.radio_button :is_active, "false" %>退会
+      <%= f.submit "変更" %>
+    <% end %>
+  </div>
+</div>
