@@ -1,0 +1,7 @@
+<div>
+  <% if @youtuber.favorited_by?(current_user) %>
+    <%= link_to "お気に入り解除#{youtuber.number_of_favorites}", youtuber_favorites_path(youtuber), method: :delete, remote: true %>
+  <% else %>
+    <%= link_to "お気に入り登録#{youtuber.number_of_favorites}", youtuber_favorites_path(youtuber), method: :post, remote: true %>
+  <% end %>
+</div>
