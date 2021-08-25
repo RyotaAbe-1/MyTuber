@@ -7,7 +7,7 @@
 
     <div>
       <% @youtubers.each do |youtuber| %>
-        <% if @users %>
+        <% if params[:sort] == "timeline" %>
           <% if current_user.following?(youtuber.user) %>
             <div>
               <%= youtuber.name %>
@@ -18,14 +18,12 @@
               <%= "お気に入り#{youtuber.number_of_favorites}件" %>
               <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
               <%= youtuber.user.user_name %>
-              <% if current_user.following?(youtuber.user) %>
-                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "timeline"), method: :post %>
-              <% else %>
-                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "timeline"), method: :post %>
-              <% end %>
+              <span class="follow_button_<%= youtuber.user.id %>">
+                <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
+              </span>
             </div>
           <% end %>
-        <% elsif @favorites %>
+        <% elsif params[:sort] == "favorite" %>
           <% if youtuber.favorited_by?(current_user) %>
             <div>
               <%= youtuber.name %>
@@ -36,14 +34,12 @@
               <%= "お気に入り#{youtuber.number_of_favorites}件" %>
               <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
               <%= youtuber.user.user_name %>
-              <% if current_user.following?(youtuber.user) %>
-                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "favorite"), method: :post %>
-              <% else %>
-                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "favorite"), method: :post %>
-              <% end %>
+              <span class="follow_button_<%= youtuber.user.id %>">
+                <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
+              </span>
             </div>
           <% end %>
-        <% elsif @genre %>
+        <% elsif params[:sort] == "genre-search" %>
           <% if youtuber.genre_id == @genre.id %>
             <div>
               <%= youtuber.name %>
@@ -54,29 +50,25 @@
               <%= "お気に入り#{youtuber.number_of_favorites}件" %>
               <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
               <%= youtuber.user.user_name %>
-              <% if current_user.following?(youtuber.user) %>
-                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "genre-search", genre_id: youtuber.genre.id), method: :post %>
-              <% else %>
-                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "genre-search", genre_id: youtuber.genre.id), method: :post %>
-              <% end %>
+              <span class="follow_button_<%= youtuber.user.id %>">
+                <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
+              </span>
             </div>
           <% end %>
         <% else %>
           <div>
-              <%= youtuber.name %>
-              <%= youtuber.genre.genre_name %>
-              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
-              <%= "#{youtuber.evaluation}/5" %>
-              <%= "コメント#{youtuber.number_of_comments}件" %>
-              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-              <%= youtuber.user.user_name %>
-              <% if current_user.following?(youtuber.user) %>
-                <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", sort: "genre-search-all"), method: :post %>
-              <% else %>
-                <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", sort: "genre-search-all"), method: :post %>
-              <% end %>
-            </div>
+            <%= youtuber.name %>
+            <%= youtuber.genre.genre_name %>
+            <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
+            <%= "#{youtuber.evaluation}/5" %>
+            <%= "コメント#{youtuber.number_of_comments}件" %>
+            <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+            <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+            <%= youtuber.user.user_name %>
+            <span class="follow_button_<%= youtuber.user.id %>">
+              <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
+            </span>
+          </div>
         <% end %>
       <% end %>
     </div>

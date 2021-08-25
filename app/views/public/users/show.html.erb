@@ -1,5 +1,7 @@
 <div class="user-show">
+  
   <%= render "common/profile_bar", user: @user_profile, page: "user-show" %>
+  
   <div class="user-show__center">
     <div class="user-show__title">おすすめ</div>
     <div>
@@ -18,9 +20,10 @@
     <%= link_to new_youtuber_path do %>
       <button class="create-post">+</button>
     <% end %>
-
   </div>
+  
   <%= render "common/genre_search_bar", genres: @genres %>
+  
 </div>
 
 <script>
