@@ -3,8 +3,8 @@ class Public::RelationshipsController < ApplicationController
     current_user.follow(params[:id])
     page = params[:page]
     if page == "user-index"
-      redirect_to request.referer
-    elsif page == "user-show"
+      @user = User.find(params[:id])
+    elsif (page == "user-show") || (page == "post-show")
       @user = User.find(params[:id])
     elsif page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
@@ -15,8 +15,8 @@ class Public::RelationshipsController < ApplicationController
     current_user.unfollow(params[:id])
     page = params[:page]
     if page == "user-index"
-      redirect_to request.referer
-    elsif page == "user-show"
+      @user = User.find(params[:id])
+    elsif (page == "user-show") || (page == "post-show")
       @user = User.find(params[:id])
     elsif page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
