@@ -1,1 +1,5 @@
-$(".follow_button_<%= @youtuber.user.id %>").html("<%= j(render "public/relationships/relationship", youtuber: @youtuber) %>");
+<% if @youtuber %>
+  $(".follow_button_<%= @youtuber.user.id %>").html("<%= j(render "public/relationships/relationship_post_index", youtuber: @youtuber) %>");
+<% else %>
+  $("#follow_button").html("<%= j(render "public/relationships/relationship_profile_bar", user: @user) %>");
+<% end %>

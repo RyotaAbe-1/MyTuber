@@ -7,7 +7,7 @@
 
     <div>
       <% @youtubers.each do |youtuber| %>
-        <% if @users %>
+        <% if params[:sort] == "timeline" %>
           <% if current_user.following?(youtuber.user) %>
             <div>
               <%= youtuber.name %>
@@ -23,7 +23,7 @@
               </span>
             </div>
           <% end %>
-        <% elsif @favorites %>
+        <% elsif params[:sort] == "favorite" %>
           <% if youtuber.favorited_by?(current_user) %>
             <div>
               <%= youtuber.name %>
@@ -39,7 +39,7 @@
               </span>
             </div>
           <% end %>
-        <% elsif @genre %>
+        <% elsif params[:sort] == "genre-search" %>
           <% if youtuber.genre_id == @genre.id %>
             <div>
               <%= youtuber.name %>

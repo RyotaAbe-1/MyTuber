@@ -5,9 +5,7 @@ class Public::RelationshipsController < ApplicationController
     if page == "user-index"
       redirect_to request.referer
     elsif page == "user-show"
-      redirect_to request.referer
-    elsif page == "post-show"
-      redirect_to request.referer
+      @user = User.find(params[:id])
     elsif page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
     end
@@ -19,9 +17,7 @@ class Public::RelationshipsController < ApplicationController
     if page == "user-index"
       redirect_to request.referer
     elsif page == "user-show"
-      redirect_to request.referer
-    elsif page == "post-show"
-      redirect_to request.referer
+      @user = User.find(params[:id])
     elsif page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
     end
