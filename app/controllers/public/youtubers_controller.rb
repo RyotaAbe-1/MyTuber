@@ -13,7 +13,7 @@ class Public::YoutubersController < ApplicationController
   end
 
   def index
-    @youtubers = Youtuber.all.order("created_at DESC")
+    @youtubers = Youtuber.includes(:user, :genre).all.order("created_at DESC")
     @user_profile = User.find(current_user.id)
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
