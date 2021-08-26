@@ -3,14 +3,14 @@ class Admin::UsersController < ApplicationController
     @users = User.all.order("created_at DESC").includes(:genres)
     @genres = Genre.where(application_status: true)
   end
-  
+
   def show
     user = User.find(params[:id])
-    @youtubers = Youtuber.where(user_id: user.id)
+    @youtubers = Youtuber.where(user_id: user.id).includes(:genre, :comments, :favorites)
     @user_profile = User.find(params[:id])
     @genres = Genre.where(application_status: true)
   end
-  
+
   def update
     user = User.find(params[:id])
     user.update(user_params)
