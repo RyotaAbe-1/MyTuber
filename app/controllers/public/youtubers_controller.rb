@@ -30,6 +30,7 @@ class Public::YoutubersController < ApplicationController
 
   def show
     @youtuber = Youtuber.find(params[:id])
+    @youtuber_comments = @youtuber.comments.includes(:user)
     @comment = Comment.new
     @user_profile = User.find(@youtuber.user.id)
     @genres = Genre.where(application_status: true)
