@@ -24,7 +24,7 @@ class Public::YoutubersController < ApplicationController
     elsif sort == "genre-search"
       @genre = Genre.find(params[:genre_id])
     elsif sort == "search"
-      @youtubers = Youtuber.search(params[:keyword]).order("created_at DESC")
+      @youtubers = Youtuber.search(params[:keyword]).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     end
   end
 
