@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.order("created_at DESC").includes(:genres)
+    @users = User.all.includes(:genres).order("created_at DESC")
     @genres = Genre.where(application_status: true)
   end
 

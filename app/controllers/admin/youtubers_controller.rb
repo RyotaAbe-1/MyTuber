@@ -1,6 +1,6 @@
 class Admin::YoutubersController < ApplicationController
   def index
-    @youtubers = Youtuber.all.order("created_at DESC").includes(:user, :genre, :comments, :favorites)
+    @youtubers = Youtuber.all.includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "genre-search"

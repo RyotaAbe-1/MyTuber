@@ -1,13 +1,13 @@
 class Public::UsersController < ApplicationController
   def index
-    @users = User.includes(:genres).where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).includes(:genres)
     @user_profile = User.find(current_user.id)
     @genres = Genre.where(application_status: true)
   end
 
   def show
     user = User.find(params[:id])
-    @youtubers = Youtuber.includes(:genre, :comments, :favorites).where(user_id: user.id)
+    @youtubers = Youtuber.where(user_id: user.id).includes(:genre, :comments, :favorites)
     @user_profile = User.find(params[:id])
     @genres = Genre.where(application_status: true)
   end
