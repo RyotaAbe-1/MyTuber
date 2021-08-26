@@ -5,7 +5,7 @@ class Youtuber < ApplicationRecord
   belongs_to :genre
 
   def number_of_comments
-    comments.count
+    comments.length
   end
 
   def favorited_by?(user)
@@ -13,7 +13,7 @@ class Youtuber < ApplicationRecord
   end
 
   def number_of_favorites
-    favorites.count
+    favorites.length
   end
 
   def self.search(keyword)

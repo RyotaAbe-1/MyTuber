@@ -33,11 +33,11 @@ class User < ApplicationRecord
   end
   
   def number_of_followers
-    follower_relationships.count
+    follower_relationships.length
   end
   
   def number_of_followed
-    followed_relationships.count
+    followed_relationships.length
   end
   
   def self.search(keyword)

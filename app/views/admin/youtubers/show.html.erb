@@ -34,7 +34,7 @@
 
     <div class="comment">
       <div class="comment__index">
-        <% @youtuber.comments.each do |comment| %>
+        <% @youtuber_comments.each do |comment| %>
           <%= attachment_image_tag comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
           <%= comment.user.user_name %>
           <%= comment.content %>
