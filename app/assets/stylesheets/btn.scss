@@ -1,23 +1,22 @@
+
 .btn {
-
-
-  &--sign-up {
+  @mixin common {
     width: 100px;
     height: 30px;
-    background-color: rgb(90, 200, 90);
     border-radius: 5px;
     color: white;
     border: none;
     box-shadow: 3px 3px gray;
+    margin-top: 10px;
   }
-  &--log-in {
-    width: 100px;
-    height: 30px;
+
+  &--green {
+    @include common;
+    background-color: rgb(90, 200, 90);
+  }
+  &--blue {
+    @include common;
     background-color: rgb(20, 80, 201);
-    border-radius: 5px;
-    color: white;
-    border: none;
-    box-shadow: 3px 3px gray;
   }
   &:hover {
     position: relative;
