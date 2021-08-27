@@ -12,7 +12,7 @@
   <body>
 
     <div class="headder">
-      <div class="hedder__logo">
+      <div>
         <%= link_to image_tag("pf_icon1.png"), root_path %>
       </div>
 
@@ -28,7 +28,7 @@
             <%= form_with url: youtubers_path, method: :get, local: true do |f| %>
               <%= f.hidden_field :sort, value: "search" %>
               <%= f.text_field :keyword %>
-              <%= f.submit "検索" %>
+              <%= f.submit "検索", class: "btn btn--search" %>
             <% end %>
           </div>
         <% elsif admin_signed_in? %>
@@ -42,12 +42,14 @@
             <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
               <%= f.select :category, [["会員検索", "search-by-user"], ["投稿検索", "search-by-post"]] %>
               <%= f.text_field :keyword %>
-              <%= f.submit "検索" %>
+              <%= f.submit "検索", class: "btn btn--search" %>
             <% end %>
           </div>
         <% else %>
-          <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
-          <%= link_to "サインアップ", new_user_registration_path, class: "nav__btn"  %>
+          <div class="nav__upper">
+            <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
+            <%= link_to "サインアップ", new_user_registration_path, class: "nav__btn"  %>
+          </div>
         <% end %>
       </div>
     </div>
