@@ -27,7 +27,7 @@
   <div>
     <% if user.id != current_user.id %>
       <div>共通のジャンル</div>
-      <% user.user_genres.each do |user_genre| %>
+      <% user.user_genres.includes(:genre).each do |user_genre| %>
         <% current_user.user_genres.each do |current_user_genre| %>
           <% if user_genre.genre_id == current_user_genre.genre_id %>
             <%= user_genre.genre.genre_name %>
