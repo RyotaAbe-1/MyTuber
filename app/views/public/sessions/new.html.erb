@@ -1,32 +1,27 @@
-<div class="log-in">
-  <h2 class="log-in_title">ログイン</h2>
-  <div class="log-in__form">
+<div class="sign-up-in">
+  <h2 class="sign-up-in_title">ログイン</h2>
+  <div class="sign-up-in__form">
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <table>
         <tr>
-          <td class="log-in__form-item">メールアドレス</td>
+          <td class="sign-up-in__form-item">メールアドレス</td>
           <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "log-in__form-input" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
-          <td class="log-in__form-item">パスワード(6文字以上)</td>
+          <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
           <td>
-            <%= f.password_field :password, autocomplete: "current-password", class: "log-in__form-input" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <%= f.submit "ログイン", class: "btn btn--log-in" %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" class="log-in__form-item">
-            会員登録済みの方は<%= link_to "こちら", new_admin_session_path %>
+            <%= f.submit "ログイン", class: "btn btn--blue" %>
           </td>
         </tr>
       </table>

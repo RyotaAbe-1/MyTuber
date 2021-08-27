@@ -1,45 +1,47 @@
-<div class="sign-up">
-  <h2 class="sign-up_title">新規会員登録</h2>
+<div class="sign-up-in">
+  <h2 class="sign-up-in_title">新規会員登録</h2>
+
   <%= render "common/flash" %>
-  <div class="sign-up__form">
+
+  <div class="sign-up-in__form">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <table>
         <tr>
-          <td class="sign-up__form-item">ニックネーム</td>
+          <td class="sign-up-in__form-item">ニックネーム</td>
           <td>
-            <%= f.text_field :user_name, autofocus: true, autocomplete: "name", class: "sign-up__form-input" %>
+            <%= f.text_field :user_name, autofocus: true, autocomplete: "name", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
-          <td class="sign-up__form-item">メールアドレス</td>
+          <td class="sign-up-in__form-item">メールアドレス</td>
           <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up__form-input" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
-          <td class="sign-up__form-item">パスワード(6文字以上)</td>
+          <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
           <td>
-            <%= f.password_field :password, autocomplete: "new-password", class: "sign-up__form-input" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
-          <td class="sign-up__form-item">パスワード(確認用)</td>
+          <td class="sign-up-in__form-item">パスワード(確認用)</td>
           <td>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "sign-up__form-input" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "sign-up-in__form-input" %>
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <%= f.submit "サインアップ", class: "btn btn--sign-up" %>
+            <%= f.submit "サインアップ", class: "btn btn--green" %>
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="sign-up__form-item">
-            会員登録済みの方は<%= link_to "こちら", new_admin_session_path %>
+          <td colspan="2" class="sign-up-in__form-item">
+            会員登録済みの方は<%= link_to "こちら", new_user_session_path %>
           </td>
         </tr>
       </table>

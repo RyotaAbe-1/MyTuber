@@ -3,4 +3,23 @@
   min-height:300px;
   margin-right: 1%;
   border: 1px solid black;
+
+  &__title {
+    width: 75%;
+    margin: 10px auto;
+    padding: 5px 0;
+    text-align: center;
+    border: 1px solid black;
+  }
+  &__list {
+    padding-left: 55px;
+    &--none {
+      list-style: none;
+    }
+  }
+  &__item {
+    line-height: 30px;
+    text-decoration: none;
+    color: blue;
+  }
 }

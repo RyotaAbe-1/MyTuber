@@ -1,10 +1,17 @@
 <div class="top">
-  <div class="top__content">
-    <div class="top__content-item">
-      <h3>ようこそ<span class="top__content-item_red">MyTuber</span>へ</h3><br>
-      ここではお気に入りのYouTuberをフォロワーと共有できます。<br>
-      共通のジャンルを持つユーザーを探して,<br>
-      お気に入りのYouTuberをフォロワーに紹介しましょう。<br>
+  <div class="top__image">
+    <div class="top__content">
+      <div class="top__content-item">
+        <h3>ようこそ<span class="top__content-item--red">MyTuber</span>へ</h3>
+        <div>
+          ここではお気に入りのYouTuberをフォロワーと共有できます。<br>
+          共通のジャンルを持つユーザーを探して,<br>
+          お気に入りのYouTuberをフォロワーに紹介しましょう。
+        </div>
+        <div>
+          会員登録は<%= link_to "こちら", new_user_registration_path, class: "top__content-item--blue" %>から。
+        </div>
+      </div>
     </div>
   </div>
 </div>
