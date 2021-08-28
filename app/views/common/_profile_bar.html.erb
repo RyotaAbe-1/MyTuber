@@ -8,7 +8,9 @@
       <% end %>
 
       <div class="profile__info-top">
-        <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <% end %>
         <% if user.id != current_user.id %>
           <div id="follow_button">
             <%= render "public/relationships/relationship_profile_bar", user: user %>
@@ -67,14 +69,14 @@
   <div class="profile__sub">
     <div class="profile__content">
       <div>
-        <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite") %>
+        <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite"), class: "profile__link" %>
       </div>
       <% if user.id == current_user.id %>
         <div>
-          <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+          <%= link_to "プロフィール編集", edit_user_path(current_user), class: "profile__link" %>
         </div>
         <div>
-          <%= link_to "退会", users_confirm_path %>
+          <%= link_to "退会", users_confirm_path, class: "profile__link" %>
         </div>
       <% end %>
     </div>
@@ -86,7 +88,7 @@
         <div class="profile__title">自分のコメント</div>
         <% user.comments.includes(:youtuber).each do |comment| %>
           <div class="profile__comment-item">
-            <%= link_to "#{comment.content}", youtuber_path(comment.youtuber) %>
+            <%= link_to "#{comment.content}", youtuber_path(comment.youtuber), class: "profile__link" %>
           </div>
         <% end %>
       </div>
