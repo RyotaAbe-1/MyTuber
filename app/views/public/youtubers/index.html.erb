@@ -39,22 +39,6 @@
               </span>
             </div>
           <% end %>
-        <% elsif params[:sort] == "genre-search" %>
-          <% if youtuber.genre_id == @genre.id %>
-            <div>
-              <%= youtuber.name %>
-              <%= youtuber.genre.genre_name %>
-              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
-              <%= "#{youtuber.evaluation}/5" %>
-              <%= "コメント#{youtuber.number_of_comments}件" %>
-              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-              <%= youtuber.user.user_name %>
-              <span class="follow_button_<%= youtuber.user.id %>">
-                <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
-              </span>
-            </div>
-          <% end %>
         <% else %>
           <div>
             <%= youtuber.name %>

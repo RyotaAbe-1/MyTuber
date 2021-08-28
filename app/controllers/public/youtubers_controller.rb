@@ -17,12 +17,9 @@ class Public::YoutubersController < ApplicationController
     @user_profile = User.find(current_user.id)
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
-    if sort == "timeline"
-      @users = current_user.followers
-    elsif sort == "favorite"
-      @favorites = Favorite.where(user_id: current_user.id)
-    elsif sort == "genre-search"
-      @genre = Genre.find(params[:genre_id])
+    if sort == "genre-search"
+      genre = Genre.find(params[:genre_id])
+      @youtubers = Youtuber.where(genre_id: genre.id).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     elsif sort == "search"
       @youtubers = Youtuber.search(params[:keyword]).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     end
