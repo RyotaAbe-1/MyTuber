@@ -3,10 +3,18 @@
   min-height:300px;
   margin-right: 1%;
 
+  &__content {
+    width: 92%;
+    min-height: 97%;
+    padding-top: 1%;
+    margin: 3% auto;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
+  }
   &__title {
     width: 75%;
     margin: 10px auto;
-    padding: 5px 0;
+    padding: 2px 0;
     text-align: center;
     border: 1px solid black;
   }
@@ -16,7 +24,7 @@
       list-style: none;
     }
   }
-  &__item {
+  &__link {
     line-height: 30px;
     text-decoration: none;
     color: blue;
