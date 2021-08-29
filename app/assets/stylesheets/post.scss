@@ -2,19 +2,53 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 
-  &__title {
-    width: 15%;
-    padding: 2px 0;
-    margin: 1%;
-    border: 1px solid black;
-    text-align: center;
-  }
-  &__center {
-    width: 58%;
-    margin: 0 1%;
+  &__container {
+    width: 97%;
+    min-height: 97%;
+    margin: 1% auto;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
     position: relative;
-    border: 1px solid black;
+  }
+  &__content {
+    padding: 1%;
+  }
+  &__form {
+    margin-top: 50px;
+  }
+  &__table {
+    margin: 0 auto;
+  }
+  &__name {
+    padding: 20px 0;
+  }
+  &__name-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__genre {
+    padding: 20px 0;
+  }
+  &__genre-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__evaluation {
+    padding: 20px 0;
+  }
+  &__area-label {
+    vertical-align: top;
+    padding: 20px 60px 0 0;
+  }
+  &__area {
+    padding: 20px 0;
+  }
+  &__area-input {
+    width: 350px;
+    height: 100px;
+    resize: none;
   }
 }
