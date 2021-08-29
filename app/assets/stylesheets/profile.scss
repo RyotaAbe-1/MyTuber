@@ -25,6 +25,7 @@
     margin-bottom: 5%;
     text-align: center;
     border: 1px solid black;
+    word-wrap: break-word;
   }
   &__content {
     margin: 0 auto;
@@ -53,6 +54,7 @@
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0 15px 0;
+    word-wrap: break-word;
   }
   &__genre-list-item {
     margin-left: 20px;
