@@ -15,6 +15,7 @@
     text-decoration: none;
   }
   &__item {
+    height: 80px;
     position: relative;
     margin-bottom: 1%;
     padding: 1% 3%;
@@ -44,12 +45,12 @@
     border-color: rgba(100, 100, 100, 0.1);
   }
   &__name {
-    width: 20%;
+    width: 25%;
     align-self: center;
     margin: 0 2% 0 4%;
-    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
+    word-wrap: break-word;
   }
   &__genre {
     width: 40%;
@@ -66,14 +67,16 @@
     font-size: 13px;
   }
   &__follow {
-    width: 25%;
-    align-self: center;
+    width: 120px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
   }
   &__follow-message {
-    width: 23%;
+    width: 120px;
     position: absolute;
-    bottom: 1%;
-    right: 2%;
+    bottom: 1px;
+    right: 15px;
     font-size: 12px;
     color: red;
   }
