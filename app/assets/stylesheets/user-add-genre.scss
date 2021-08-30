@@ -2,7 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 
   &__title {
     width: 30%;
@@ -11,13 +12,33 @@
     border: 1px solid black;
     text-align: center;
   }
-  &__center {
-    width: 58%;
-    margin: 0 1%;
+  &__container {
+    width: 97%;
+    min-height: 97%;
+    margin: 1% auto;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
     position: relative;
-    border: 1px solid black;
+    padding: 1%;
   }
   &__form {
-    width: 50%;
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  &__table {
+    width: 100%;
+  }
+  &__caution {
+    height: 60px;
+  }
+  &__genre {
+    padding: 15px 0;
+  }
+  &__genre-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__submit {
+    height: 60px;
   }
 }
