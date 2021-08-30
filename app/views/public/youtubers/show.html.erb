@@ -83,9 +83,15 @@
         <% end %>
       </div>
       <div class="comment__form" id="comment">
+        <div>コメント投稿フォーム</div>
         <%= form_with model: [@youtuber, @comment], local: true do |f| %>
-          <%= f.text_area :content %>
-          <%= f.submit "コメント投稿" %>
+          <%= f.text_area :content, class: "comment__form-input" %>
+          <div>
+            <div>誹謗中傷や,公序良俗に反するような不適切な内容を含むコメントをしないでください。</div>
+          </div>
+          <div class="comment__form-submit">
+            <%= f.submit "コメント投稿", class: "btn btn--green" %>
+          </div>
         <% end %>
       </div>
     </div>
