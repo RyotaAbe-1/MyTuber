@@ -11,6 +11,14 @@
     padding: 1px 5px;
     text-decoration: none;
   }
+  @mixin post-show {
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px gray;
+    text-decoration: none;
+  }
 
   &--green {
     @include common;
@@ -19,6 +27,33 @@
   &--blue {
     @include common;
     background-color: rgb(20, 80, 201);
+  }
+  &__post-show {
+    &--blue {
+      @include post-show;
+      background-color: rgb(20, 80, 201);
+    }
+    &--red {
+      @include post-show;
+      background-color: red;
+    }
+    &--orange {
+      border-radius: 4px;
+      box-shadow: 2px 2px gray;
+      padding: 3% 3%;
+      text-decoration: none;
+      background-color: orange;
+      color: white;
+    }
+    &--white {
+      border-radius: 4px;
+      box-shadow: 2px 2px gray;
+      padding: 3% 3%;
+      text-decoration: none;
+      background-color: white;
+      border: 1px solid gray;
+      color: black;
+    }
   }
   &--search {
     width: 50px;
