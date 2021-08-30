@@ -86,7 +86,7 @@
     <div class="profile__comment">
       <div class="profile__content">
         <div class="profile__title">自分のコメント</div>
-        <% user.comments.includes(:youtuber).each do |comment| %>
+        <% user.comments.includes(:youtuber).order("created_at DESC").limit(10).each do |comment| %>
           <div class="profile__comment-item">
             <%= link_to "#{comment.content}", youtuber_path(comment.youtuber), class: "profile__link" %>
           </div>
