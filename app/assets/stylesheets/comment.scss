@@ -83,6 +83,10 @@
     min-height: 100px;
     margin: 10px 0;
   }
+  &__form-caution {
+    padding: 5px;
+    background-color: rgba(165, 131, 209, 0.45);
+  }
   &__form-submit {
     text-align: center;
   }
