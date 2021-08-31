@@ -9,14 +9,14 @@
       <% @youtubers.each do |youtuber| %>
         <% if params[:sort] == "timeline" %>
           <% if current_user.following?(youtuber.user) %>
-            <%= render "list", youtuber: youtuber %>
+            <%= render "common/post_index", youtuber: youtuber %>
           <% end %>
         <% elsif params[:sort] == "favorite" %>
           <% if youtuber.favorited_by?(current_user) %>
-            <%= render "list", youtuber: youtuber %>
+            <%= render "common/post_index", youtuber: youtuber %>
           <% end %>
         <% else %>
-          <%= render "list", youtuber: youtuber %>
+          <%= render "common/post_index", youtuber: youtuber %>
         <% end %>
       <% end %>
     </div>
