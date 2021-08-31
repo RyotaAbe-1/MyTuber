@@ -28,6 +28,27 @@
     @include common;
     background-color: rgb(20, 80, 201);
   }
+  &__big {
+    @mixin big {
+      width: 100px;
+      height: 35px;
+      border-radius: 5px;
+      color: white;
+      border: none;
+      box-shadow: 2px 2px gray;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 35px;
+    }
+    &--red {
+      @include big;
+      background-color: red;
+    }
+    &--green {
+      @include big;
+      background-color: rgb(90, 200, 90);
+    }
+  }
   &__post-show {
     &--blue {
       @include post-show;

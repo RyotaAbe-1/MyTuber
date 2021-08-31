@@ -1,13 +1,13 @@
-<div>
-  <div>退会確認画面</div>
-  <div>
-    <div>
+<div class="confirm">
+  <h2 class="confirm__title">退会確認画面</h2>
+  <div class="confirm__content">
+    <div class="confirm__caution">
       退会すると現在の会員情報ではログインできなくなります。<br>
       本当に退会しますか？
     </div>
-    <div>
-      <%= link_to "退会する", users_withdraw_path, method: :patch %>
-      <%= link_to "退会しない", user_path(current_user) %>
+    <div class="confirm__buttons">
+      <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn__big--red" %>
+      <%= link_to "退会しない", user_path(current_user), class: "btn btn__big--green" %>
     </div>
   </div>
 </div>
