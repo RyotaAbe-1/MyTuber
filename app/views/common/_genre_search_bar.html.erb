@@ -20,7 +20,7 @@
             <% if user_signed_in? %>
               <%= link_to "#{genre.genre_name}", youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__link" %>
             <% elsif admin_signed_in? %>
-              <%= link_to "#{genre.genre_name}", admin_youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__l" %>
+              <%= link_to "#{genre.genre_name}", admin_youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__link" %>
             <% end %>
           </li>
         <% end %>
