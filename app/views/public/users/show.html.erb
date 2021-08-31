@@ -11,25 +11,9 @@
     <div class="user-show__content">
       <% @youtubers.each do |youtuber| %>
         <%= link_to youtuber_path(youtuber), class: "user-show__link" do %>
-          <div class="user-show__item">
-            <div class="user-show__name">
-              <%= youtuber.name %>
-            </div>
-            <div class="user-show__evaluation">
-              <div class="user-show__evaluation-score">
-                <%= "#{youtuber.evaluation}/5" %>
-              </div>
-              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
-            </div>
-            <div class="user-show__genre">
-              ジャンル：
-              <%= youtuber.genre.genre_name %>
-            </div>
-            <div class="user-show__reaction">
-              <%= "コメント#{youtuber.number_of_comments}件" %>
-              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-            </div>
-          </div>
+        
+          <%= render "common/user_show", youtuber: youtuber %>
+          
         <% end %>
       <% end %>
     </div>
