@@ -1,4 +1,4 @@
-.admin-add-genre {
+.add-genre {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,6 +14,9 @@
     position: relative;
     padding: 1%;
   }
+  
+  
+  // adminで使用
   &__item {
     width: 90%;
     height: 50px;
@@ -45,6 +48,8 @@
     margin: 40px auto;
     border-top: 1px solid black;
   }
+  
+  
   &__form {
     max-width: 500px;
     margin: 50px auto;
