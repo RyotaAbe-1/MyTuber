@@ -1,4 +1,9 @@
-<div class="title"><%= "#{user_profile.user_name}さんの投稿詳細" %></div>
+<% if user_profile == current_user %>
+  <div class="title--blue">自分の投稿詳細</div>
+<% else %>
+  <div class="title--green"><%= "#{user_profile.user_name}さんの投稿詳細" %></div>
+<% end %>
+
 <div class="post-show__content">
 
   <div class="post-show__main">

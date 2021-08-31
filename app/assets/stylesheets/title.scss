@@ -1,7 +1,23 @@
 .title {
-  display: inline-block;
-  border: 1px solid black;
-  text-align: center;
-  margin-bottom: 1%;
-  padding: 2px 20px;
+  $green: rgb(90, 200, 90);
+  $blue: rgb(20, 80, 201);
+  @mixin title($background-color, $color) {
+    display: inline-block;
+    text-align: center;
+    padding: 2px 20px;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    border-radius: 3px;
+    box-shadow: 3px 2px 2px 1px rgba(0,0,0,0.3);
+    background-color: $background-color;
+    color: $color;
+  }
+
+  &--green {
+    @include title($green, white);
+  }
+  &--blue {
+    @include title($blue, white)
+  }
 }

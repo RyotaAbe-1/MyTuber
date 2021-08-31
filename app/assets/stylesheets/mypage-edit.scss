@@ -9,12 +9,14 @@
   &__content {
     min-height: 97%;
     margin: 1%;
+    padding-top: 50px;
     background-color: white;
     box-shadow: 1px 3px 4px 6px rgba(0,0,0,0.1);
+    position: relative;
   }
   &__top {
     max-width: 850px;
-    margin: 50px auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
   }

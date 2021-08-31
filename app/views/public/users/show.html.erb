@@ -4,9 +4,9 @@
 
   <div class="center">
     <% if @user_profile == current_user %>
-      <div class="title"> 自分のおすすめ</div>
+      <div class="title--blue"> 自分のおすすめ</div>
     <% else %>
-      <div class="title"> <%= @user_profile.user_name %>さんのおすすめ</div>
+      <div class="title--green"> <%= @user_profile.user_name %>さんのおすすめ</div>
     <% end %>
     <div class="container__content">
       <% @youtubers.each do |youtuber| %>

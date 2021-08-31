@@ -2,7 +2,16 @@
   <div class="right"></div>
 
   <div class="center">
-    <div class="title">投稿一覧</div>
+
+    <% if params[:sort] == "genre-search" %>
+      <p class="title--blue"><%= @genre.genre_name %>一覧</p>
+    <% elsif params[:sort] == "genre-search-all" %>
+      <p class="title--blue">全てのジャンル</p>
+    <% elsif params[:category] == "search-by-post" %>
+      <p class="title--blue"><%= "「#{params[:keyword]}」の投稿検索結果" %></p>
+    <% else %>
+      <p class="title--blue">投稿一覧</p>
+    <% end %>
 
     <div class="container__content">
       <% @youtubers.each do |youtuber| %>
