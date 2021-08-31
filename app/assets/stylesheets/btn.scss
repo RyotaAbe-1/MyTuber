@@ -84,6 +84,9 @@
     }
   }
   &__small {
+    &--red {
+      @include small-btn($red, $white, none)
+    }
     &--green {
       @include small-btn($green, $white, none);
     }

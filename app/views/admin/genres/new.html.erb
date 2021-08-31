@@ -1,41 +1,53 @@
 <div class="admin-add-genre">
-  <div class="left"></div>
-  <div class="center admin-center">
-    <div class="admin-center__title">ジャンル登録画面</div>
-    <% @genres.each do |genre| %>
-      <div>
-        <%= genre.genre_name %>
-        <%= link_to "追加", admin_genre_path(genre, params: {genre: {application_status: true}}), method: :patch %>
-        <%= link_to "拒否", admin_genre_path(genre), method: :delete %>
-      </div>
-    <% end %>
-    <div class="admin-add-genre__form-block">
-      <table class="admin-add-genre__form">
-        <%= form_with model: [:admin, @genre], local: true do |f| %>
-          <tr>
-            <td>
-              ジャンル
-            </td>
-            <td>
-              <%= f.text_field :genre_name %>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <%= f.submit "新規登録" %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
 
+  <div class="left"></div>
+
+  <div class="center">
+    <div class="admin-add-genre__container">
+      <div class="title">ジャンル登録画面</div>
+      <% @genres.each do |genre| %>
+        <div class="admin-add-genre__item">
+          <p class="admin-add-genre__name">
+            <%= genre.genre_name %>
+          </p>
+          <div class="admin-add-genre__buttons">
+            <%= link_to "追加", admin_genre_path(genre, params: {genre: {application_status: true}}), method: :patch, class: "btn btn__small--green" %>
+            <%= link_to "拒否", admin_genre_path(genre), method: :delete, class: "btn btn__small--red" %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="admin-add-genre__form-block">
+        <div class="admin-add-genre__form">
+          <%= form_with model: [:admin, @genre], local: true do |f| %>
+            <table class="admin-add-genre__table">
+              <tr>
+                <td>
+                  ジャンル
+                </td>
+                <td class="admin-add-genre__genre">
+                  <%= f.text_field :genre_name , class: "admin-add-genre__genre-input"%>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="user-add-genre__submit">
+                  <%= f.submit "新規登録", class: "btn btn__big--green" %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
   </div>
-  <div class="right admin-right">
-    <div>
-      <div class="admin-right__title">登録ジャンル一覧</div>
+
+  <div class="genre-search right">
+    <div class="genre-search__content">
+      <div class="genre-search__title">登録ジャンル一覧</div>
       <% @genre_all.each do |genre| %>
-        <ul class="list">
+        <ul class="genre-search__list">
           <li>
             <%= genre.genre_name %>
           </li>
@@ -43,4 +55,5 @@
       <% end %>
     </div>
   </div>
+
 </div>
