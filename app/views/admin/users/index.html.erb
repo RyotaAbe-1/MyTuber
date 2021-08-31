@@ -1,17 +1,20 @@
-<def class="user-index">
-  <div class="user-index__center">
-    <div>ユーザー一覧</div>
-    <div>
+<def class="user-index container">
+  <div class="left"></div>
+
+  <div class="center">
+
+    <% if params[:category] == "search-by-user" %>
+      <p class="title--blue"><%= "「#{params[:keyword]}」のユーザー検索結果" %></p>
+    <% else %>
+      <p class="title--blue">ユーザー一覧</p>
+    <% end %>
+
+    <div class="container__content">
       <% @users.each do |user| %>
-        <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
-        <%= user.user_name %>
-        <% user.genres.each do |genre| %>
-          <%= genre.genre_name %>
-        <% end %>
-        <% if user.is_active == true %>
-          <div>有効</div>
-        <% elsif user.is_active == false %>
-          <div>退会</div>
+        <%= link_to admin_user_path(user), class: "user-index__link" do %>
+
+          <%= render "common/user_index", user: user %>
+
         <% end %>
       <% end %>
     </div>

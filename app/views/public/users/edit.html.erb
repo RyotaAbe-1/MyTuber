@@ -1,51 +1,52 @@
-<div class="mypage-edit">
+<div class="mypage-edit container">
 
-  <div class="mypage-edit__form">
-    <div class="mypage-edit__title">マイページ編集</div>
-    <%= form_with model: @user, local: true do |f| %>
-      <div class="mypage-edit__top">
-        <div class="mypage-edit__image">
-          <%= attachment_image_tag @user, :image, size:"250x250", fallback: "no_image.jpg", size:"250x250" %>
-        </div>
+    <div class="mypage-edit__left">
 
-        <table>
-          <tr>
-            <td class="mypage-edit__form-label">プロフィール画像</td>
-            <td class="mypage-edit__form-field-tag">
-              <%= f.attachment_field :image, class: "mypage-edit__form-field" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="mypage-edit__form-label">ニックネーム</td>
-            <td class="mypage-edit__form-field-tag">
-              <%= f.text_field :user_name, class: "mypage-edit__form-field" %>
-            </td>
-          </tr>
-        </table>
+      <div class="mypage-edit__content">
+       <div class="title--blue">マイページ編集</div>
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="mypage-edit__top">
+            <%= attachment_image_tag @user, :image, size:"250x250", fallback: "no_image.jpg", size:"250x250", class: "mypage-edit__image" %>
+            <table class="mypage-edit__table">
+              <tr>
+                <td class="mypage-edit__form-label">プロフィール画像</td>
+                <td>
+                  <%= f.attachment_field :image, class: "mypage-edit__form-field" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="mypage-edit__form-label">ニックネーム</td>
+                <td>
+                  <%= f.text_field :user_name, class: "mypage-edit__form-field" %>
+                </td>
+              </tr>
+            </table>
+          </div>
 
-      </div>
-      <div class="mypage-edit__middle">
-        <div class="mypage-edit__form-label">好きなジャンル(変更がない場合はチェックを入れずに保存してください。)</div>
-        <%= f.fields_for :genre do |g| %>
-          <% @genres.each do |genre| %>
-            <span>
-              <%= g.check_box genre.genre_name,{}, true, false %>
-              <%= g.label genre.genre_name %>
-            </span>
-          <% end %>
+          <div class="mypage-edit__middle">
+            <div class="mypage-edit__form-label">好きなジャンル(変更がない場合はチェックを入れずに保存してください。)</div>
+            <%= f.fields_for :genre do |g| %>
+              <% @genres.each do |genre| %>
+                <span>
+                  <%= g.check_box genre.genre_name,{}, true, false %>
+                  <%= g.label genre.genre_name %>
+                </span>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="mypage-edit__bottom">
+            <div>
+              <div class="mypage-edit__form-label">自己紹介</div>
+              <%= f.text_area :introduce, class: "mypage-edit__form-area" %>
+            </div>
+            <div class="mypage-edit__form-submit">
+              <%= f.submit "変更を保存", class: "btn btn__big--blue"%>
+            </div>
+          </div>
         <% end %>
       </div>
-      <div class="mypage-edit__bottom">
-        <div>
-          <div class="mypage-edit__form-label">自己紹介</div>
-          <%= f.text_area :introduce, class: "mypage-edit__form-area" %>
-        </div>
-        <div class="mypage-edit__form-submit">
-          <%= f.submit "変更を保存", class: "btn btn--blue"%>
-        </div>
-      </div>
-    <% end %>
-  </div>
+
+    </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>
 

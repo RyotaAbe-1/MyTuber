@@ -1,36 +1,15 @@
-<def class="user-index">
+<def class="user-index container">
 
   <%= render "common/profile_bar", user: @user_profile %>
 
-  <div class="user-index__container center">
-    <div class="title">ユーザー一覧</div>
-    <div class="user-index__content">
+  <div class="center">
+    <div class="title--blue">ユーザー一覧</div>
+    <div class="container__content">
       <% @users.each do |user| %>
         <%= link_to user_path(user), class: "user-index__link" do %>
-          <div class="user-index__item">
-            <div>
-              <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "user-index__image" %>
-            </div>
-            <div class="user-index__name">
-              <%= user.user_name %>
-            </div>
-            <div class="user-index__genre">
-              <div class="user-index__genre-title">好きなジャンル：</div>
-              <span class="user-index__genre-item">
-                <% user.genres.each do |genre| %>
-                  <%= genre.genre_name %>
-                <% end %>
-              </span>
-            </div>
-            <div class="user-index__follow">
-              <object class="follow_button_<%= user.id %>">
-                <%= render "public/relationships/relationship_user_index", user: user %>
-              </object>
-            </div>
-            <% if current_user.followed?(user) %>
-              <span class="user-index__follow-message">フォローされています</span>
-            <% end %>
-          </div>
+
+          <%= render "common/user_index", user: user %>
+
         <% end %>
       <% end %>
     </div>

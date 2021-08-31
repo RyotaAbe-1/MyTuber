@@ -9,23 +9,22 @@
   display: inline-block;
   box-shadow: 2px 2px gray;
   text-decoration: none;
+  text-align: center;
 
   @mixin big-btn($background-color, $color, $border) {
     width: 100px;
-    height: 35px;
+    height: 32px;
     border-radius: 5px;
-    line-height: 35px;
-    text-align: center;
+    line-height: 32px;
     background-color: $background-color;
     color: $color;
     border: $border;
   }
   @mixin middle-btn($background-color, $color, $border) {
     width: 80px;
-    height: 35px;
+    height: 32px;
     border-radius: 5px;
-    line-height: 35px;
-    text-align: center;
+    line-height: 32px;
     background-color: $background-color;
     color: $color;
     border: $border;

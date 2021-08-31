@@ -1,11 +1,22 @@
-<div class="post-index">
+<div class="post-index container">
 
   <%= render "common/profile_bar", user: @user_profile, page: "user-show" %>
 
-  <div class="post-index__container center">
-    <p class="title">投稿一覧</p>
+  <div class="center">
 
-    <div class="post-index__content">
+    <% if params[:sort] == "timeline" %>
+      <p class="title--blue">タイムライン</p>
+    <% elsif params[:sort] == "favorite" %>
+      <p class="title--blue">お気に入り一覧</p>
+    <% elsif params[:sort] == "genre-search" %>
+      <p class="title--blue"><%= @genre.genre_name %>一覧</p>
+    <% elsif params[:sort] == "genre-search-all" %>
+      <p class="title--blue">全てのジャンル</p>
+    <% elsif params[:sort] == "search" %>
+      <p class="title--blue"><%= "「#{params[:keyword]}」の投稿検索結果" %></p>
+    <% end %>
+
+    <div class="container__content">
       <% @youtubers.each do |youtuber| %>
         <%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
           <% if params[:sort] == "timeline" %>

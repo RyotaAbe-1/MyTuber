@@ -4,8 +4,8 @@ class Admin::YoutubersController < ApplicationController
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "genre-search"
-      genre = Genre.find(params[:genre_id])
-      @youtubers = Youtuber.where(genre_id: genre.id).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+      @genre = Genre.find(params[:genre_id])
+      @youtubers = Youtuber.where(genre_id: @genre.id).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     end
   end
 
