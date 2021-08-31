@@ -1,10 +1,23 @@
 .profile {
+  $green: rgb(90, 200, 90);
+  $blue: rgb(20, 80, 201);
   @mixin common {
     width: 90%;
     margin: 3% auto 5% auto;
     background-color: white;
     box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
     margin-top: 15px;
+  }
+  @mixin title($background-color, $color) {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 2px 0;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    box-shadow: 3px 2px 2px 1px rgba(0,0,0,0.3);
+    background-color: $background-color;
+    color: $color;
   }
 
   &__info {
@@ -19,17 +32,17 @@
     align-items: center;
   }
   &__title {
-    padding: 2px 0;
-    margin-bottom: 5%;
-    text-align: center;
-    border: 1px solid black;
-    word-wrap: break-word;
+    &--green {
+      @include title($green, white);
+    }
+    &--blue {
+      @include title($blue, white);
+    }
   }
   &__content {
     margin: 0 auto;
     padding: 4% 10%;
   }
-
   &__image {
     border: 1px solid;
     border-color: rgba(100, 100, 100, 0.1);
