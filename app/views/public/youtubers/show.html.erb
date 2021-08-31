@@ -7,41 +7,9 @@
     <%= render "common/post_show", user_profile: @user_profile, youtuber: @youtuber  %>
 
     <div class="comment">
-      <div class="comment__top">
-        <div>
-          <%= "#{@youtuber.number_of_comments}件のコメント" %>
-        </div>
-        <div>
-          <%= link_to "コメントを投稿", {anchor: "comment"}, class: "comment__link" %>
-        </div>
-      </div>
-      <div>
-        <% @youtuber_comments.each do |comment| %>
-          <div class="comment__item">
-            <div class="comment__image-tag">
-              <%= link_to user_path(comment.user) do %>
-                <%= attachment_image_tag comment.user, :image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "comment__image" %>
-              <% end %>
-            </div>
-            <div class="comment__main">
-              <div class="comment__name">
-                <%= comment.user.user_name %>
-              </div>
-              <div class="comment__area">
-                <%= comment.content %>
-              </div>
-            </div>
-            <div class="comment__delete-tag">
-              <% if comment.user.id == current_user.id %>
-                <div class="comment__delete">
-                  <%= link_to "削除", youtuber_comment_path(comment.youtuber, comment), method: :delete, class: "btn btn__middle--red" %>
-                </div>
-              <% end %>
-            </div>
-            <span class="comment__time">コメント日時：<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
-          </div>
-        <% end %>
-      </div>
+
+      <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
+
       <div class="comment__form" id="comment">
         <div>コメント投稿フォーム</div>
         <%= form_with model: [@youtuber, @comment], local: true do |f| %>
