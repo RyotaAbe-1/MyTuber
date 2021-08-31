@@ -19,36 +19,36 @@
       <div class="nav">
         <% if user_signed_in? %>
           <div class="nav__upper">
-            <%= link_to "マイページ", user_path(current_user), class: "nav__btn" %>
-            <%= link_to "ユーザー一覧", users_path, class: "nav__btn" %>
-            <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "nav__btn" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav__btn" %>
+            <%= link_to "マイページ", user_path(current_user), class: "btn btn__big--red" %>
+            <%= link_to "ユーザー一覧", users_path, class: "btn btn__big--red" %>
+            <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "btn btn__big--red" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn__big--red" %>
           </div>
           <div class="nav__lower search">
             <%= form_with url: youtubers_path, method: :get, local: true do |f| %>
               <%= f.hidden_field :sort, value: "search" %>
               <%= f.text_field :keyword %>
-              <%= f.submit "検索", class: "btn btn--search" %>
+              <%= f.submit "検索", class: "btn btn__search" %>
             <% end %>
           </div>
         <% elsif admin_signed_in? %>
           <div class="nav__upper">
-            <%= link_to "ユーザー一覧", admin_users_path, class: "nav__btn" %>
-            <%= link_to "投稿一覧", admin_youtubers_path, class: "nav__btn" %>
-            <%= link_to "ジャンル追加", new_admin_genre_path, class: "nav__btn" %>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav__btn" %>
+            <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn__big--red" %>
+            <%= link_to "投稿一覧", admin_youtubers_path, class: "btn btn__big--red" %>
+            <%= link_to "ジャンル追加", new_admin_genre_path, class: "btn btn__big--red" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn__big--red" %>
           </div>
           <div class="nav__lower search">
             <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
               <%= f.select :category, [["会員検索", "search-by-user"], ["投稿検索", "search-by-post"]] %>
               <%= f.text_field :keyword %>
-              <%= f.submit "検索", class: "btn btn--search" %>
+              <%= f.submit "検索", class: "btn btn__search" %>
             <% end %>
           </div>
         <% else %>
-          <div class="nav__upper">
-            <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
-            <%= link_to "サインアップ", new_user_registration_path, class: "nav__btn"  %>
+          <div class="nav__upper--before-log-in">
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn__big--red" %>
+            <%= link_to "サインアップ", new_user_registration_path, class: "btn btn__big--red"  %>
           </div>
         <% end %>
       </div>

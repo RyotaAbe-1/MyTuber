@@ -29,10 +29,10 @@
       <div class="post-show__sub">
         <% if @youtuber.user == current_user %>
           <div class="post-show__edit">
-            <%= link_to "編集", edit_youtuber_path(@youtuber), class: "btn btn__post-show--blue" %>
+            <%= link_to "編集", edit_youtuber_path(@youtuber), class: "btn btn__middle--blue" %>
           </div>
           <div class="post-show__delete">
-            <%= link_to "削除", youtuber_path(@youtuber), method: :delete, class: "btn btn__post-show--red" %>
+            <%= link_to "削除", youtuber_path(@youtuber), method: :delete, class: "btn btn__middle--red" %>
           </div>
         <% end %>
 
@@ -74,7 +74,7 @@
             <div class="comment__delete-tag">
               <% if comment.user.id == current_user.id %>
                 <div class="comment__delete">
-                  <%= link_to "削除", youtuber_comment_path(comment.youtuber, comment), method: :delete, class: "btn btn__post-show--red" %>
+                  <%= link_to "削除", youtuber_comment_path(comment.youtuber, comment), method: :delete, class: "btn btn__middle--red" %>
                 </div>
               <% end %>
             </div>
@@ -90,7 +90,7 @@
             <div>誹謗中傷や,公序良俗に反するような不適切な内容を含むコメントをしないでください。見つけ次第削除しサービスの利用を停止させていただきます。</div>
           </div>
           <div class="comment__form-submit">
-            <%= f.submit "コメント投稿", class: "btn btn--green" %>
+            <%= f.submit "コメント投稿", class: "btn btn__big--green" %>
           </div>
         <% end %>
       </div>
