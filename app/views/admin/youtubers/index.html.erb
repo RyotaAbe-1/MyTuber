@@ -1,10 +1,10 @@
-<div class="post-index">
+<div class="post-index container">
   <div class="right"></div>
 
-  <div class="post-index__container center">
+  <div class="center">
     <div class="title">投稿一覧</div>
 
-    <div class="post-index__content">
+    <div class="container__content">
       <% @youtubers.each do |youtuber| %>
         <%= link_to admin_youtuber_path(youtuber), class: "post-index__link" do %>
           <%= render "common/post_index", youtuber: youtuber %>

@@ -1,15 +1,13 @@
-<div class="post">
+<div class="post container">
 
   <%= render "common/profile_bar", user: @user_profile %>
 
   <div class="center">
     <div class="post__container">
-      <div class="post__content">
-        <div class="title">新規投稿画面</div>
-  
-        <%= render "form", youtuber: @youtuber, genres: @genres, edit_frag: false %>
-        
-      </div>
+      <div class="title">新規投稿画面</div>
+
+      <%= render "form", youtuber: @youtuber, genres: @genres, edit_frag: false %>
+
     </div>
   </div>
 

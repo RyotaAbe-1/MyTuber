@@ -1,9 +1,9 @@
-<def class="user-index">
+<def class="user-index container">
   <div class="left"></div>
 
-  <div class="user-index__container center">
+  <div class="center">
     <div class="title">ユーザー一覧</div>
-    <div class="user-index__content">
+    <div class="container__content">
       <% @users.each do |user| %>
         <%= link_to admin_user_path(user), class: "user-index__link" do %>
 
