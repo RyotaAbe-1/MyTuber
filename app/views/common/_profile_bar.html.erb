@@ -7,6 +7,7 @@
         <div class="profile__title">プロフィール</div>
       <% end %>
 
+
       <div class="profile__info-top">
         <%= link_to user_path(user) do %>
           <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
