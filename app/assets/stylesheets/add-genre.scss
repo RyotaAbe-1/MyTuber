@@ -36,16 +36,18 @@
     display: flex;
     justify-content: space-between;
   }
-  &__form-block {
-    width: 95%;
+  &__form-admin {
+    max-width: 500px;
     margin: 40px auto;
-    border-top: 1px solid black;
   }
 
-
+  &__hr {
+    margin: 50px 0;
+  }
   &__form {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 0 auto;
+    padding-top: 100px;
   }
   &__table {
     width: 100%;
