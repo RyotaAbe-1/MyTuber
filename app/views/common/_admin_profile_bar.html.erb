@@ -1,32 +1,71 @@
-<div class="profile">
-  <div>
-    <div class="profile__title"><%= "#{user.user_name}さんのプロフィール" %></div>
+<div class="profile left">
+  <div class="profile__info">
+    <div class="profile__content">
+      <div class="profile__title">プロフィール</div>
 
-    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <div class="profile__info-top">
+        <%= link_to admin_user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <% end %>
+      </div>
 
-    <%= user.user_name %>
-    <% user.genres.each do |genre| %>
-      <%= genre.genre_name %>
-    <% end %>
-    <%= user.introduce %>
+      <div class="profile__name">
+        <%= user.user_name %>
+      </div>
 
-    <%= "フォロー中#{user.number_of_followers}人" %>
-    <%= "フォロワー#{user.number_of_followed}人" %>
+      <div class="profile__genre">
+        <div>好きなジャンル</div>
+        <ul class="profile__genre-list">
+          <% user.genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="profile__introduce">
+        <div>自己紹介</div>
+        <div class="profile__introduce-item">
+          <%= user.introduce %>
+        </div>
+      </div>
+
+      <div class="profile__follow">
+        <%= "フォロー中#{user.number_of_followers}人" %>
+        <%= "フォロワー#{user.number_of_followed}人" %>
+      </div>
+
+    </div>
   </div>
 
-  <div>
-    <div>会員ステータス</div>
-    <% if user.is_active == true %>
-      <div>有効</div>
-    <% else %>
-      <div>退会</div>
-    <% end %>
-    
-    <%= form_with model: [:admin, user], url: admin_user_path(page: page, youtuber_id: @youtuber), local: true do |f| %>
-      <%= f.radio_button :is_active, "true" %>有効
-      <%= f.radio_button :is_active, "false" %>退会
-      <%= f.submit "変更" %>
-    <% end %>
-    
+  <div class="profile__status">
+    <div class="profile__content">
+      <div class="profile__title">会員ステータス</div>
+
+      <div class="profile__current-status">
+        <% if user.is_active == true %>
+          <p>現在のステータス：<span class="profile__current-status--green">有効</span></p>
+        <% else %>
+          <p>現在のステータス：<span class="profile__current-status--red">退会</span></p>
+        <% end %>
+      </div>
+
+
+      <div class="profile__status-form">
+        <%= form_with model: [:admin, user], url: admin_user_path(user, page: page, youtuber_id: @youtuber), local: true do |f| %>
+          <div class="profile__status-buttons">
+            <div>
+              <%= f.radio_button :is_active, "true", id: "is_active_true" %><label for="is_active_true">有効</label>
+            </div>
+            <div>
+              <%= f.radio_button :is_active, "false", id: "is_active_false" %><label for="is_active_false">退会</label>
+            </div>
+          </div>
+          <%= f.submit "変更", class: "btn btn__small--blue" %>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>

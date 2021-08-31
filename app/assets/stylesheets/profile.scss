@@ -89,4 +89,28 @@
     text-decoration: none;
     color: blue;
   }
+
+  // adminで使用
+  &__status {
+    @include common;
+    text-align: center;
+  }
+  &__current-status {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    &--green {
+      color: green;
+    }
+    &--red {
+      color: red;
+    }
+  }
+  &__status-form {
+    margin-bottom: 30px;
+  }
+  &__status-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
 }
