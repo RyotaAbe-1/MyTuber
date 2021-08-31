@@ -1,18 +1,28 @@
 .genre-search {
+  $orange: orange;
+  @mixin title($background-color, $color) {
+    width: 75%;
+    text-align: center;
+    padding: 2px 0;
+    margin: 0 auto 25px auto;
+    border-radius: 3px;
+    box-shadow: 3px 2px 2px 1px rgba(0,0,0,0.3);
+    background-color: $background-color;
+    color: $color;
+  }
+
   &__content {
     width: 92%;
     min-height: 97%;
-    padding-top: 1%;
     margin: 3% auto;
+    padding-top: 4%;
     background-color: white;
     box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
   }
   &__title {
-    width: 75%;
-    margin: 10px auto;
-    padding: 2px 0;
-    text-align: center;
-    border: 1px solid black;
+    &--orange {
+      @include title($orange, white);
+    }
   }
   &__list {
     padding-left: 55px;
