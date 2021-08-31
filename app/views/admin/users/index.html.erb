@@ -1,17 +1,38 @@
 <def class="user-index">
-  <div class="user-index__center">
-    <div>ユーザー一覧</div>
-    <div>
+  <div class="left"></div>
+
+  <div class="user-index__container center">
+    <div class="title">ユーザー一覧</div>
+    <div class="user-index__content">
       <% @users.each do |user| %>
-        <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
-        <%= user.user_name %>
-        <% user.genres.each do |genre| %>
-          <%= genre.genre_name %>
-        <% end %>
-        <% if user.is_active == true %>
-          <div>有効</div>
-        <% elsif user.is_active == false %>
-          <div>退会</div>
+        <%= link_to admin_user_path(user), class: "user-index__link" do %>
+
+          <div class="user-index__item">
+            <div>
+              <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "user-index__image" %>
+            </div>
+            <p class="user-index__name">
+              <%= user.user_name %>
+            </p>
+            <div class="user-index__genre">
+              <p class="user-index__genre-title">好きなジャンル：</p>
+              <span class="user-index__genre-item">
+                <% user.genres.each do |genre| %>
+                  <%= genre.genre_name %>
+                <% end %>
+              </span>
+            </div>
+
+            <div class="user-index__status">
+              <% if user.is_active == true %>
+                <p class="user-index__status--green">有効</p>
+              <% elsif user.is_active == false %>
+                <p class="user-index__status--red">退会</p>
+              <% end %>
+            </div>
+
+          </div>
+
         <% end %>
       <% end %>
     </div>
