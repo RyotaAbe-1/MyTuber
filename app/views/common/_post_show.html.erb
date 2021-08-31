@@ -1,0 +1,55 @@
+<% if user_profile == current_user %>
+  <div class="title--blue">自分の投稿詳細</div>
+<% else %>
+  <div class="title--green"><%= "#{user_profile.user_name}さんの投稿詳細" %></div>
+<% end %>
+
+<div class="post-show__content">
+
+  <div class="post-show__main">
+    <p class="post-show__name">
+      <%= youtuber.name %>
+    </p>
+    <p class="post-show__genre">
+      <%= "ジャンル：#{youtuber.genre.genre_name}" %>
+    </p>
+    <div class="post-show__evaluation">
+      <div class ="review-evaluation" data-score="<%= youtuber.evaluation %>"></div>
+      <div><%= "#{youtuber.evaluation}/5" %></div>
+    </div>
+    <div class="post-show__introduce">
+      <p>おすすめポイント</p>
+      <div>
+        <%= youtuber.content %>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-show__sub">
+    <% if user_signed_in? %>
+      <% if youtuber.user == current_user %>
+        <div class="post-show__edit">
+          <%= link_to "編集", edit_youtuber_path(youtuber), class: "btn btn__middle--blue" %>
+        </div>
+        <div class="post-show__delete">
+          <%= link_to "削除", youtuber_path(youtuber), method: :delete, class: "btn btn__middle--red" %>
+        </div>
+      <% end %>
+      <div id="favorites_buttons_<%= youtuber.id %>">
+        <%= render "public/favorites/favorite", youtuber: youtuber %>
+      </div>
+    <% elsif admin_signed_in? %>
+      <div class="post-show__delete">
+        <%= link_to "削除", admin_youtuber_path(youtuber), method: :delete, class: "btn btn__middle--red" %>
+      </div>
+      <div class="post-show__reaction">
+        <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+        <%= "コメント#{youtuber.number_of_comments}件" %>
+      </div>
+    <% end %>
+
+    <div class="post-show__time">
+      <%= "投稿日時：#{youtuber.created_at.strftime('%Y/%m/%d %H:%M:%S')}" %>
+    </div>
+  </div>
+</div>

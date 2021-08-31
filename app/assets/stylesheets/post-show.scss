@@ -1,24 +1,7 @@
 .post-show {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
-
-  &__title {
-    width: 25%;
-    padding: 2px 0;
-    margin: 1%;
-    border: 1px solid black;
-    text-align: center;
-  }
-  &__container {
-    padding: 1%;
-    position: relative;
-  }
   &__content {
     width: 95%;
-    margin: 1% auto;
+    margin: 8% auto;
     display: flex;
     justify-content: flex-end;
     padding: 1% 3%;
@@ -74,6 +57,16 @@
     position: absolute;
     bottom: 60px;
   }
+
+  // adminで使用
+  &__reaction {
+    width: 160px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+  }
+
   &__time {
     width: 200px;
     font-size: 12px;

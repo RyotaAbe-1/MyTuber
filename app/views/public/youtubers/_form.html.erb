@@ -1,40 +1,38 @@
-<div class="post__form">
-  <%= form_with model: youtuber, local: true do |f| %>
-  　<table class="post__table">
-      <tr>
-        <td>YouTuberの名前</td>
-        <td class="post__name">
-          <%= f.text_field :name, class: "post__name-input" %>
-        </td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td class="post__genre">
-          <%= f.collection_select(:genre_id, genres, :id, :genre_name, {prompt: "ジャンルを選択してください"}, class: "post__genre-input") %>
-        </td>
-      </tr>
-      <tr>
-        <td>評価</td>
-        <td id="evaluate" data-score="<%= youtuber.evaluation %>" class="post__evaluation">
-          <%= f.hidden_field :evaluation, value: 'score' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="post__area-label">おすすめポイント</td>
-        <td class="post__area">
-          <%= f.text_area :content, class: "post__area-input" %>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <% if edit_frag == true %>
-            <%= f.submit "変更を保存", class: "btn btn--blue" %>
-          <% else %>
-            <%= f.submit "投稿", class: "btn btn--green" %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-</div>
+<%= form_with model: youtuber, local: true do |f| %>
+　<table class="post__table">
+    <tr>
+      <td>YouTuberの名前</td>
+      <td class="post__name">
+        <%= f.text_field :name, class: "post__name-input" %>
+      </td>
+    </tr>
+    <tr>
+      <td>ジャンル</td>
+      <td class="post__genre">
+        <%= f.collection_select(:genre_id, genres, :id, :genre_name, {prompt: "ジャンルを選択してください"}, class: "post__genre-input") %>
+      </td>
+    </tr>
+    <tr>
+      <td>評価</td>
+      <td id="evaluate" data-score="<%= youtuber.evaluation %>" class="post__evaluation">
+        <%= f.hidden_field :evaluation, value: 'score' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="post__area-label">おすすめポイント</td>
+      <td class="post__area">
+        <%= f.text_area :content, class: "post__area-input" %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <% if edit_frag == true %>
+          <%= f.submit "変更を保存", class: "btn btn__big--blue" %>
+        <% else %>
+          <%= f.submit "投稿", class: "btn btn__big--green" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

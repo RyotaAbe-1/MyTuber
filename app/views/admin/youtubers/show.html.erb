@@ -1,48 +1,15 @@
-<div class="post-show">
+<div class="post-show container">
 
   <%= render "common/admin_profile_bar", user: @user_profile, page: "post-show", youtuber: @youtuber %>
 
-  <div class="post-show__center">
-    <div class="post-show__title"><%= "#{@user_profile.user_name}さんの投稿詳細" %></div>
+  <div class="center">
 
-    <div class="post-show__content">
-      <div class="post-show__main">
-        <h2>
-          <%= @youtuber.name %>
-        </h2>
-        <div>
-          <%= "ジャンル：#{@youtuber.genre.genre_name}" %>
-        </div>
-        <div>
-          <span class ="review-evaluation" data-score="<%= @youtuber.evaluation %>"></span>
-          <span><%= "#{@youtuber.evaluation}/5" %></span>
-        </div>
-        <div>
-          <%= @youtuber.content %>
-        </div>
-      </div>
-      <div class="post-show__sub">
-        <div>
-          <%= link_to "削除", admin_youtuber_path(@youtuber), method: :delete %>
-        </div>
-        <div>
-          <%= "お気に入り#{@youtuber.number_of_favorites}件" %>
-          <%= "コメント#{@youtuber.number_of_comments}件" %>
-        </div>
-      </div>
-    </div>
+    <%= render "common/post_show", user_profile: @user_profile, youtuber: @youtuber %>
 
     <div class="comment">
-      <div class="comment__index">
-        <% @youtuber_comments.each do |comment| %>
-          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
-          <%= comment.user.user_name %>
-          <%= comment.content %>
-          
-          <%= link_to "削除", admin_youtuber_comment_path(@youtuber, comment), method: :delete %>
-          
-        <% end %>
-      </div>
+      
+      <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
+      
     </div>
   </div>
 
