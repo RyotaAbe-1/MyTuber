@@ -1,36 +1,42 @@
-<%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
-  <div class="post-index__item">
-    <p class="post-index__name">
-      <%= youtuber.name %>
+<div class="post-index__item">
+  <p class="post-index__name">
+    <%= youtuber.name %>
+  </p>
+  <div class="post-index__evaluation">
+    <p class="post-index__evaluation-score">
+      <%= "#{youtuber.evaluation}/5" %>
     </p>
-    <div class="post-index__evaluation">
-      <p class="post-index__evaluation-score">
-        <%= "#{youtuber.evaluation}/5" %>
-      </p>
-      <div class="review-evaluation" data-score="<%= youtuber.evaluation %>"></div>
-    </div>
-    <p class="post-index__genre">
-      ジャンル：
-      <%= youtuber.genre.genre_name %>
-    </p>
-    <div class="post-index__sub">
-      <p class="post-index__reaction">
-        <%= "コメント#{youtuber.number_of_comments}件" %>
-        <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-      </p>
-      <div class="post-index__user">
-        <object>
+    <div class="review-evaluation" data-score="<%= youtuber.evaluation %>"></div>
+  </div>
+  <p class="post-index__genre">
+    ジャンル：
+    <%= youtuber.genre.genre_name %>
+  </p>
+  <div class="post-index__sub">
+    <div class="post-index__user">
+      <object>
+        <% if user_signed_in? %>
           <%= link_to user_path(youtuber.user) do %>
             <%= attachment_image_tag youtuber.user, :image, :fill , 30, 30, fallback: "no_image.jpg", size: "30x30", class: "post-index__image" %>
           <% end %>
-        </object>
-        <p class="post-index__user-name">
-          <%= youtuber.user.user_name %>
-        </p>
+        <% elsif admin_signed_in? %>
+          <%= link_to admin_user_path(youtuber.user) do %>
+            <%= attachment_image_tag youtuber.user, :image, :fill , 30, 30, fallback: "no_image.jpg", size: "30x30", class: "post-index__image" %>
+          <% end %>
+        <% end %>
+      </object>
+      <p class="post-index__user-name">
+        <%= youtuber.user.user_name %>
+      </p>
+      <% if user_signed_in? %>
         <object class="follow_button_<%= youtuber.user.id %>">
           <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
         </object>
-      </div>
+      <% end %>
     </div>
+    <p class="post-index__reaction">
+      <%= "コメント#{youtuber.number_of_comments}件" %>
+      <%= "お気に入り#{youtuber.number_of_favorites}件" %>
+    </p>
   </div>
-<% end %>
+</div>

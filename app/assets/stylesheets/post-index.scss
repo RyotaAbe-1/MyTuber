@@ -41,13 +41,14 @@
   }
   &__name {
     width: 25%;
-    margin: 0 5% 0 4%;
+    margin: 0 2% 0 4%;
     font-size: 18px;
     font-weight: bold;
     word-wrap: break-word;
   }
   &__evaluation {
-    margin-right: 6%;
+    min-width: 142px;
+    margin-right: 3%;
   }
   &__evaluation-score {
     text-align: center;
@@ -59,22 +60,17 @@
     word-wrap: break-word;
   }
   &__sub {
-    min-width: 400px;
     height: 30px;
     position: absolute;
-    bottom: 2px;
-    right: 5px;
+    bottom: 1%;
+    right: 2%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
-  &__reaction {
-    margin-right: 10px;
-    color: green;
-    font-size: 13px;
-  }
   &__user {
     display: flex;
+    margin-right: 20px;
   }
   &__image {
     vertical-align: bottom;
@@ -100,5 +96,9 @@
     margin: 0 10px;
     font-size: 13px;
     align-self: flex-end;
+  }
+  &__reaction {
+    color: green;
+    font-size: 13px;
   }
 }

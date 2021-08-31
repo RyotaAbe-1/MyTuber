@@ -1,40 +1,20 @@
 <div class="post-index">
+  <div class="right"></div>
 
-  <div class="post-index__center">
-    <div class="post-index__title">投稿一覧</div>
+  <div class="post-index__container center">
+    <div class="title">投稿一覧</div>
 
-    <div>
+    <div class="post-index__content">
       <% @youtubers.each do |youtuber| %>
-        <% if @genre %>
-          <% if youtuber.genre_id == @genre.id %>
-            <div>
-              <%= youtuber.name %>
-              <%= youtuber.genre.genre_name %>
-              <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
-              <%= "#{youtuber.evaluation}/5" %>
-              <%= "コメント#{youtuber.number_of_comments}件" %>
-              <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-              <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-              <%= youtuber.user.user_name %>
-            </div>
-          <% end %>
-        <% else %>
-          <div>
-            <%= youtuber.name %>
-            <%= youtuber.genre.genre_name %>
-            <div class="review-evaluation" data-score="<%= youtuber.evaluation %>">評価：</div>
-            <%= "#{youtuber.evaluation}/5" %>
-            <%= "コメント#{youtuber.number_of_comments}件" %>
-            <%= "お気に入り#{youtuber.number_of_favorites}件" %>
-            <%= attachment_image_tag youtuber.user, :image, :fill , 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-            <%= youtuber.user.user_name %>
-          </div>
+        <%= link_to admin_youtuber_path(youtuber), class: "post-index__link" do %>
+          <%= render "common/post_index", youtuber: youtuber %>
         <% end %>
       <% end %>
     </div>
-    
   </div>
+
   <%= render "common/genre_search_bar", genres: @genres %>
+
 </div>
 
 <script>
@@ -48,3 +28,6 @@ $('.review-evaluation').empty();
     path: '/assets/'
   });
 </script>
+
+
+
