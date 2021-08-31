@@ -2,7 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 
   &__title {
     width: 25%;
@@ -11,25 +12,74 @@
     border: 1px solid black;
     text-align: center;
   }
-  &__center {
-    width: 58%;
-    margin: 0 1%;
+  &__container {
+    padding: 1%;
     position: relative;
-    border: 1px solid black;
   }
   &__content {
     width: 95%;
-    margin: 2% auto;
-    border: 1px solid black;
+    margin: 1% auto;
     display: flex;
     justify-content: flex-end;
+    padding: 1% 3%;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
   }
   &__main {
     width: 60%;
+    height: 400px;
+    margin-bottom: 15px;
+  }
+  &__name {
+    height: 90px;
+    word-wrap: break-word;
     text-align: center;
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &__genre {
+    height: 70px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  &__evaluation {
+    max-width: 220px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__introduce {
+    max-width: 400px;
+    height: 190px;
+    padding-top: 20px;
+    margin: 0 auto;
+    word-wrap: break-word;
   }
   &__sub {
     width: 20%;
     text-align: center;
+    position: relative;
   }
+  &__edit {
+    padding-top: 30px;
+  }
+  &__delete {
+    padding-top: 30px;
+  }
+  &__favorite {
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+  }
+  &__time {
+    width: 200px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+
 }

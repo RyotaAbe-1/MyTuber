@@ -3,10 +3,81 @@
   display: flex;
   justify-content: center;
   margin-top: 1%;
+  padding-bottom: 1%;
 
-  &__center {
-    width: 58%;
-    margin: 0 1%;
-    border: 1px solid black;
+  &__container {
+    padding: 1%;
+  }
+  &__content {
+    padding: 1%;
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__item {
+    height: 80px;
+    position: relative;
+    margin-bottom: 1%;
+    padding: 1% 3%;
+    background-color: white;
+    box-shadow: 6px 5px 2px 0px rgba(0,0,0,0.2);
+    display: flex;
+    color: black;
+
+    &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: 6px 5px 8px 0px rgba(0,0,0,0.2);
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__image-tag {
+  }
+  &__image {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+  }
+  &__name {
+    width: 25%;
+    align-self: center;
+    margin: 0 2% 0 4%;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+  &__genre {
+    width: 40%;
+    margin-right: 7%;
+    align-self: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__genre-title {
+    font-size: 15px;
+  }
+  &__genre-item {
+    font-size: 13px;
+  }
+  &__follow {
+    width: 120px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
+  }
+  &__follow-message {
+    width: 120px;
+    position: absolute;
+    bottom: 1px;
+    right: 15px;
+    font-size: 12px;
+    color: red;
   }
 }

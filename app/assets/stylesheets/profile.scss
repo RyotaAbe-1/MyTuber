@@ -1,13 +1,92 @@
 .profile {
   width: 20%;
   margin-left: 1%;
-  border: 1px solid black;
+  @mixin common {
+    width: 90%;
+    margin: 3% auto 5% auto;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
+    margin-top: 15px;
+  }
 
+  &__info {
+    width: 90%;
+    margin: 3% auto;
+    background-color: white;
+    box-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
+  }
+  &__info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__title {
-    width: 75%;
-    margin: 10px auto;
-    padding: 5px 0;
+    padding: 2px 0;
+    margin-bottom: 5%;
     text-align: center;
     border: 1px solid black;
+    word-wrap: break-word;
+  }
+  &__content {
+    margin: 0 auto;
+    padding: 4% 10%;
+  }
+
+  &__image {
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+    border-radius: 50%;
+    box-shadow: 1px 1px gray;
+    &:hover {
+      position: relative;
+      top: -1px;
+      left: -1px;
+      box-shadow: 3px 3px gray;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 15px 0;
+    word-wrap: break-word;
+  }
+  &__genre-list-item {
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  &__introduce {
+    margin: 10px 0;
+  }
+  &__introduce-item {
+    min-height: 150px;
+    word-break : break-all;
+    font-size: 12px;
+  }
+  &__follow {
+    text-align: center;
+  }
+  &__common-genre {
+    @include common;
+  }
+  &__sub {
+    @include common;
+  }
+  &__comment {
+    @include common;
+  }
+  &__comment-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__link {
+    text-decoration: none;
+    color: blue;
   }
 }

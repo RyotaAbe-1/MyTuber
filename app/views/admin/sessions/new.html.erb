@@ -1,20 +1,29 @@
-<div class="log-in">
-  <h2 class="log-in__title">管理者ログイン</h2>
+<div class="sign-up-in">
+  <h2 class="sign-up-in__title">管理者ログイン</h2>
+  <div class="sign-up-in__form">
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div>
-      <labal>メールアドレス</labal>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tr>
+          <td class="sign-up-in__form-item">メールアドレス</td>
+          <td>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
+          <td>
+            <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "ログイン", class: "btn btn__slim--blue" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
 
-    <div>
-      <label>パスワード</label>
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <div>
-      <%= f.submit "ログイン" %>
-    </div>
-  <% end %>
+  </div>
 </div>
-

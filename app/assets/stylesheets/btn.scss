@@ -1,32 +1,107 @@
-
 .btn {
-  @mixin common {
+  $red: rgb(230, 66, 61);
+  $green: rgb(90, 200, 90);
+  $blue: rgb(20, 80, 201);
+  $orange: orange;
+  $white: white;
+  $black: black;
+  $border-gray: 1px solid gray;
+  display: inline-block;
+  box-shadow: 2px 2px gray;
+  text-decoration: none;
+
+  @mixin big-btn($background-color, $color, $border) {
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 35px;
+    text-align: center;
+    background-color: $background-color;
+    color: $color;
+    border: $border;
+  }
+  @mixin middle-btn($background-color, $color, $border) {
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 35px;
+    text-align: center;
+    background-color: $background-color;
+    color: $color;
+    border: $border;
+  }
+  @mixin slim-btn($background-color, $color, $border) {
     width: 100px;
     height: 30px;
-    border-radius: 5px;
-    color: white;
-    border: none;
-    box-shadow: 2px 2px gray;
-    margin-top: 10px;
+    border-radius: 2px;
+    padding: 1px 5px;
+    background-color: $background-color;
+    color: $color;
+    border: $border;
   }
-
-  &--green {
-    @include common;
-    background-color: rgb(90, 200, 90);
+  @mixin small-btn($background-color, $color, $border) {
+    height: 25px;
+    border-radius: 2px;
+    padding: 1px 5px;
+    background-color: $background-color;
+    color: $color;
+    border: $border;
   }
-  &--blue {
-    @include common;
-    background-color: rgb(20, 80, 201);
+  &__big {
+    &--red {
+      @include big-btn($red, $white, none);
+    }
+    &--green {
+      @include big-btn($green, $white, none);
+    }
+    &--blue {
+      @include big-btn($blue, $white, none);
+    }
+    &--orange {
+      @include big-btn($orange, $white, none);
+    }
+    &--white {
+      @include big-btn($white, $black, $border-gray);
+    }
   }
-  &--search {
+  &__middle {
+    &--red {
+      @include middle-btn($red, $white, none);
+    }
+    &--green {
+      @include middle-btn($green, $white, none);
+    }
+    &--blue {
+      @include middle-btn($blue, $white, none);
+    }
+  }
+  &__slim {
+    &--green {
+      @include slim-btn($green, $white, none);
+    }
+    &--blue {
+      @include slim-btn($blue, $white, none);
+    }
+  }
+  &__small {
+    &--red {
+      @include small-btn($red, $white, none)
+    }
+    &--green {
+      @include small-btn($green, $white, none);
+    }
+    &--blue {
+      @include small-btn($blue, $white, none);
+    }
+  }
+  &__search {
     width: 50px;
     height: 20px;
     border-radius: 5px;
-    background-color: rgb(230, 66, 61);
+    box-shadow: 2px 2px gray;
+    background-color: $red;
     color: white;
     border: none;
-    box-shadow: 2px 2px gray;
-    margin: 0 5px 0 10px;
   }
   &:hover {
     position: relative;

@@ -1,29 +1,30 @@
-<div class="genre-search">
-  <div class="genre-search__title">ジャンル検索</div>
-  <div class="genre-search__list">
-    <ul>
-      <% if user_signed_in? %>
-        <li class="genre-search__list--none">
-          <%= link_to "ジャンルを追加+", new_genre_path, class: "genre-search__item" %>
-        </li>
-        <li class="genre-search__list--none">
-          <%= link_to "全てのジャンル", youtubers_path(sort: "genre-search-all"), class: "genre-search__item" %>
-        </li>
-      <% elsif admin_signed_in? %>
-        <li class="genre-search__list--none">
-          <%= link_to "全てのジャンル", admin_youtubers_path(sort: "genre-search-all"), class: "genre-search__item" %>
-        </li>
-      <% end %>
-      <% genres.each do |genre| %>
-        <li>
-          <% if user_signed_in? %>
-            <%= link_to "#{genre.genre_name}", youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__item" %>
-          <% elsif admin_signed_in? %>
-            <%= link_to "#{genre.genre_name}", admin_youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__item" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-
+<div class="genre-search right">
+  <div class="genre-search__content">
+    <div class="genre-search__title">ジャンル検索</div>
+    <div class="genre-search__list">
+      <ul>
+        <% if user_signed_in? %>
+          <li class="genre-search__list--none">
+            <%= link_to "ジャンルを追加+", new_genre_path, class: "genre-search__link" %>
+          </li>
+          <li class="genre-search__list--none">
+            <%= link_to "全てのジャンル", youtubers_path(sort: "genre-search-all"), class: "genre-search__link" %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="genre-search__list--none">
+            <%= link_to "全てのジャンル", admin_youtubers_path(sort: "genre-search-all"), class: "genre-search__link" %>
+          </li>
+        <% end %>
+        <% genres.each do |genre| %>
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to "#{genre.genre_name}", youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__link" %>
+            <% elsif admin_signed_in? %>
+              <%= link_to "#{genre.genre_name}", admin_youtubers_path(genre_id: genre.id ,sort: "genre-search"), class: "genre-search__l" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

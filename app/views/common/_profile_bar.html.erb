@@ -1,59 +1,99 @@
-<div class="profile">
-  <div>
-    <% if user.id == current_user.id %>
-      <div class="profile__title">マイプロフィール</div>
-    <% else %>
-      <div class="profile__title"><%= "#{user.user_name}さんのプロフィール" %></div>
-    <% end %>
-
-    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
-
-    <% if user.id != current_user.id %>
-      <span id="follow_button">
-        <%= render "public/relationships/relationship_profile_bar", user: user %>
-      </span>
-    <% end %>
-
-    <%= user.user_name %>
-    <% user.genres.each do |genre| %>
-      <%= genre.genre_name %>
-    <% end %>
-    <%= user.introduce %>
-
-    <%= "フォロー中#{user.number_of_followers}人" %>
-    <%= "フォロワー#{user.number_of_followed}人" %>
-  </div>
-
-  <div>
-    <% if user.id != current_user.id %>
-      <div>共通のジャンル</div>
-      <% user.user_genres.includes(:genre).each do |user_genre| %>
-        <% current_user.user_genres.each do |current_user_genre| %>
-          <% if user_genre.genre_id == current_user_genre.genre_id %>
-            <%= user_genre.genre.genre_name %>
-          <% end %>
-        <% end %>
+<div class="profile left">
+  <div class="profile__info">
+    <div class="profile__content">
+      <% if user.id == current_user.id %>
+        <div class="profile__title">マイプロフィール</div>
+      <% else %>
+        <div class="profile__title">プロフィール</div>
       <% end %>
-    <% end %>
-  </div>
 
-  <div>
-    <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite") %>
-  </div>
-  
-  <div>
-    <% if user.id == current_user.id %>
-      <div>
-        <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-        <%= link_to "退会", users_confirm_path %>
-      </div>
-      <div>
-        <div>自分のコメント</div>
-        <% user.comments.each do |comment| %>
-          <%= comment.content %>
+
+      <div class="profile__info-top">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <% end %>
+        <% if user.id != current_user.id %>
+          <div id="follow_button">
+            <%= render "public/relationships/relationship_profile_bar", user: user %>
+          </div>
         <% end %>
       </div>
-    <% end %>
+
+
+
+      <div class="profile__name">
+        <%= user.user_name %>
+      </div>
+      <div class="profile__genre">
+        <div>好きなジャンル</div>
+        <ul class="profile__genre-list">
+          <% user.genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="profile__introduce">
+        <div>自己紹介</div>
+        <div class="profile__introduce-item">
+          <%= user.introduce %>
+        </div>
+      </div>
+    </div>
+    <div class="profile__follow">
+      <%= "フォロー中#{user.number_of_followers}人" %>
+      <%= "フォロワー#{user.number_of_followed}人" %>
+    </div>
   </div>
-  
+
+  <% if user.id != current_user.id %>
+    <div class="profile__common-genre">
+      <div class="profile__content">
+        <div class="profile__title">共通のジャンル</div>
+        <ul>
+          <% user.user_genres.includes(:genre).each do |user_genre| %>
+            <% current_user.user_genres.each do |current_user_genre| %>
+              <% if user_genre.genre_id == current_user_genre.genre_id %>
+               <li class="profile__genre-list-item">
+                 <%= user_genre.genre.genre_name %>
+               </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div class="profile__sub">
+    <div class="profile__content">
+      <div>
+        <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite"), class: "profile__link" %>
+      </div>
+      <% if user.id == current_user.id %>
+        <div>
+          <%= link_to "プロフィール編集", edit_user_path(current_user), class: "profile__link" %>
+        </div>
+        <div>
+          <%= link_to "退会", users_confirm_path, class: "profile__link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user.id == current_user.id %>
+    <div class="profile__comment">
+      <div class="profile__content">
+        <div class="profile__title">自分のコメント</div>
+        <% user.comments.includes(:youtuber).order("created_at DESC").limit(10).each do |comment| %>
+          <div class="profile__comment-item">
+            <%= link_to "#{comment.content}", youtuber_path(comment.youtuber), class: "profile__link" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
 </div>
