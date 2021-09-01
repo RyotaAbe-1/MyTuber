@@ -11,37 +11,37 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :youtubers
   has_many :comments
-  has_many :follower_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followers, through: :follower_relationships, source: :followed
-  has_many :followed_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followeds, through: :followed_relationships, source: :follower
-  
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   def follow(user_id)
-    follower_relationships.create(followed_id: user_id)
+    active_relationships.create(followed_id: user_id)
   end
-  
+
   def unfollow(user_id)
-    follower_relationships.find_by(followed_id: user_id).destroy
+    active_relationships.find_by(followed_id: user_id).destroy
   end
-  
+
   def following?(user)
+    followings.include?(user)
+  end
+
+  def followed?(user)
     followers.include?(user)
   end
-  
-  def followed?(user)
-    followeds.include?(user)
+
+  def number_of_followings
+    active_relationships.length
   end
-  
+
   def number_of_followers
-    follower_relationships.length
+    passive_relationships.length
   end
-  
-  def number_of_followed
-    followed_relationships.length
-  end
-  
+
   def self.search(keyword)
     where(["user_name like?", "%#{keyword}%"])
   end
-  
+
 end
