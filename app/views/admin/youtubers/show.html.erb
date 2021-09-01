@@ -23,15 +23,3 @@
   <%= render "common/genre_search_bar", genres: @genres %>
 
 </div>
-
-<script>
-$('.review-evaluation').empty();
-  $('.review-evaluation').raty({
-    readOnly: true,
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>

@@ -1,4 +1,4 @@
-<div class="user-sho container">
+<div class="user-show container">
 
   <%= render "common/admin_profile_bar", user: @user_profile, page: "user-show" %>
 
@@ -26,15 +26,3 @@
   <%= render "common/genre_search_bar", genres: @genres %>
 
 </div>
-
-<script>
-$('.review-evaluation').empty();
-  $('.review-evaluation').raty({
-    readOnly: true,
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>

@@ -19,12 +19,39 @@
 //= require turbolinks
 //= require_tree .
 
+
 $(document).on("turbolinks:load", function() {
+
   $('.back-top__link').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
-    }, 500);
+    }, 300);
     event.preventDefault();
+  });
+
+  <!--public/users/show youtubers/show youtubers/index admin/youtubers/index youtubers/show users/show-->
+  $('.review-evaluation').empty();
+  $('.review-evaluation').raty({
+    readOnly: true,
+    number: 5,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+  <!--public/youtubers/_form-->
+  $('#evaluate').empty();
+  $('#evaluate').raty ({
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    starOn: "<%= asset_path("star-on.png") %>",
+    starOff: "<%= asset_path("star-off.png") %>",
+    starHalf: "<%= asset_path("star-half.png") %>",
+    scoreName: 'youtuber[evaluation]',
+    number: 5,
+    half: true
   });
 });
 

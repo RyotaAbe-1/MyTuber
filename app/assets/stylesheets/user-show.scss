@@ -28,13 +28,14 @@
   }
   &__name {
     width: 25%;
-    margin: 0 5% 0 4%;
+    margin: 0 2% 0 4%;
     font-size: 18px;
     font-weight: bold;
     word-wrap: break-word;
   }
   &__evaluation {
-    margin-right: 6%;
+    min-width: 142px;
+    margin-right: 3%;
   }
   &__evaluation-score {
     text-align: center;
