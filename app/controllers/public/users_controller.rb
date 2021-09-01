@@ -1,8 +1,15 @@
 class Public::UsersController < ApplicationController
   def index
     @users = User.where.not(id: current_user.id).includes(:genres)
-    @user_profile = User.find(current_user.id)
+    @user = User.find(params[:user_id])
+    @user_profile = User.find(@user.id)
     @genres = Genre.where(application_status: true)
+    sort = params[:sort]
+    if sort == "followings"
+      @users = @user.followings.includes(:genres)
+    elsif sort == "followers"
+      @users = @user.followers.includes(:genres)
+    end
   end
 
   def show

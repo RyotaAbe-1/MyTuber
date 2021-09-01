@@ -3,7 +3,19 @@
   <%= render "common/profile_bar", user: @user_profile %>
 
   <div class="center">
-    <div class="title--blue">ユーザー一覧</div>
+
+    <% if current_user_followings %>
+      <div class="title--blue">フォロー中一覧</div>
+    <% elsif other_user_followings %>
+      <div class="title--green"><%= "#{@user.user_name}さんのフォロー中一覧" %></div>
+    <% elsif current_user_followers %>
+      <div class="title--blue">フォロワー一覧</div>
+    <% elsif other_user_followers %>
+      <div class="title--green"><%= "#{@user.user_name}さんのフォロワー一覧" %></div>
+    <% else %>
+      <div class="title--blue">ユーザー一覧</div>
+    <% end %>
+
     <div class="container__content">
       <% @users.each do |user| %>
         <%= link_to user_path(user), class: "user-index__link" do %>
