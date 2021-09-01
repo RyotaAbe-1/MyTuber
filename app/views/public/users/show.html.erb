@@ -21,6 +21,13 @@
     <%= link_to new_youtuber_path do %>
       <button class="create-post">+</button>
     <% end %>
+    
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>

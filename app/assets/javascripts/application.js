@@ -19,3 +19,12 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).on("turbolinks:load", function() {
+  $('.back-top__link').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 500);
+    event.preventDefault();
+  });
+});
+
