@@ -1,7 +1,9 @@
 .comment {
   width: 85%;
   margin: 1% auto;
-
+  &__index {
+    margin-bottom: 5%;
+  }
   &__top {
     display: flex;
     justify-content: space-between;
