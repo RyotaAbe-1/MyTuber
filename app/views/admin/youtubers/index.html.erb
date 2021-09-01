@@ -1,5 +1,5 @@
 <div class="post-index container">
-  <div class="right"></div>
+  <div class="left"></div>
 
   <div class="center">
 
@@ -16,27 +16,23 @@
     <div class="container__content">
       <% @youtubers.each do |youtuber| %>
         <%= link_to admin_youtuber_path(youtuber), class: "post-index__link" do %>
+        
           <%= render "common/post_index", youtuber: youtuber %>
+          
         <% end %>
       <% end %>
     </div>
+
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>
 
 </div>
-
-<script>
-$('.review-evaluation').empty();
-  $('.review-evaluation').raty({
-    readOnly: true,
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
-
 
 

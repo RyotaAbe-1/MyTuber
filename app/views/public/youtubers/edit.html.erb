@@ -14,18 +14,3 @@
   <%= render "common/genre_search_bar", genres: @genres %>
 
 </div>
-
-<script>
-$('#evaluate').empty();
-  $('#evaluate').raty({
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    starOn: "<%= asset_path("star-on.png") %>",
-    starOff: "<%= asset_path("star-off.png") %>",
-    starHalf: "<%= asset_path("star-half.png") %>",
-    scoreName: 'youtuber[evaluation]',
-    half: true
-  });
-</script>
