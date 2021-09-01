@@ -7,24 +7,19 @@
     <%= render "common/post_show", user_profile: @user_profile, youtuber: @youtuber %>
 
     <div class="comment">
-      
+
       <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
-      
+
     </div>
+
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>
 
 </div>
-
-<script>
-$('.review-evaluation').empty();
-  $('.review-evaluation').raty({
-    readOnly: true,
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>

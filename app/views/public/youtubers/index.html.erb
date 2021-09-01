@@ -21,14 +21,20 @@
         <%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
           <% if params[:sort] == "timeline" %>
             <% if current_user.following?(youtuber.user) %>
+            
               <%= render "common/post_index", youtuber: youtuber %>
+              
             <% end %>
           <% elsif params[:sort] == "favorite" %>
             <% if youtuber.favorited_by?(current_user) %>
+            
               <%= render "common/post_index", youtuber: youtuber %>
+              
             <% end %>
           <% else %>
+          
             <%= render "common/post_index", youtuber: youtuber %>
+            
           <% end %>
         <% end %>
       <% end %>
@@ -38,18 +44,14 @@
       <button class="create-post">+</button>
     <% end %>
 
-  </div>
-  <%= render "common/genre_search_bar", genres: @genres %>
-</div>
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
 
-<script>
-$('.review-evaluation').empty();
-  $('.review-evaluation').raty({
-    readOnly: true,
-    number: 5,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
+  </div>
+  
+  <%= render "common/genre_search_bar", genres: @genres %>
+  
+</div>
