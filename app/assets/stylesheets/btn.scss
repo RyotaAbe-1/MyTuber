@@ -37,6 +37,7 @@
     background-color: $background-color;
     color: $color;
     border: $border;
+    margin-top: 10px;
   }
   @mixin small-btn($background-color, $color, $border) {
     height: 25px;
