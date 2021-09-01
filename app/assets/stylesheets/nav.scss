@@ -2,13 +2,13 @@
   width: 450px;
   height: 90px;
   %__upper {
-    margin-top: 18px;
+    margin-top: 13px;
     display: flex;
     justify-content: space-between;
   }
   &__upper {
     @extend %__upper;
-    
+
     &--before-log-in {
       @extend %__upper;
       width: 217px;
@@ -16,6 +16,6 @@
     }
   }
   &__lower {
-    margin-top: 8px;
+    margin-top: 14px;
   }
 }
