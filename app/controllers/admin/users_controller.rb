@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user_profile = User.find(params[:id])
     @genres = Genre.where(application_status: true)
-    @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
+    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
   end
 
   def update
