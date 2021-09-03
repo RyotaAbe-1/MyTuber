@@ -21,9 +21,16 @@
         <%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
 
           <%= render "common/post_index", youtuber: youtuber %>
-            
+
         <% end %>
       <% end %>
+
+      <div class="paginate">
+          <%= paginate @youtubers %>
+      </div>
+
+
+
     </div>
 
     <%= link_to new_youtuber_path do %>
