@@ -7,11 +7,11 @@
     <% if current_user_followings %>
       <div class="title--blue">フォロー中一覧</div>
     <% elsif other_user_followings %>
-      <div class="title--green"><%= "#{@user.user_name}さんのフォロー中一覧" %></div>
+      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></div>
     <% elsif current_user_followers %>
       <div class="title--blue">フォロワー一覧</div>
     <% elsif other_user_followers %>
-      <div class="title--green"><%= "#{@user.user_name}さんのフォロワー一覧" %></div>
+      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></div>
     <% else %>
       <div class="title--blue">ユーザー一覧</div>
     <% end %>
