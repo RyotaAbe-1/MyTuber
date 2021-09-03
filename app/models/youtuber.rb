@@ -1,4 +1,9 @@
 class Youtuber < ApplicationRecord
+
+  validates :name, presence: true, length: { in: 1..22 }
+  validates :evaluation, presence: true
+  validates :content, presence: true, length: { in: 1..200 }
+
   has_many :favorites,       dependent: :destroy
   has_many :comments,        dependent: :destroy
   belongs_to :user

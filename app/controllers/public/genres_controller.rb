@@ -6,9 +6,14 @@ class Public::GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    genre.save
-    redirect_to new_genre_path
+    @genre = Genre.new(genre_params)
+    if @genre.save
+      redirect_to new_genre_path
+    else
+      @user_profile = User.find(current_user.id)
+      @genres = Genre.where(application_status: true)
+      render :new
+    end
   end
 
   private

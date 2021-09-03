@@ -6,10 +6,15 @@ class Public::YoutubersController < ApplicationController
   end
 
   def create
-    youtuber = Youtuber.new(youtuber_params)
-    youtuber.user_id = current_user.id
-    youtuber.save
-    redirect_to youtuber_path(youtuber)
+    @youtuber = Youtuber.new(youtuber_params)
+    @youtuber.user_id = current_user.id
+    @user_profile = User.find(current_user.id)
+    @genres = Genre.where(application_status: true)
+    if @youtuber.save
+      redirect_to youtuber_path(@youtuber)
+    else
+      render :new
+    end
   end
 
   def index

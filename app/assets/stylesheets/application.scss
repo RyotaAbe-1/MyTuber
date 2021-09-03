@@ -864,7 +864,6 @@
   }
   &__main {
     width: 60%;
-    height: 400px;
     margin-bottom: 15px;
   }
   &__name {
@@ -890,7 +889,7 @@
   }
   &__introduce {
     max-width: 400px;
-    height: 190px;
+    min-height: 190px;
     padding-top: 20px;
     margin: 0 auto;
     word-wrap: break-word;

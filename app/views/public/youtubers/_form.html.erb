@@ -1,7 +1,7 @@
 <%= form_with model: youtuber, local: true do |f| %>
 　<table class="post__table">
     <tr>
-      <td>YouTuberの名前</td>
+      <td>YouTuberの名前(22文字以内)</td>
       <td class="post__name">
         <%= f.text_field :name, class: "post__name-input" %>
       </td>
@@ -19,7 +19,7 @@
       </td>
     </tr>
     <tr>
-      <td class="post__area-label">おすすめポイント</td>
+      <td class="post__area-label">おすすめポイント(200文字以内)</td>
       <td class="post__area">
         <%= f.text_area :content, class: "post__area-input" %>
       </td>
