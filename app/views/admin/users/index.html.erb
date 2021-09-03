@@ -1,10 +1,20 @@
 <def class="user-index container">
-  <div class="left"></div>
+  <% if @user_profile %>
+
+    <%= render "common/admin_profile_bar", user: @user_profile %>
+
+  <% else %>
+    <div class="left"></div>
+  <% end %>
 
   <div class="center">
 
     <% if params[:category] == "search-by-user" %>
       <p class="title--blue"><%= "「#{params[:keyword]}」のユーザー検索結果" %></p>
+    <% elsif params[:sort] == "followings" %>
+      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></div>
+    <% elsif params[:sort] == "followers" %>
+      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></div>
     <% else %>
       <p class="title--blue">ユーザー一覧</p>
     <% end %>

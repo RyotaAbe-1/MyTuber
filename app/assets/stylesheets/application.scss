@@ -321,6 +321,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
   &__title {
     &--green {
@@ -352,6 +353,14 @@
       box-shadow: none;
     }
   }
+  &__follow-message {
+    width: 120px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    color: red;
+  }
   &__name {
     font-size: 18px;
     font-weight: bold;
@@ -371,7 +380,8 @@
     font-size: 12px;
   }
   &__follow {
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
   }
   &__common-genre {
     @include common;

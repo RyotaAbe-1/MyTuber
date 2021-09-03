@@ -30,10 +30,14 @@
           <%= user.introduce %>
         </div>
       </div>
-
+      
       <div class="profile__follow">
-        <%= "フォロー中#{user.number_of_followers}人" %>
-        <%= "フォロワー#{user.number_of_followed}人" %>
+        <div>
+          <%= link_to "フォロー中#{user.number_of_followings}人", admin_users_path(user_id: user.id, sort: "followings"), class: "profile__link" %>
+        </div>
+        <div>
+          <%= link_to "フォロワー#{user.number_of_followers}人", admin_users_path(user_id: user.id, sort: "followers"), class: "profile__link" %>
+        </div>
       </div>
 
     </div>
@@ -52,7 +56,7 @@
       </div>
 
       <div class="profile__status-form">
-        <%= form_with model: [:admin, user], url: admin_user_path(user, page: page, youtuber_id: @youtuber), local: true do |f| %>
+        <%= form_with model: [:admin, user], url: admin_user_path(user), local: true do |f| %>
           <div class="profile__status-buttons">
             <div>
               <%= f.radio_button :is_active, "true", id: "is_active_true" %><label for="is_active_true">有効</label>

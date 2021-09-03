@@ -1,12 +1,12 @@
 <div class="profile left">
   <div class="profile__info">
     <div class="profile__content">
+      
       <% if user.id == current_user.id %>
         <div class="profile__title--blue">マイプロフィール</div>
       <% else %>
         <div class="profile__title--green">プロフィール</div>
       <% end %>
-
 
       <div class="profile__info-top">
         <%= link_to user_path(user) do %>
@@ -14,14 +14,22 @@
         <% end %>
         <% if user.id != current_user.id %>
           <div id="follow_button">
+            
             <%= render "public/relationships/relationship_profile_bar", user: user %>
+            
           </div>
+          
+          <% if current_user.followed?(user) %>
+            <span class="profile__follow-message">フォローされています</span>
+          <% end %>
+          
         <% end %>
       </div>
 
       <div class="profile__name">
         <%= user.user_name %>
       </div>
+      
       <div class="profile__genre">
         <div>好きなジャンル</div>
         <ul class="profile__genre-list">
@@ -32,17 +40,25 @@
           <% end %>
         </ul>
       </div>
+      
       <div class="profile__introduce">
         <div>自己紹介</div>
         <div class="profile__introduce-item">
           <%= user.introduce %>
         </div>
       </div>
+      
     </div>
+    
     <div class="profile__follow">
-      <%= "フォロー中#{user.number_of_followers}人" %>
-      <%= "フォロワー#{user.number_of_followed}人" %>
+      <div>
+        <%= link_to "フォロー中#{user.number_of_followings}人", users_path(user_id: user.id, sort: "followings"), class: "profile__link" %>
+      </div>
+      <div>
+        <%= link_to "フォロワー#{user.number_of_followers}人", users_path(user_id: user.id, sort: "followers"), class: "profile__link" %>
+      </div>
     </div>
+    
   </div>
 
   <% if user.id != current_user.id %>
@@ -92,4 +108,5 @@
       </div>
     </div>
   <% end %>
+  
 </div>

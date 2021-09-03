@@ -13,12 +13,16 @@
       <% end %>
     </span>
   </div>
-  
+
   <% if user_signed_in? %>
     <div class="user-index__follow">
+      <% unless user == current_user %>
       <object class="follow_button_<%= user.id %>">
+
         <%= render "public/relationships/relationship_user_index", user: user %>
+
       </object>
+      <% end %>
     </div>
     <% if current_user.followed?(user) %>
       <span class="user-index__follow-message">フォローされています</span>
@@ -32,5 +36,5 @@
       <% end %>
     </div>
   <% end %>
-  
+
 </div>

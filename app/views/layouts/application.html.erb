@@ -20,7 +20,7 @@
         <% if user_signed_in? %>
           <div class="nav__upper">
             <%= link_to "マイページ", user_path(current_user), class: "btn btn__big--red" %>
-            <%= link_to "ユーザー一覧", users_path, class: "btn btn__big--red" %>
+            <%= link_to "ユーザー一覧", users_path(user_id: current_user.id), class: "btn btn__big--red" %>
             <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "btn btn__big--red" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn__big--red" %>
           </div>
