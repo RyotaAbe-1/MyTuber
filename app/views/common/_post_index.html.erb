@@ -34,7 +34,7 @@
         <%= youtuber.user.user_name %>
       </p>
       
-      <% if user_signed_in? && youtuber.user != current_user %>
+      <% if (user_signed_in?) && (youtuber.user != current_user) %>
         <object class="follow_button_<%= youtuber.user.id %>">
           <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
         </object>
