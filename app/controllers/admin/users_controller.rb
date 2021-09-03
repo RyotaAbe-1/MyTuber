@@ -1,23 +1,22 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.includes(:genres)
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "followings"
       @user_profile = User.find(params[:user_id])
-      @users = @user_profile.followings.includes(:genres)
-      @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
+      @users = @user_profile.followings.page(params[:page]).includes(:genres)
     elsif sort == "followers"
       @user_profile = User.find(params[:user_id])
-      @users = @user_profile.followers.includes(:genres)
-      @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
+      @users = @user_profile.followers.page(params[:page]).includes(:genres)
+    else
+      @users = User.page(params[:page]).includes(:genres)
     end
   end
 
   def show
     @user_profile = User.find(params[:id])
     @genres = Genre.where(application_status: true)
-    @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
+    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
   end
 
   def update

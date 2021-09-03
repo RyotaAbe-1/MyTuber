@@ -22,6 +22,10 @@
 
       <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
 
+      <div class="paginate">
+          <%= paginate @youtuber_comments %>
+      </div>
+
       <div class="comment__form" id="comment">
         <h4>コメント投稿フォーム(100文字以内)</h4>
         <%= form_with model: [@youtuber, @comment], local: true do |f| %>
