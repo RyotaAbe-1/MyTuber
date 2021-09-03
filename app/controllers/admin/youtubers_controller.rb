@@ -4,9 +4,9 @@ class Admin::YoutubersController < ApplicationController
     sort = params[:sort]
     if sort == "genre-search"
       @genre = Genre.find(params[:genre_id])
-      @youtubers = Youtuber.where(genre_id: @genre.id).page(params[:page]).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+      @youtubers = Youtuber.where(genre_id: @genre.id).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     else
-      @youtubers = Youtuber.page(params[:page]).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+      @youtubers = Youtuber.page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     end
   end
 

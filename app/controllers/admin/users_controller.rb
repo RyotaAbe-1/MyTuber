@@ -5,11 +5,9 @@ class Admin::UsersController < ApplicationController
     if sort == "followings"
       @user_profile = User.find(params[:user_id])
       @users = @user_profile.followings.page(params[:page]).includes(:genres)
-      @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
     elsif sort == "followers"
       @user_profile = User.find(params[:user_id])
       @users = @user_profile.followers.page(params[:page]).includes(:genres)
-      @youtubers = Youtuber.where(user_id: @user_profile.id).includes(:genre, :comments, :favorites)
     else
       @users = User.page(params[:page]).includes(:genres)
     end
