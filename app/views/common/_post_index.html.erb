@@ -1,17 +1,21 @@
 <div class="post-index__item">
+  
   <p class="post-index__name">
     <%= youtuber.name %>
   </p>
+  
   <div class="post-index__evaluation">
     <p class="post-index__evaluation-score">
       <%= "#{youtuber.evaluation}/5" %>
     </p>
     <div class="review-evaluation" data-score="<%= youtuber.evaluation %>"></div>
   </div>
+  
   <p class="post-index__genre">
     ジャンル：
     <%= youtuber.genre.genre_name %>
   </p>
+  
   <div class="post-index__sub">
     <div class="post-index__user">
       <object>
@@ -25,18 +29,23 @@
           <% end %>
         <% end %>
       </object>
+      
       <p class="post-index__user-name">
         <%= youtuber.user.user_name %>
       </p>
-      <% if user_signed_in? %>
+      
+      <% if (user_signed_in?) && (youtuber.user != current_user) %>
         <object class="follow_button_<%= youtuber.user.id %>">
           <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
         </object>
       <% end %>
     </div>
+    
     <p class="post-index__reaction">
       <%= "コメント#{youtuber.number_of_comments}件" %>
       <%= "お気に入り#{youtuber.number_of_favorites}件" %>
     </p>
+    
   </div>
+  
 </div>
