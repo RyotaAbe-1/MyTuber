@@ -184,7 +184,8 @@
   }
 }
 .error {
-  margin: 10px 0 10px 20px;
+  width: 85%;
+  margin: 30px auto;
   &__messages {
     color: red;
   }
@@ -864,7 +865,6 @@
   }
   &__main {
     width: 60%;
-    height: 400px;
     margin-bottom: 15px;
   }
   &__name {
@@ -890,7 +890,7 @@
   }
   &__introduce {
     max-width: 400px;
-    height: 190px;
+    min-height: 190px;
     padding-top: 20px;
     margin: 0 auto;
     word-wrap: break-word;
@@ -1032,6 +1032,7 @@
     width: 97%;
     min-height: 97%;
     margin: 1% auto;
+    padding-top: 100px;
     background-color: white;
     position: relative;
     box-shadow: $foreground-shadow;
@@ -1075,9 +1076,9 @@
     margin: 50px 0;
   }
   &__form {
-    max-width: 500px;
+    height: 400px;
+    max-width: 600px;
     margin: 0 auto;
-    padding-top: 100px;
   }
   &__table {
     width: 100%;

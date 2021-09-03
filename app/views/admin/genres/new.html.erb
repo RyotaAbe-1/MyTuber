@@ -6,6 +6,17 @@
 
     <div class="title--blue">ジャンル登録画面</div>
     <div class="container__content">
+      
+      <% if @genre.errors.any? %>
+        <div class="error">
+          <% @genre.errors.full_messages.each do |message| %>
+            <p class="error__messages">
+              <%= message %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+      
       <% @genres.each do |genre| %>
         <div class="add-genre__item">
           <p class="add-genre__name">

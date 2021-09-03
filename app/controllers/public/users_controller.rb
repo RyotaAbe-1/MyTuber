@@ -25,8 +25,6 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
     if params[:user][:genre]
       UserGenre.where(user_id: current_user.id).destroy_all
       params[:user][:genre].each do |key, value|
@@ -36,7 +34,14 @@ class Public::UsersController < ApplicationController
         end
       end
     end
-    redirect_to user_path(user)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    elsif
+      @genres = Genre.where(application_status: true)
+      @user_genre = @user.user_genres.build
+      render :edit
+    end
   end
 
   def confirm
