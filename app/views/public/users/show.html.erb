@@ -18,6 +18,11 @@
 
         <% end %>
       <% end %>
+      
+      <div class="paginate">
+          <%= paginate @youtubers %>
+      </div>
+      
     </div>
 
     <%= link_to new_youtuber_path do %>

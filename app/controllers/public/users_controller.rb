@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    @youtubers = Youtuber.where(user_id: user.id).includes(:genre, :comments, :favorites)
+    @youtubers = Youtuber.where(user_id: user.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
     @user_profile = User.find(params[:id])
     @genres = Genre.where(application_status: true)
   end
