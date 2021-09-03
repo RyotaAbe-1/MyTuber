@@ -45,9 +45,14 @@ class Public::YoutubersController < ApplicationController
   end
 
   def update
-    youtuber = Youtuber.find(params[:id])
-    youtuber.update(youtuber_params)
-    redirect_to youtuber_path(youtuber)
+    @youtuber = Youtuber.find(params[:id])
+    if @youtuber.update(youtuber_params)
+      redirect_to youtuber_path(@youtuber)
+    else
+      @user_profile = User.find(current_user.id)
+      @genres = Genre.where(application_status: true)
+      render :edit
+    end
   end
 
   def destroy

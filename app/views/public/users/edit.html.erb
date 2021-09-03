@@ -3,8 +3,19 @@
     <div class="mypage-edit__left">
 
       <div class="mypage-edit__content">
-       <div class="title--blue">マイページ編集</div>
+        <div class="title--blue">マイページ編集</div>
         <%= form_with model: @user, local: true do |f| %>
+          
+          <% if @user.errors.any? %>
+            <div class="error">
+              <% @user.errors.full_messages.each do |message| %>
+                <p class="error__messages">
+                  <%= message %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
+          
           <div class="mypage-edit__top">
             <%= attachment_image_tag @user, :image, size:"250x250", fallback: "no_image.jpg", size:"250x250", class: "mypage-edit__image" %>
             <table class="mypage-edit__table">
