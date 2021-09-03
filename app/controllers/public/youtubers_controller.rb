@@ -18,15 +18,22 @@ class Public::YoutubersController < ApplicationController
   end
 
   def index
-    @youtubers = Youtuber.all.includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     @user_profile = User.find(current_user.id)
     @genres = Genre.where(application_status: true)
     sort = params[:sort]
-    if sort == "genre-search"
+    if sort == "timeline"
+      user_ids = current_user.followings.select(:followed_id)
+      @youtubers = Youtuber.where(user_id: user_ids).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+    elsif sort == "favorite"
+      youtuber_ids = current_user.favorites.select(:youtuber_id)
+      @youtubers =Youtuber.where(id: youtuber_ids).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+    elsif sort == "genre-search"
       @genre = Genre.find(params[:genre_id])
       @youtubers = Youtuber.where(genre_id: @genre.id).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     elsif sort == "search"
       @youtubers = Youtuber.search(params[:keyword]).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+    else
+      @youtubers = Youtuber.all.includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     end
   end
 

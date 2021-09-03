@@ -19,23 +19,9 @@
     <div class="container__content">
       <% @youtubers.each do |youtuber| %>
         <%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
-          <% if params[:sort] == "timeline" %>
-            <% if current_user.following?(youtuber.user) %>
+
+          <%= render "common/post_index", youtuber: youtuber %>
             
-              <%= render "common/post_index", youtuber: youtuber %>
-              
-            <% end %>
-          <% elsif params[:sort] == "favorite" %>
-            <% if youtuber.favorited_by?(current_user) %>
-            
-              <%= render "common/post_index", youtuber: youtuber %>
-              
-            <% end %>
-          <% else %>
-          
-            <%= render "common/post_index", youtuber: youtuber %>
-            
-          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -51,7 +37,7 @@
     </a>
 
   </div>
-  
+
   <%= render "common/genre_search_bar", genres: @genres %>
-  
+
 </div>
