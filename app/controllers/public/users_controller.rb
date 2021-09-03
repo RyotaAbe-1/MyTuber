@@ -1,13 +1,13 @@
 class Public::UsersController < ApplicationController
   def index
-    @users = User.where.not(id: current_user.id).includes(:genres)
+    @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres)
     @genres = Genre.where(application_status: true)
     @user_profile = User.find(params[:user_id])
     sort = params[:sort]
     if sort == "followings"
-      @users = @user_profile.followings.includes(:genres)
+      @users = @user_profile.followings.page(params[:page]).includes(:genres)
     elsif sort == "followers"
-      @users = @user_profile.followers.includes(:genres)
+      @users = @user_profile.followers.page(params[:page]).includes(:genres)
     end
   end
 
