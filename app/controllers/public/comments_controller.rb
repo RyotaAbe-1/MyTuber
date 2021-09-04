@@ -1,4 +1,8 @@
 class Public::CommentsController < ApplicationController
+  skip_before_action :authenticate_admin!
+  include CommonActions
+  before_action :set_genres, only: [:create]
+  
   def create
     @youtuber = Youtuber.find(params[:youtuber_id])
     @comment = Comment.new(comment_params)
@@ -9,7 +13,6 @@ class Public::CommentsController < ApplicationController
     else
       @youtuber_comments = @youtuber.comments.includes(:user)
       @user_profile = User.find(@youtuber.user.id)
-      @genres = Genre.where(application_status: true)
       render "public/youtubers/show"
     end
   end

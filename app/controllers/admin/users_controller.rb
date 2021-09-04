@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  skip_before_action :authenticate_user!
+  
   include CommonActions
   before_action :set_genres, except: [:update]
   before_action :set_user_profile, only: [:show]

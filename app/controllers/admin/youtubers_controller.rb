@@ -1,4 +1,5 @@
 class Admin::YoutubersController < ApplicationController
+  skip_before_action :authenticate_user!
   include CommonActions
   before_action :set_genres, except: [:destroy]
   

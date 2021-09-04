@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  skip_before_action :authenticate_admin!
   include CommonActions
   before_action :set_genres, except: [:confirm, :widhdraw]
   before_action :set_user_profile, except: [:index, :confirm, :widhdraw]

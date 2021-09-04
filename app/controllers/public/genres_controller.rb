@@ -1,4 +1,5 @@
 class Public::GenresController < ApplicationController
+  skip_before_action :authenticate_admin!
   include CommonActions
   before_action :set_genres
   before_action :set_current_user_profile

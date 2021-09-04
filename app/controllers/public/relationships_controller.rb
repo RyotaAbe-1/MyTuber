@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def follow
     current_user.follow(params[:id])
     page = params[:page]

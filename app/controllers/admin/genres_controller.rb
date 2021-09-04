@@ -1,9 +1,8 @@
 class Admin::GenresController < ApplicationController
-  include CommonActions
-  before_action :set_genres, only: [:new, :create]
-  
-  
+  skip_before_action :authenticate_user!
+
   def new
+    @genres = Genre.where(application_status: false)
     @genre = Genre.new
     @genre_all = Genre.all
   end
@@ -14,6 +13,7 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to new_admin_genre_path
     elsif
+      @genres = Genre.where(application_status: false)
       @genre_all = Genre.all
       render :new
     end
