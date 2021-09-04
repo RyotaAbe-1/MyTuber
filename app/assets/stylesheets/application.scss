@@ -186,8 +186,15 @@
 .error {
   width: 85%;
   margin: 30px auto;
+
   &__messages {
     color: red;
+  }
+}
+.error-devise {
+  color: red;
+  &__list {
+    margin: 10px 0 10px 30px;
   }
 }
 .main {
