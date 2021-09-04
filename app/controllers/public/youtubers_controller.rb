@@ -1,15 +1,15 @@
 class Public::YoutubersController < ApplicationController
+  include CommonActions
+  before_action :set_genres, except: [:destroy]
+  before_action :set_current_user_profile, except: [:show, :destroy]
+
   def new
     @youtuber = Youtuber.new
-    @user_profile = User.find(current_user.id)
-    @genres = Genre.where(application_status: true)
   end
 
   def create
     @youtuber = Youtuber.new(youtuber_params)
     @youtuber.user_id = current_user.id
-    @user_profile = User.find(current_user.id)
-    @genres = Genre.where(application_status: true)
     if @youtuber.save
       redirect_to youtuber_path(@youtuber)
     else
@@ -18,8 +18,6 @@ class Public::YoutubersController < ApplicationController
   end
 
   def index
-    @user_profile = User.find(current_user.id)
-    @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "timeline"
       user_ids = current_user.followings.select(:followed_id)
@@ -42,13 +40,10 @@ class Public::YoutubersController < ApplicationController
     @youtuber_comments = @youtuber.comments.page(params[:page]).includes(:user)
     @comment = Comment.new
     @user_profile = User.find(@youtuber.user.id)
-    @genres = Genre.where(application_status: true)
   end
 
   def edit
     @youtuber = Youtuber.find(params[:id])
-    @user_profile = User.find(current_user.id)
-    @genres = Genre.where(application_status: true)
   end
 
   def update
@@ -56,8 +51,6 @@ class Public::YoutubersController < ApplicationController
     if @youtuber.update(youtuber_params)
       redirect_to youtuber_path(@youtuber)
     else
-      @user_profile = User.find(current_user.id)
-      @genres = Genre.where(application_status: true)
       render :edit
     end
   end

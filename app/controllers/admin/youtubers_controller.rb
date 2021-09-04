@@ -1,6 +1,8 @@
 class Admin::YoutubersController < ApplicationController
+  include CommonActions
+  before_action :set_genres, except: [:destroy]
+  
   def index
-    @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "genre-search"
       @genre = Genre.find(params[:genre_id])
@@ -14,7 +16,6 @@ class Admin::YoutubersController < ApplicationController
     @youtuber = Youtuber.find(params[:id])
     @youtuber_comments = @youtuber.comments.page(params[:page]).includes(:user)
     @user_profile = User.find(@youtuber.user.id)
-    @genres = Genre.where(application_status: true)
   end
 
   def destroy
