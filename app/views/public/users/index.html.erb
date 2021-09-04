@@ -3,19 +3,18 @@
   <%= render "common/profile_bar", user: @user_profile %>
 
   <div class="center">
-
     <% if current_user_followings %>
-      <div class="title--blue">フォロー中一覧</div>
+      <p class="title--blue">フォロー中一覧</p>
     <% elsif other_user_followings %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></p>
     <% elsif current_user_followers %>
-      <div class="title--blue">フォロワー一覧</div>
+      <p class="title--blue">フォロワー一覧</p>
     <% elsif other_user_followers %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></p>
     <% elsif params[:category] == "search-by-user" %>
       <p class="title--blue"><%= "「#{params[:keyword]}」のユーザー検索結果" %></p>
     <% else %>
-      <div class="title--blue">ユーザー一覧</div>
+      <p class="title--blue">ユーザー一覧</p>
     <% end %>
 
     <div class="container__content">
@@ -30,7 +29,6 @@
       <div class="paginate">
         <%= paginate @users %>
       </div>
-
     </div>
 
     <a href="#" class="back-top__link">
@@ -38,7 +36,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>

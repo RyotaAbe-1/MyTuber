@@ -20,17 +20,13 @@
     <div class="post-index__user">
       <object>
         <% if user_signed_in? %>
-        
           <%= link_to user_path(youtuber.user) do %>
             <%= attachment_image_tag youtuber.user, :image, :fill , 30, 30, fallback: "no_image.jpg", size: "30x30", class: "post-index__image" %>
           <% end %>
-          
         <% elsif admin_signed_in? %>
-        
           <%= link_to admin_user_path(youtuber.user) do %>
             <%= attachment_image_tag youtuber.user, :image, :fill , 30, 30, fallback: "no_image.jpg", size: "30x30", class: "post-index__image" %>
           <% end %>
-          
         <% end %>
       </object>
       
@@ -40,9 +36,7 @@
       
       <% if (user_signed_in?) && (youtuber.user != current_user) %>
         <object class="follow_button_<%= youtuber.user.id %>">
-          
           <%= render "public/relationships/relationship_post_index", youtuber: youtuber %>
-          
         </object>
       <% end %>
     </div>

@@ -21,9 +21,7 @@
     <div class="user-index__follow">
       <% unless user == current_user %>
         <object class="follow_button_<%= user.id %>">
-  
           <%= render "public/relationships/relationship_user_index", user: user %>
-  
         </object>
       <% end %>
     </div>

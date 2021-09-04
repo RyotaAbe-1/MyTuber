@@ -3,7 +3,6 @@
   <%= render "common/profile_bar", user: @user_profile, page: "post-show" %>
 
   <div class="center">
-
     <%= render "common/post_show", user: @user_profile, youtuber: @youtuber  %>
 
     <% if @comment.errors.any? %>
@@ -17,7 +16,6 @@
     <% end %>
 
     <div class="comment">
-
       <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
 
       <div class="paginate">
@@ -47,7 +45,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>

@@ -16,9 +16,7 @@
         
         <% if user.id != current_user.id %>
           <div id="follow_button">
-            
             <%= render "public/relationships/relationship_profile_bar", user: user %>
-            
           </div>
           
           <% if current_user.followed?(user) %>
