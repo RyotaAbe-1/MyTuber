@@ -1,7 +1,7 @@
-<% if user_profile == current_user %>
+<% if user == current_user %>
   <div class="title--blue">自分の投稿詳細</div>
 <% else %>
-  <div class="title--green"><%= "#{user_profile.user_name}さんの投稿詳細" %></div>
+  <div class="title--green"><%= "#{user.user_name}さんの投稿詳細" %></div>
 <% end %>
 
 <div class="post-show__content">
@@ -10,16 +10,24 @@
     <p class="post-show__name">
       <%= youtuber.name %>
     </p>
+
     <p class="post-show__genre">
-      <%= "ジャンル：#{youtuber.genre.genre_name}" %>
+      ジャンル：
+      <% if user_signed_in? %>
+        <%= link_to youtuber.genre.genre_name, youtubers_path(genre_id: youtuber.genre.id ,sort: "genre-search"), class: "post-show__link" %>
+      <% else %>
+        <%= link_to youtuber.genre.genre_name, admin_youtubers_path(genre_id: youtuber.genre.id ,sort: "genre-search"), class: "post-show__link" %>
+      <% end %>
     </p>
+
     <div class="post-show__evaluation">
       <div class ="review-evaluation" data-score="<%= youtuber.evaluation %>"></div>
-      <div><%= "#{youtuber.evaluation}/5" %></div>
+      <p class="post-show__evaluation-score"><%= "#{youtuber.evaluation}/5" %></p>
     </div>
+
     <div class="post-show__introduce">
-      <p>おすすめポイント</p>
-      <div>
+      <p>おすすめポイント：</p>
+      <div class="post-show__introduce-item">
         <%= youtuber.content %>
       </div>
     </div>
@@ -52,4 +60,5 @@
       <%= "投稿日時：#{youtuber.created_at.strftime('%Y/%m/%d %H:%M:%S')}" %>
     </div>
   </div>
+
 </div>
