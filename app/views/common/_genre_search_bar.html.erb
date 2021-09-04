@@ -1,6 +1,8 @@
 <div class="genre-search right">
   <div class="genre-search__content">
-    <div class="genre-search__title--orange">ジャンル検索</div>
+    
+    <p class="genre-search__title--orange">ジャンル検索</p>
+    
     <div class="genre-search__list">
       <ul>
         <% if user_signed_in? %>
@@ -15,6 +17,7 @@
             <%= link_to "全てのジャンル", admin_youtubers_path(sort: "genre-search-all"), class: "genre-search__link" %>
           </li>
         <% end %>
+        
         <% genres.each do |genre| %>
           <li>
             <% if user_signed_in? %>
@@ -26,5 +29,6 @@
         <% end %>
       </ul>
     </div>
+    
   </div>
 </div>

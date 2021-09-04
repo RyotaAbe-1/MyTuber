@@ -12,9 +12,9 @@
     <% if params[:category] == "search-by-user" %>
       <p class="title--blue"><%= "「#{params[:keyword]}」のユーザー検索結果" %></p>
     <% elsif params[:sort] == "followings" %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></p>
     <% elsif params[:sort] == "followers" %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></p>
     <% else %>
       <p class="title--blue">ユーザー一覧</p>
     <% end %>

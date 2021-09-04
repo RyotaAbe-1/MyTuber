@@ -3,6 +3,7 @@
   <div class="sign-up-in__form">
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
       <%= render "public/shared/error_messages", resource: resource %>
 
       <table>
@@ -12,12 +13,14 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
           </td>
         </tr>
+        
         <tr>
           <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
           <td>
             <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
           </td>
         </tr>
+        
         <tr>
           <td></td>
           <td>
@@ -25,8 +28,9 @@
           </td>
         </tr>
       </table>
-
+      
     <% end %>
+    
   </div>
 </div>
 

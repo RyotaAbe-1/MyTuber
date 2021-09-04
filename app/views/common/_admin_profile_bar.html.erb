@@ -1,7 +1,7 @@
 <div class="profile left">
   <div class="profile__info">
     <div class="profile__content">
-      <div class="profile__title--green">プロフィール</div>
+      <p class="profile__title--green">プロフィール</p>
 
       <div class="profile__info-top">
         <%= link_to admin_user_path(user) do %>
@@ -9,12 +9,12 @@
         <% end %>
       </div>
 
-      <div class="profile__name">
+      <p class="profile__name">
         <%= user.user_name %>
-      </div>
+      </p>
 
       <div class="profile__genre">
-        <div>好きなジャンル</div>
+        <p>好きなジャンル</p>
         <ul class="profile__genre-list">
           <% user.genres.each do |genre| %>
             <li class="profile__genre-list-item">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="profile__introduce">
-        <div>自己紹介</div>
+        <p>自己紹介</p>
         <div class="profile__introduce-item">
           <%= user.introduce %>
         </div>
@@ -71,4 +71,5 @@
 
     </div>
   </div>
+  
 </div>
