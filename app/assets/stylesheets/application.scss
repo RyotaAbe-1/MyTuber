@@ -887,6 +887,10 @@
     text-align: center;
     padding-top: 20px;
   }
+  &__link {
+    color: blue;
+    text-decoration: none;
+  }
   &__evaluation {
     max-width: 220px;
     height: 50px;
@@ -895,12 +899,18 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__evaluation-score {
+    color: red;
+  }
   &__introduce {
     max-width: 400px;
     min-height: 190px;
     padding-top: 20px;
     margin: 0 auto;
     word-wrap: break-word;
+  }
+  &__introduce-item {
+    font-size: 14px;
   }
   &__sub {
     width: 20%;
