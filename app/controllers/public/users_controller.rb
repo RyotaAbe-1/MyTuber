@@ -5,18 +5,23 @@ class Public::UsersController < ApplicationController
   before_action :set_user_profile, except: [:index, :confirm, :widhdraw]
 
   def index
-    @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres)
     @user_profile = User.find(params[:user_id])
+    genre_ids = @user_profile.user_genres.select(:genre_id)
+    @common_genres = current_user.genres.where(id: genre_ids)
     sort = params[:sort]
     if sort == "followings"
-      @users = @user_profile.followings.page(params[:page]).includes(:genres)
+      @users = @user_profile.followings.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
     elsif sort == "followers"
-      @users = @user_profile.followers.page(params[:page]).includes(:genres)
+      @users = @user_profile.followers.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
+    else
+      @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres)
     end
   end
 
   def show
-    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
+    genre_ids = @user_profile.user_genres.select(:genre_id)
+    @common_genres = current_user.genres.where(id: genre_ids)
+    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites).order("created_at DESC")
   end
 
   def edit
