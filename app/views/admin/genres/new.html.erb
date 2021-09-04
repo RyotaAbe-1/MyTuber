@@ -3,10 +3,9 @@
   <div class="left"></div>
 
   <div class="center">
-
     <div class="title--blue">ジャンル登録画面</div>
+    
     <div class="container__content">
-      
       <% if @genre.errors.any? %>
         <div class="error">
           <% @genre.errors.full_messages.each do |message| %>
@@ -51,8 +50,8 @@
           </table>
         <% end %>
       </div>
-
     </div>
+    
   </div>
 
   <div class="genre-search right">

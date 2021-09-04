@@ -3,7 +3,6 @@
   <div class="left"></div>
 
   <div class="center">
-
     <% if params[:sort] == "genre-search" %>
       <p class="title--blue"><%= @genre.genre_name %>一覧</p>
     <% elsif params[:sort] == "genre-search-all" %>
@@ -26,7 +25,6 @@
       <div class="paginate">
         <%= paginate @youtubers %>
       </div>
-      
     </div>
 
     <a href="#" class="back-top__link">
@@ -34,7 +32,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>
