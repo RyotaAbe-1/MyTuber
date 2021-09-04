@@ -22,7 +22,7 @@ class Public::YoutubersController < ApplicationController
     sort = params[:sort]
     if sort == "timeline"
       user_ids = current_user.followings.select(:followed_id)
-      @youtubers = Youtuber.where(user_id: user_ids).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+      @youtubers = Youtuber.where(user_id: user_ids).or(Youtuber.where(user_id: current_user.id)).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     elsif sort == "favorite"
       youtuber_ids = current_user.favorites.select(:youtuber_id)
       @youtubers =Youtuber.where(id: youtuber_ids).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
