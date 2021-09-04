@@ -1,7 +1,13 @@
 <% if params[:page] == "post-index" %>
+
   $(".follow_button_<%= @youtuber.user.id %>").html("<%= j(render "public/relationships/relationship_post_index", youtuber: @youtuber) %>");
-<% elsif (params[:page] == "user-show") || (params[:page] == "post-show") %>
+  
+<% elsif (params[:page] == "profile") %>
+
   $("#follow_button").html("<%= j(render "public/relationships/relationship_profile_bar", user: @user) %>");
+  
 <% elsif params[:page] == "user-index" %>
+
   $(".follow_button_<%= @user.id %>").html("<%= j(render "public/relationships/relationship_user_index", user: @user) %>");
+  
 <% end %>
