@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:new, :create]
     post '/follow/:id' => 'relationships#follow', as: 'follow'
     post '/unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+    get '/search' => 'searches#search', as: 'search'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

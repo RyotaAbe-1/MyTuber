@@ -25,8 +25,8 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn__big--red" %>
           </div>
           <div class="nav__lower search">
-            <%= form_with url: youtubers_path, method: :get, local: true do |f| %>
-              <%= f.hidden_field :sort, value: "search" %>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.select :category, [["会員検索", "search-by-user"], ["投稿検索", "search-by-post"]] %>
               <%= f.text_field :keyword %>
               <%= f.submit "検索", class: "btn btn__search" %>
             <% end %>
