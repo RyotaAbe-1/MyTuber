@@ -1,28 +1,23 @@
 class Public::RelationshipsController < ApplicationController
   skip_before_action :authenticate_admin!
-  
+
   def follow
     current_user.follow(params[:id])
     page = params[:page]
-    if page == "user-index"
-      @user = User.find(params[:id])
-    elsif (page == "user-show") || (page == "post-show")
-      @user = User.find(params[:id])
-    elsif page == "post-index"
+    if page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
+    else
+      @user = User.find(params[:id])
     end
   end
 
   def unfollow
     current_user.unfollow(params[:id])
     page = params[:page]
-    if page == "user-index"
-      @user = User.find(params[:id])
-    elsif (page == "user-show") || (page == "post-show")
-      @user = User.find(params[:id])
-    elsif page == "post-index"
+    if page == "post-index"
       @youtuber = Youtuber.find(params[:youtuber_id])
+    else
+      @user = User.find(params[:id])
     end
   end
-
 end

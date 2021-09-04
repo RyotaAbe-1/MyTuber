@@ -1,5 +1,4 @@
 class Youtuber < ApplicationRecord
-
   validates :name, presence: true, length: { in: 1..22 }
   validates :evaluation, presence: true
   validates :content, presence: true, length: { in: 1..200 }
@@ -24,5 +23,4 @@ class Youtuber < ApplicationRecord
   def self.search(keyword)
     where(["name like?", "%#{keyword}%"])
   end
-
 end

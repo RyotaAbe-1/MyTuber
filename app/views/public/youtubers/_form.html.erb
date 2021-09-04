@@ -17,24 +17,28 @@
         <%= f.text_field :name, class: "post__name-input" %>
       </td>
     </tr>
+    
     <tr>
       <td>ジャンル</td>
       <td class="post__genre">
         <%= f.collection_select(:genre_id, genres, :id, :genre_name, {prompt: "ジャンルを選択してください"}, class: "post__genre-input") %>
       </td>
     </tr>
+    
     <tr>
       <td>評価</td>
       <td id="evaluate" data-score="<%= youtuber.evaluation %>" class="post__evaluation">
         <%= f.hidden_field :evaluation, value: 'score' %>
       </td>
     </tr>
+    
     <tr>
       <td class="post__area-label">おすすめポイント(200文字以内)</td>
       <td class="post__area">
         <%= f.text_area :content, class: "post__area-input" %>
       </td>
     </tr>
+    
     <tr>
       <td></td>
       <td>
@@ -45,5 +49,6 @@
         <% end %>
       </td>
     </tr>
+    
   </table>
 <% end %>

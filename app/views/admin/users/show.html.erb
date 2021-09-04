@@ -3,7 +3,7 @@
   <%= render "common/admin_profile_bar", user: @user_profile %>
 
   <div class="center">
-    <div class="title--green"><%= @user_profile.user_name %>さんおすすめ</div>
+    <p class="title--green"><%= @user_profile.user_name %>さんおすすめ</p>
 
     <div class="container__content">
       <% @youtubers.each do |youtuber| %>
@@ -17,7 +17,6 @@
       <div class="paginate">
         <%= paginate @youtubers %>
       </div>
-
     </div>
 
     <a href="#" class="back-top__link">
@@ -25,7 +24,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>

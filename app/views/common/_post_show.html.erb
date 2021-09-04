@@ -1,7 +1,7 @@
 <% if user == current_user %>
-  <div class="title--blue">自分の投稿詳細</div>
+  <p class="title--blue">自分の投稿詳細</p>
 <% else %>
-  <div class="title--green"><%= "#{user.user_name}さんの投稿詳細" %></div>
+  <p class="title--green"><%= "#{user.user_name}さんの投稿詳細" %></p>
 <% end %>
 
 <div class="post-show__content">
@@ -35,6 +35,7 @@
 
   <div class="post-show__sub">
     <% if user_signed_in? %>
+    
       <% if youtuber.user == current_user %>
         <div class="post-show__edit">
           <%= link_to "編集", edit_youtuber_path(youtuber), class: "btn btn__middle--blue" %>
@@ -43,9 +44,11 @@
           <%= link_to "削除", youtuber_path(youtuber), method: :delete, class: "btn btn__middle--red" %>
         </div>
       <% end %>
+      
       <div id="favorites_buttons_<%= youtuber.id %>">
         <%= render "public/favorites/favorite", youtuber: youtuber %>
       </div>
+      
     <% elsif admin_signed_in? %>
       <div class="post-show__delete">
         <%= link_to "削除", admin_youtuber_path(youtuber), method: :delete, class: "btn btn__middle--red" %>

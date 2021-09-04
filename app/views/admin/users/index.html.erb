@@ -1,20 +1,17 @@
 <def class="user-index container">
   <% if @user_profile %>
-
     <%= render "common/admin_profile_bar", user: @user_profile %>
-
   <% else %>
     <div class="left"></div>
   <% end %>
 
   <div class="center">
-    
     <% if params[:category] == "search-by-user" %>
       <p class="title--blue"><%= "「#{params[:keyword]}」のユーザー検索結果" %></p>
     <% elsif params[:sort] == "followings" %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロー中一覧" %></p>
     <% elsif params[:sort] == "followers" %>
-      <div class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></div>
+      <p class="title--green"><%= "#{@user_profile.user_name}さんのフォロワー一覧" %></p>
     <% else %>
       <p class="title--blue">ユーザー一覧</p>
     <% end %>
@@ -31,7 +28,6 @@
       <div class="paginate">
         <%= paginate @users %>
       </div>
-
     </div>
 
     <a href="#" class="back-top__link">
@@ -39,7 +35,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>

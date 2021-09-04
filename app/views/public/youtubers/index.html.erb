@@ -3,7 +3,6 @@
   <%= render "common/profile_bar", user: @user_profile, page: "user-show" %>
 
   <div class="center">
-
     <% if params[:sort] == "timeline" %>
       <p class="title--blue">タイムライン</p>
     <% elsif params[:sort] == "favorite" %>
@@ -28,7 +27,6 @@
       <div class="paginate">
         <%= paginate @youtubers %>
       </div>
-
     </div>
 
     <%= link_to new_youtuber_path do %>
@@ -40,7 +38,6 @@
         <div class="back-top__arrow"></div>
       </div>
     </a>
-
   </div>
 
   <%= render "common/genre_search_bar", genres: @genres %>
