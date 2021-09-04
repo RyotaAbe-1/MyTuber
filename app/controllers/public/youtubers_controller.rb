@@ -41,6 +41,8 @@ class Public::YoutubersController < ApplicationController
     @youtuber_comments = @youtuber.comments.page(params[:page]).includes(:user)
     @comment = Comment.new
     @user_profile = User.find(@youtuber.user.id)
+    genre_ids = @user_profile.user_genres.select(:genre_id)
+    @common_genres = current_user.genres.where(id: genre_ids)
   end
 
   def edit

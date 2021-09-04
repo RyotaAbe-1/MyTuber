@@ -9,17 +9,17 @@ class Admin::UsersController < ApplicationController
     sort = params[:sort]
     if sort == "followings"
       @user_profile = User.find(params[:user_id])
-      @users = @user_profile.followings.page(params[:page]).includes(:genres)
+      @users = @user_profile.followings.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
     elsif sort == "followers"
       @user_profile = User.find(params[:user_id])
-      @users = @user_profile.followers.page(params[:page]).includes(:genres)
+      @users = @user_profile.followers.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
     else
       @users = User.page(params[:page]).includes(:genres)
     end
   end
 
   def show
-    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
+    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites).order("created_at DESC")
   end
 
   def update

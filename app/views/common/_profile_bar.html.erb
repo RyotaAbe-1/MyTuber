@@ -66,14 +66,10 @@
       <div class="profile__content">
         <div class="profile__title">共通のジャンル</div>
         <ul>
-          <% user.user_genres.includes(:genre).each do |user_genre| %>
-            <% current_user.user_genres.each do |current_user_genre| %>
-              <% if user_genre.genre_id == current_user_genre.genre_id %>
-               <li class="profile__genre-list-item">
-                 <%= user_genre.genre.genre_name %>
-               </li>
-              <% end %>
-            <% end %>
+          <% @common_genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
           <% end %>
         </ul>
       </div>
