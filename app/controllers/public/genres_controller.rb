@@ -1,8 +1,11 @@
 class Public::GenresController < ApplicationController
+  skip_before_action :authenticate_admin!
+  include CommonActions
+  before_action :set_genres
+  before_action :set_current_user_profile
+  
   def new
     @genre = Genre.new
-    @user_profile = User.find(current_user.id)
-    @genres = Genre.where(application_status: true)
   end
 
   def create
@@ -10,8 +13,6 @@ class Public::GenresController < ApplicationController
     if @genre.save
       redirect_to new_genre_path
     else
-      @user_profile = User.find(current_user.id)
-      @genres = Genre.where(application_status: true)
       render :new
     end
   end

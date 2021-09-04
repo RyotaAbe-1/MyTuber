@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def create
     @youtuber = Youtuber.find(params[:youtuber_id])
     favorite = Favorite.new(youtuber_id: @youtuber.id)

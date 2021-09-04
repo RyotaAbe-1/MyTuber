@@ -1,7 +1,11 @@
 class Public::UsersController < ApplicationController
+  skip_before_action :authenticate_admin!
+  include CommonActions
+  before_action :set_genres, except: [:confirm, :widhdraw]
+  before_action :set_user_profile, except: [:index, :confirm, :widhdraw]
+
   def index
     @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres)
-    @genres = Genre.where(application_status: true)
     @user_profile = User.find(params[:user_id])
     sort = params[:sort]
     if sort == "followings"
@@ -12,16 +16,11 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    @youtubers = Youtuber.where(user_id: user.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
-    @user_profile = User.find(params[:id])
-    @genres = Genre.where(application_status: true)
+    @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
   end
 
   def edit
-    @user = User.find(params[:id])
-    @genres = Genre.where(application_status: true)
-    @user_genre = @user.user_genres.build
+    @user_genre = @user_profile.user_genres.build
   end
 
   def update
@@ -34,12 +33,11 @@ class Public::UsersController < ApplicationController
         end
       end
     end
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_path(@user)
+
+    if @user_profile.update(user_params)
+      redirect_to user_path(@user_profile)
     elsif
-      @genres = Genre.where(application_status: true)
-      @user_genre = @user.user_genres.build
+      @user_genre = @user_profile.user_genres.build
       render :edit
     end
   end

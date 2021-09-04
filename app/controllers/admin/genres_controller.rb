@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def new
     @genres = Genre.where(application_status: false)
     @genre = Genre.new

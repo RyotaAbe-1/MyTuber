@@ -1,6 +1,11 @@
 class Admin::UsersController < ApplicationController
+  skip_before_action :authenticate_user!
+  
+  include CommonActions
+  before_action :set_genres, except: [:update]
+  before_action :set_user_profile, only: [:show]
+  
   def index
-    @genres = Genre.where(application_status: true)
     sort = params[:sort]
     if sort == "followings"
       @user_profile = User.find(params[:user_id])
@@ -14,8 +19,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user_profile = User.find(params[:id])
-    @genres = Genre.where(application_status: true)
     @youtubers = Youtuber.where(user_id: @user_profile.id).page(params[:page]).per(10).includes(:genre, :comments, :favorites)
   end
 
