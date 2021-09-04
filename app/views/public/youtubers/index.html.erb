@@ -12,7 +12,7 @@
       <p class="title--blue"><%= @genre.genre_name %>一覧</p>
     <% elsif params[:sort] == "genre-search-all" %>
       <p class="title--blue">全てのジャンル</p>
-    <% elsif params[:sort] == "search" %>
+    <% elsif params[:category] == "search-by-post" %>
       <p class="title--blue"><%= "「#{params[:keyword]}」の投稿検索結果" %></p>
     <% end %>
 
@@ -28,7 +28,6 @@
       <div class="paginate">
         <%= paginate @youtubers %>
       </div>
-
 
     </div>
 
