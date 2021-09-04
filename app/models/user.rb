@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :user_name, presence: true, length: { in: 1..22 }
   validates :introduce, length: { maximum: 200 }
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -46,5 +46,4 @@ class User < ApplicationRecord
   def self.search(keyword)
     where(["user_name like?", "%#{keyword}%"])
   end
-
 end

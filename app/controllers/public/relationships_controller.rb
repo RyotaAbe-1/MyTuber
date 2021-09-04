@@ -1,6 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   skip_before_action :authenticate_admin!
-  
+
   def follow
     current_user.follow(params[:id])
     page = params[:page]
@@ -24,5 +24,4 @@ class Public::RelationshipsController < ApplicationController
       @youtuber = Youtuber.find(params[:youtuber_id])
     end
   end
-
 end

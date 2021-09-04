@@ -25,7 +25,7 @@ class Public::YoutubersController < ApplicationController
       @youtubers = Youtuber.where(user_id: user_ids).or(Youtuber.where(user_id: current_user.id)).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     elsif sort == "favorite"
       youtuber_ids = current_user.favorites.select(:youtuber_id)
-      @youtubers =Youtuber.where(id: youtuber_ids).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
+      @youtubers = Youtuber.where(id: youtuber_ids).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")
     elsif sort == "genre-search"
       @genre = Genre.find(params[:genre_id])
       @youtubers = Youtuber.where(genre_id: @genre.id).page(params[:page]).per(10).includes(:user, :genre, :comments, :favorites).order("created_at DESC")

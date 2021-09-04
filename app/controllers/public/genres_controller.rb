@@ -3,7 +3,7 @@ class Public::GenresController < ApplicationController
   include CommonActions
   before_action :set_genres
   before_action :set_current_user_profile
-  
+
   def new
     @genre = Genre.new
   end

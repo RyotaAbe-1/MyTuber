@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :authenticate_user!
-  
+
   include CommonActions
   before_action :set_genres, except: [:update]
   before_action :set_user_profile, only: [:show]
-  
+
   def index
     sort = params[:sort]
     if sort == "followings"
@@ -33,5 +33,4 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:is_active)
   end
-
 end
