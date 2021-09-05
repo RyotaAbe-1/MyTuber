@@ -5,6 +5,6 @@ FactoryBot.define do
     password = Faker::Internet.password(min_length: 6)
     password { password }
     password_confirmation { password }
-    
+    introduce {Faker::Lorem.characters(number:100)}
   end
 end
