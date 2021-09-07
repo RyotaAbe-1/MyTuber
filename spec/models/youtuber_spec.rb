@@ -44,5 +44,17 @@ RSpec.describe Youtuber, "モデルに関するテスト" , type: :model do
       expect(youtuber.errors[:content]).to include("は200文字以内で入力してください")
     end
   end
+  context "依存性のテスト" do
+    it "投稿が消えたらその投稿に紐づくコメントも消えるか" do
+      youtuber = create(:youtuber)
+      3.times { create(:comment, youtuber_id: youtuber.id) }
+      expect { youtuber.destroy }.to change { Comment.count }.by(-3)
+    end
+    it "投稿が消えたらその投稿に紐付くお気に入りも消えるか" do
+      youtuber = create(:youtuber)
+      3.times { create(:favorite, youtuber_id: youtuber.id) }
+      expect { youtuber.destroy }.to change { Favorite.count }.by(-3)
+    end
+  end
   
 end
