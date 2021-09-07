@@ -25,6 +25,17 @@ RSpec.describe Genre, "モデルに関するテスト" , type: :model do
         expect(genre.errors[:genre_name]).to include("は22文字以内で入力してください")
       end
     end
+    context "一意性のバリデーションチェック" do
+      before do
+        create(:genre, genre_name: "aaa")
+      end
+      
+      it "ジャンル名が重複している場合にエラーメッセージが返ってきているか" do
+        genre = build(:genre, genre_name: "aaa")
+        expect(genre).to be_invalid
+        expect(genre.errors[:genre_name]).to include("はすでに存在します")
+      end
+    end
   end
   
 end
