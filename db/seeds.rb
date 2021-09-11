@@ -25,7 +25,7 @@ users.each do |user|
   rand(1..10).times do
     # number_of_genres = Genre.count
     # genre = Genre.find(rand(1..number_of_genres))
-    genre = Genre.where(genre_name: genres.sample)
+    genre = Genre.find_by(genre_name: genres.sample)
     UserGenre.create!(user_id: user.id, genre_id: genre.id)
   end
 end
