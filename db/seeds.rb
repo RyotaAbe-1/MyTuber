@@ -7,12 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-  email: "sample@gmail.com",
+  email: "admin@gmail.com",
   password: "111111",
   password_confirmation: "111111"
 )
-
-
 
 genres = ["お笑い", "政治", "ビジネス", "やってみた系", "ゲーム", "音楽", "料理", "旅行", "投資", "IT・技術", "車", "動物", "ファッション", "キャンプ", "商品", "キッズ", "美容", "漫画・アニメ", "筋トレ", "VTuber", "映画", "スポーツ", "芸能人", "釣り", "パチンコ", "競馬", "教育", "植物", "虫", "宗教"]
 genres.each do |genre|
@@ -23,25 +21,28 @@ users = ("a".."z").to_a
 users.each do |user|
   user = User.create!(user_name: Faker::Name.name, email: "#{user}@gmail.com", password: "111111", password_confirmation: "111111", introduce: Faker::Lorem.characters(number: 50))
   rand(1..10).times do
-    # number_of_genres = Genre.count
-    # genre = Genre.find(rand(1..number_of_genres))
     genre = Genre.find_by(genre_name: genres.sample)
     UserGenre.create!(user_id: user.id, genre_id: genre.id)
   end
 end
 
+
 20.times do
-  number_of_users = User.count
-  user = User.find(rand(1..number_of_users))
-  number_of_genres = Genre.count
-  genre = Genre.find(rand(1..number_of_genres))
+  first_user = User.first
+  last_user = User.last
+  first_genre = Genre.first
+  last_genre = Genre.last
+  user = User.find(rand(first_user.id..last_user.id))
+  genre = Genre.find(rand(first_genre.id..last_genre.id))
   Youtuber.create!(user_id: user.id, genre_id: genre.id, name: Faker::Lorem.characters(number: 10), evaluation: rand(1..5), content: Faker::Lorem.characters(number:100))
 end
 
 50.times do
-  number_of_users = User.count
-  user = User.find(rand(1..number_of_users))
-  number_of_youtubers = Youtuber.count
-  youtuber = Youtuber.find(rand(1..number_of_youtubers))
+  first_user = User.first
+  last_user = User.last
+  first_youtuber = Youtuber.first
+  last_youtuber = Youtuber.last
+  user = User.find(rand(first_user.id..last_user.id))
+  youtuber = Youtuber.find(rand(first_youtuber.id..last_youtuber.id))
   Comment.create!(youtuber_id: youtuber.id, user_id: user.id, content: Faker::Lorem.characters(number: 50))
 end
