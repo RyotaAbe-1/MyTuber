@@ -23,8 +23,9 @@ users = ("a".."z").to_a
 users.each do |user|
   user = User.create!(user_name: Faker::Name.name, email: "#{user}@gmail.com", password: "111111", password_confirmation: "111111", introduce: Faker::Lorem.characters(number: 50))
   rand(1..10).times do
-    number_of_genres = Genre.count
-    genre = Genre.find(rand(1..number_of_genres))
+    # number_of_genres = Genre.count
+    # genre = Genre.find(rand(1..number_of_genres))
+    genre = Genre.where(genre_name: genres.sample)
     UserGenre.create!(user_id: user.id, genre_id: genre.id)
   end
 end
