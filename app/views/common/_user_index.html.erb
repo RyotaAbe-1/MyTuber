@@ -1,0 +1,45 @@
+<div class="user-index__item">
+  <div>
+    <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "user-index__image" %>
+  </div>
+  
+  <p class="user-index__name">
+    <%= user.user_name %>
+  </p>
+  
+  <div class="user-index__genre">
+    <p class="user-index__genre-title">好きなジャンル：</p>
+    <span class="user-index__genre-item">
+      <% user.genres.each do |genre| %>
+        <%= genre.genre_name %>
+      <% end %>
+    </span>
+  </div>
+
+  <% if user_signed_in? %>
+  
+    <div class="user-index__follow">
+      <% unless user == current_user %>
+        <object class="follow_button_<%= user.id %>">
+          <%= render "public/relationships/relationship_user_index", user: user %>
+        </object>
+      <% end %>
+    </div>
+    
+    <% if current_user.followed?(user) %>
+      <span class="user-index__follow-message">フォローされています</span>
+    <% end %>
+    
+  <% elsif admin_signed_in? %>
+  
+    <div class="user-index__status">
+      <% if user.is_active == true %>
+        <p class="user-index__status--green">有効</p>
+      <% elsif user.is_active == false %>
+        <p class="user-index__status--red">退会</p>
+      <% end %>
+    </div>
+    
+  <% end %>
+
+</div>

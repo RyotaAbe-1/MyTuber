@@ -1,0 +1,31 @@
+<div class="user-show container">
+
+  <%= render "common/admin_profile_bar", user: @user_profile %>
+
+  <div class="center">
+    <p class="title--green"><%= @user_profile.user_name %>さんおすすめ</p>
+
+    <div class="container__content">
+      <% @youtubers.each do |youtuber| %>
+        <%= link_to admin_youtuber_path(youtuber), class: "user-show__link" do %>
+
+          <%= render "common/user_show", youtuber: youtuber %>
+
+        <% end %>
+      <% end %>
+
+      <div class="paginate">
+        <%= paginate @youtubers %>
+      </div>
+    </div>
+
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>

@@ -1,0 +1,5 @@
+<% if current_user.following?(youtuber.user) %>
+  <%= link_to "フォロー中", unfollow_path(youtuber.user, page: "post-index", youtuber_id: youtuber.id), method: :post, remote: true, class: "btn btn__small--blue" %>
+<% else %>
+  <%= link_to "フォローする", follow_path(youtuber.user, page: "post-index", youtuber_id: youtuber.id), method: :post, remote: true, class: "btn btn__small--green" %>
+<% end %>

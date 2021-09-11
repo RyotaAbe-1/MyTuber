@@ -1,0 +1,75 @@
+<div class="profile left">
+  <div class="profile__info">
+    <div class="profile__content">
+      <p class="profile__title--green">プロフィール</p>
+
+      <div class="profile__info-top">
+        <%= link_to admin_user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <% end %>
+      </div>
+
+      <p class="profile__name">
+        <%= user.user_name %>
+      </p>
+
+      <div class="profile__genre">
+        <p>好きなジャンル</p>
+        <ul class="profile__genre-list">
+          <% user.genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="profile__introduce">
+        <p>自己紹介</p>
+        <div class="profile__introduce-item">
+          <%= user.introduce %>
+        </div>
+      </div>
+      
+      <div class="profile__follow">
+        <div>
+          <%= link_to "フォロー中#{user.number_of_followings}人", admin_users_path(user_id: user.id, sort: "followings"), class: "profile__link" %>
+        </div>
+        <div>
+          <%= link_to "フォロワー#{user.number_of_followers}人", admin_users_path(user_id: user.id, sort: "followers"), class: "profile__link" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="profile__status">
+    <div class="profile__content">
+      <div class="profile__title">会員ステータス</div>
+
+      <div class="profile__current-status">
+        <% if user.is_active == true %>
+          <p>現在のステータス：<span class="profile__current-status--green">有効</span></p>
+        <% else %>
+          <p>現在のステータス：<span class="profile__current-status--red">退会</span></p>
+        <% end %>
+      </div>
+
+      <div class="profile__status-form">
+        <%= form_with model: [:admin, user], url: admin_user_path(user), local: true do |f| %>
+          <div class="profile__status-buttons">
+            <div>
+              <%= f.radio_button :is_active, "true", id: "is_active_true" %><label for="is_active_true">有効</label>
+            </div>
+            <div>
+              <%= f.radio_button :is_active, "false", id: "is_active_false" %><label for="is_active_false">退会</label>
+            </div>
+          </div>
+          <%= f.submit "変更", class: "btn btn__small--blue" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  
+</div>

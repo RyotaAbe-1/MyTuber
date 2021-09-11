@@ -1,0 +1,108 @@
+<div class="profile left">
+  
+  <div class="profile__info">
+    <div class="profile__content">
+      
+      <% if user.id == current_user.id %>
+        <p class="profile__title--blue">マイプロフィール</p>
+      <% else %>
+        <p class="profile__title--green">プロフィール</p>
+      <% end %>
+
+      <div class="profile__info-top">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "profile__image" %>
+        <% end %>
+        
+        <% if user.id != current_user.id %>
+          <div id="follow_button">
+            <%= render "public/relationships/relationship_profile_bar", user: user %>
+          </div>
+          
+          <% if current_user.followed?(user) %>
+            <span class="profile__follow-message">フォローされています</span>
+          <% end %>
+          
+        <% end %>
+      </div>
+
+      <p class="profile__name">
+        <%= user.user_name %>
+      </p>
+      
+      <div class="profile__genre">
+        <p>好きなジャンル</p>
+        <ul class="profile__genre-list">
+          <% user.genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <div class="profile__introduce">
+        <p>自己紹介</p>
+        <div class="profile__introduce-item">
+          <%= user.introduce %>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="profile__follow">
+      <div>
+        <%= link_to "フォロー中#{user.number_of_followings}人", users_path(user_id: user.id, sort: "followings"), class: "profile__link" %>
+      </div>
+      <div>
+        <%= link_to "フォロワー#{user.number_of_followers}人", users_path(user_id: user.id, sort: "followers"), class: "profile__link" %>
+      </div>
+    </div>
+    
+  </div>
+
+  <% if user.id != current_user.id %>
+    <div class="profile__common-genre">
+      <div class="profile__content">
+        <p class="profile__title">共通のジャンル</p>
+        <ul>
+          <% @common_genres.each do |genre| %>
+            <li class="profile__genre-list-item">
+              <%= genre.genre_name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="profile__sub">
+    <div class="profile__content">
+      <div>
+        <%= link_to "お気に入り一覧へ",youtubers_path(sort: "favorite"), class: "profile__link" %>
+      </div>
+      <% if user.id == current_user.id %>
+        <div>
+          <%= link_to "プロフィール編集", edit_user_path(current_user), class: "profile__link" %>
+        </div>
+        <div>
+          <%= link_to "退会", users_confirm_path, class: "profile__link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user.id == current_user.id %>
+    <div class="profile__comment">
+      <div class="profile__content">
+        <p class="profile__title">自分のコメント</p>
+        <% user.comments.includes(:youtuber).order("created_at DESC").limit(10).each do |comment| %>
+          <div class="profile__comment-item">
+            <%= link_to "#{comment.content}", youtuber_path(comment.youtuber), class: "profile__link" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

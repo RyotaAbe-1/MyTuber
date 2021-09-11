@@ -1,0 +1,36 @@
+<div class="sign-up-in">
+  <h2 class="sign-up-in_title">ログイン</h2>
+  <div class="sign-up-in__form">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
+      <%= render "public/shared/error_messages", resource: resource %>
+
+      <table>
+        <tr>
+          <td class="sign-up-in__form-item">メールアドレス</td>
+          <td>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
+          <td>
+            <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
+          </td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "ログイン", class: "btn btn__slim--blue" %>
+          </td>
+        </tr>
+      </table>
+      
+    <% end %>
+    
+  </div>
+</div>
+

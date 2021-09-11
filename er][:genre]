@@ -1,0 +1,26 @@
+
+[1mFrom:[0m /home/ec2-user/environment/MyTuber/app/controllers/public/users_controller.rb:27 Public::UsersController#update:
+
+    [1;34m21[0m: [32mdef[0m [1;34mupdate[0m
+    [1;34m22[0m:   user = [1;34;4mUser[0m.find(params[[33m:id[0m])
+    [1;34m23[0m:   user.update(user_params)
+    [1;34m24[0m:   [32mif[0m params[[33m:user[0m][[33m:genre[0m]
+    [1;34m25[0m:     params[[33m:user[0m][[33m:genre[0m].each [32mdo[0m |key, value|
+    [1;34m26[0m:       binding.pry
+ => [1;34m27[0m:       [32mif[0m value == [1;36mtrue[0m
+    [1;34m28[0m:         [32mif[0m [1;34;4mUserGenre[0m.where([35muser_id[0m: current_user.id)
+    [1;34m29[0m:           user_genre = [1;34;4mUserGenre[0m.where([35muser_id[0m: current_user.id)
+    [1;34m30[0m:           genre_id = [1;34;4mGenre[0m.find_by([35mgenre_name[0m: key).id
+    [1;34m31[0m:           user_genre.update([35mgenre_id[0m: genre_id)
+    [1;34m32[0m:         [32melse[0m
+    [1;34m33[0m:           genre_id = [1;34;4mGenre[0m.find_by([35mgenre_name[0m: key).id
+    [1;34m34[0m:           [1;34;4mUserGenre[0m.create([35muser_id[0m: current_user.id, [35mgenre_id[0m: genre_id)
+    [1;34m35[0m: 
+    [1;34m36[0m:         [32mend[0m
+    [1;34m37[0m:       [32mend[0m
+    [1;34m38[0m:     [32mend[0m
+    [1;34m39[0m:   [32mend[0m
+    [1;34m40[0m: 
+    [1;34m41[0m:   redirect_to user_path(user)
+    [1;34m42[0m: [32mend[0m
+

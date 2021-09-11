@@ -1,0 +1,54 @@
+<%= form_with model: youtuber, local: true do |f| %>
+　<table class="post__table">
+
+　  <% if @youtuber.errors.any? %>
+      <div class="error">
+        <% @youtuber.errors.full_messages.each do |message| %>
+          <p class="error__messages">
+            <%= message %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <tr>
+      <td>YouTuberの名前(22文字以内)</td>
+      <td class="post__name">
+        <%= f.text_field :name, class: "post__name-input" %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>ジャンル</td>
+      <td class="post__genre">
+        <%= f.collection_select(:genre_id, genres, :id, :genre_name, {prompt: "ジャンルを選択してください"}, class: "post__genre-input") %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>評価</td>
+      <td id="evaluate" data-score="<%= youtuber.evaluation %>" class="post__evaluation">
+        <%= f.hidden_field :evaluation, value: 'score' %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="post__area-label">おすすめポイント(200文字以内)</td>
+      <td class="post__area">
+        <%= f.text_area :content, class: "post__area-input" %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>
+        <% if edit_frag == true %>
+          <%= f.submit "変更を保存", class: "btn btn__big--blue" %>
+        <% else %>
+          <%= f.submit "投稿", class: "btn btn__big--green" %>
+        <% end %>
+      </td>
+    </tr>
+    
+  </table>
+<% end %>

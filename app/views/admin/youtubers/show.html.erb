@@ -1,0 +1,25 @@
+<div class="post-show container">
+
+  <%= render "common/admin_profile_bar", user: @user_profile %>
+
+  <div class="center">
+    <%= render "common/post_show", user: @user_profile, youtuber: @youtuber %>
+
+    <div class="comment">
+      <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
+      
+      <div class="paginate">
+        <%= paginate @youtuber_comments %>
+      </div>
+    </div>
+
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>

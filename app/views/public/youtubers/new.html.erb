@@ -1,0 +1,16 @@
+<div class="post container">
+
+  <%= render "common/profile_bar", user: @user_profile %>
+
+  <div class="center">
+    <div class="post__container">
+      <p class="title--blue">新規投稿画面</p>
+
+      <%= render "form", youtuber: @youtuber, genres: @genres, edit_frag: false %>
+
+    </div>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>

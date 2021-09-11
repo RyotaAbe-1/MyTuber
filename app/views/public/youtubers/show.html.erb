@@ -1,0 +1,52 @@
+<div class="post-show container">
+
+  <%= render "common/profile_bar", user: @user_profile, page: "post-show" %>
+
+  <div class="center">
+    <%= render "common/post_show", user: @user_profile, youtuber: @youtuber  %>
+
+    <% if @comment.errors.any? %>
+      <div class="error">
+        <% @comment.errors.full_messages.each do |message| %>
+          <p class="error__messages">
+            <%= message %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="comment">
+      <%= render "common/comment_index", youtuber: @youtuber, youtuber_comments: @youtuber_comments %>
+
+      <div class="paginate">
+        <%= paginate @youtuber_comments %>
+      </div>
+
+      <div class="comment__form" id="comment">
+        <h4>コメント投稿フォーム(100文字以内)</h4>
+        <%= form_with model: [@youtuber, @comment], local: true do |f| %>
+          <%= f.text_area :content, class: "comment__form-input" %>
+          <div class="comment__form-caution">
+            <p>誹謗中傷や,公序良俗に反するような不適切な内容を含むコメントをしないでください。見つけ次第削除しサービスの利用を停止させていただきます。</p>
+          </div>
+          <div class="comment__form-submit">
+            <%= f.submit "コメント投稿", class: "btn btn__big--green" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= link_to new_youtuber_path do %>
+      <button class="create-post">+</button>
+    <% end %>
+
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>

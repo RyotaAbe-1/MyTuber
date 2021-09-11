@@ -1,0 +1,7 @@
+<div class="post-show__favorite">
+  <% if @youtuber.favorited_by?(current_user) %>
+    <%= link_to "お気に入り#{youtuber.number_of_favorites}", youtuber_favorites_path(youtuber), method: :delete, remote: true, class: "btn btn__big--orange" %>
+  <% else %>
+    <%= link_to "お気に入り#{youtuber.number_of_favorites}", youtuber_favorites_path(youtuber), method: :post, remote: true, class: "btn btn__big--white" %>
+  <% end %>
+</div>

@@ -1,0 +1,1152 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+  $red: rgb(230, 66, 61);
+  $green: rgb(90, 200, 90);
+  $blue: rgb(20, 80, 201);
+  $orange: orange;
+  $white: white;
+  $black: black;
+  $background-gray: rgb(245, 245, 245);
+  $background-shadow: 1px 3px 4px 6px rgba(0,0,0,0.1);
+  $foreground-shadow: 1px 3px 3px 3px rgba(0,0,0,0.2);
+  $index-shadow: 6px 5px 2px 0px rgba(0,0,0,0.2);
+  $index-hover-shadow: 6px 5px 8px 0px rgba(0,0,0,0.2);
+  $title-shadow: 3px 2px 2px 1px rgba(0,0,0,0.3);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.headder {
+  width: 100%;
+  height: 90px;
+  padding: 0 20px;
+  background-color: #1C1D21;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+}
+.nav {
+  width: 450px;
+  height: 90px;
+  %__upper {
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__upper {
+    @extend %__upper;
+
+    &--before-log-in {
+      @extend %__upper;
+      width: 217px;
+      margin-left: auto;
+    }
+  }
+  &__lower {
+    margin-top: 14px;
+  }
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  $border-gray: 1px solid gray;
+  display: inline-block;
+  box-shadow: 2px 2px gray;
+  text-decoration: none;
+  text-align: center;
+
+  @mixin big-btn($background, $color, $border) {
+    width: 100px;
+    height: 32px;
+    border-radius: 5px;
+    line-height: 32px;
+    background-color: $background;
+    color: $color;
+    border: $border;
+  }
+  @mixin middle-btn($background, $color, $border) {
+    width: 80px;
+    height: 32px;
+    border-radius: 5px;
+    line-height: 32px;
+    background-color: $background;
+    color: $color;
+    border: $border;
+  }
+  @mixin slim-btn($background, $color, $border) {
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    padding: 1px 5px;
+    background-color: $background;
+    color: $color;
+    border: $border;
+    margin-top: 10px;
+  }
+  @mixin small-btn($background, $color, $border) {
+    height: 25px;
+    border-radius: 2px;
+    padding: 1px 5px;
+    background-color: $background;
+    color: $color;
+    border: $border;
+  }
+
+  &__big {
+    &--red {
+      @include big-btn($red, $white, none);
+    }
+    &--green {
+      @include big-btn($green, $white, none);
+    }
+    &--blue {
+      @include big-btn($blue, $white, none);
+    }
+    &--orange {
+      @include big-btn($orange, $white, none);
+    }
+    &--white {
+      @include big-btn($white, $black, $border-gray);
+    }
+  }
+  &__middle {
+    &--red {
+      @include middle-btn($red, $white, none);
+    }
+    &--green {
+      @include middle-btn($green, $white, none);
+    }
+    &--blue {
+      @include middle-btn($blue, $white, none);
+    }
+  }
+  &__slim {
+    &--green {
+      @include slim-btn($green, $white, none);
+    }
+    &--blue {
+      @include slim-btn($blue, $white, none);
+    }
+  }
+  &__small {
+    &--red {
+      @include small-btn($red, $white, none)
+    }
+    &--green {
+      @include small-btn($green, $white, none);
+    }
+    &--blue {
+      @include small-btn($blue, $white, none);
+    }
+  }
+  &__search {
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px gray;
+    background-color: $red;
+    color: white;
+    border: none;
+  }
+  &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: 3px 3px gray;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    box-shadow: none;
+  }
+}
+.error {
+  width: 85%;
+  margin: 30px auto;
+
+  &__messages {
+    color: red;
+  }
+}
+.error-devise {
+  color: red;
+  &__list {
+    margin: 10px 0 10px 30px;
+  }
+}
+.main {
+  min-height: 100vh;
+  padding-top: 90px;
+}
+.center {
+  width: 54%;
+  min-height: 90vh;
+  margin: 1% 1%;
+  position: relative;
+  background-color: $background-gray;
+  box-shadow: $background-shadow;
+}
+.left {
+  width: 22%;
+  min-height: 90vh;
+  margin: 1% 0 1% 1%;
+  background-color: $background-gray;
+  box-shadow: $background-shadow;
+}
+.right {
+  width: 20%;
+  min-height: 90vh;
+  margin: 1% 1% 1% 0;
+  background-color: $background-gray;
+  box-shadow: $background-shadow;
+}
+.container {
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    margin: 9% 5% 4% 5%;
+  }
+}
+.title {
+  @mixin title($background, $color) {
+    display: inline-block;
+    text-align: center;
+    padding: 2px 20px;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    border-radius: 3px;
+    background-color: $background;
+    color: $color;
+    box-shadow: $title-shadow;
+  }
+
+  &--green {
+    @include title($green, white);
+  }
+  &--blue {
+    @include title($blue, white)
+  }
+}
+.create-post {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border-radius: 50%;
+  font-size: 250%;
+  line-height: 0.9;
+  background-color: orange;
+  color: white;
+  box-shadow: 1px 1px gray;
+  z-index: 5;
+  &:hover {
+    position: absolute;
+    top: 9px;
+    right: 21px;
+    box-shadow: 2px 2px gray;
+  }
+  &:active {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    box-shadow: 1px 1px gray;
+  }
+}
+.back-top {
+  &__arrow-back {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-color: gray;
+    border-radius: 50%;
+    justify-content: center;
+    padding-top: 15px;
+    position: fixed;
+    right: 22%;
+    bottom: 20px;
+  }
+  &__arrow{
+    width: 20px;
+    height: 20px;
+    border: 4px solid;
+    border-color: white white transparent transparent;
+    transform: rotate(-45deg);
+  }
+}
+.profile {
+  @mixin common {
+    width: 90%;
+    margin: 3% auto 5% auto;
+    background-color: white;
+    margin-top: 15px;
+    box-shadow: $foreground-shadow;
+  }
+  @mixin title($background, $color) {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 2px 0;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    background-color: $background;
+    color: $color;
+    box-shadow: $title-shadow;
+  }
+
+  &__info {
+    width: 90%;
+    margin: 3% auto 5% auto;
+    background-color: white;
+    box-shadow: $foreground-shadow;
+  }
+  &__info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__title {
+    &--green {
+      @include title($green, white);
+    }
+    &--blue {
+      @include title($blue, white);
+    }
+  }
+  &__content {
+    margin: 0 auto;
+    padding: 4% 10%;
+  }
+  &__image {
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+    border-radius: 50%;
+    box-shadow: 1px 1px gray;
+    &:hover {
+      position: relative;
+      top: -1px;
+      left: -1px;
+      box-shadow: 3px 3px gray;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__follow-message {
+    width: 120px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    color: red;
+  }
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 15px 0;
+    word-wrap: break-word;
+  }
+  &__genre-list-item {
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  &__introduce {
+    margin: 10px 0;
+  }
+  &__introduce-item {
+    min-height: 150px;
+    word-break : break-all;
+    font-size: 12px;
+  }
+  &__follow {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__common-genre {
+    @include common;
+  }
+  &__sub {
+    @include common;
+  }
+  &__comment {
+    @include common;
+  }
+  &__comment-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__link {
+    text-decoration: none;
+    color: blue;
+  }
+
+
+  // adminで使用
+  &__status {
+    @include common;
+    text-align: center;
+  }
+  &__current-status {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    &--green {
+      color: green;
+    }
+    &--red {
+      color: red;
+    }
+  }
+  &__status-form {
+    margin-bottom: 30px;
+  }
+  &__status-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+
+}
+.genre-search {
+  @mixin title($background, $color) {
+    width: 75%;
+    text-align: center;
+    padding: 2px 0;
+    margin: 0 auto 25px auto;
+    border-radius: 3px;
+    background-color: $background;
+    color: $color;
+    box-shadow: $title-shadow;
+  }
+
+  &__content {
+    width: 92%;
+    margin: 3% auto;
+    padding: 4% 0;
+    background-color: white;
+    box-shadow: $foreground-shadow;
+  }
+  &__title {
+    &--orange {
+      @include title($orange, white);
+    }
+  }
+  &__list {
+    padding-left: 55px;
+    &--none {
+      list-style: none;
+    }
+  }
+  &__link {
+    line-height: 30px;
+    text-decoration: none;
+    color: blue;
+  }
+}
+
+.top {
+  &__image {
+    width: 100%;
+    height: 95vh;
+    background-image: image-url("pf_top.jpg");
+    background-position: top;
+    background-size: cover;
+  }
+  &__content {
+    width: 100%;
+    height: 95vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__content-item {
+    width: 35%;
+    height: 35%;
+    padding: 30px 20px;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 35px;
+    line-height: 2.5;
+
+    &--red {
+      color: $red;
+    }
+    &--blue {
+      color: $blue;
+    }
+  }
+}
+.sign-up-in {
+  width: 60%;
+  margin: 60px auto;
+
+  &__title {
+    margin: 20px 0;
+  }
+  &__form {
+    width: 500px;
+    margin: 80px auto;
+  }
+  &__form-item {
+    padding: 10px 30px 10px 0;
+  }
+  &__form-input {
+    width: 200px;
+    height: 30px;
+  }
+}
+.mypage-edit {
+  &__left {
+    width: 77%;
+    min-height: 90vh;
+    margin: 1%;
+    background-color: rgb(245, 245, 245);
+    box-shadow: $background-shadow;
+  }
+  &__content {
+    min-height: 97%;
+    margin: 1%;
+    padding-top: 50px;
+    background-color: white;
+    position: relative;
+    box-shadow: $background-shadow;
+  }
+  &__top {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__table {
+    width: 60%;
+  }
+  &__form-label {
+    margin: 20px 0;
+  }
+  &__form-field {
+    width: 270px;
+    height: 30px;
+  }
+  &__form-area {
+    resize: none;
+    width: 550px;
+    height: 120px;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  &__form-submit {
+    text-align: center;
+  }
+  &__image {
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.3);
+    border-radius: 50%;
+  }
+  &__middle {
+    width: 550px;
+    margin: 30px auto;
+  }
+  &__bottom {
+    width: 550px;
+    margin: 30px auto;
+  }
+}
+.user-index {
+  &__link {
+    text-decoration: none;
+  }
+  &__item {
+    height: 80px;
+    position: relative;
+    margin-bottom: 1%;
+    padding: 1% 3%;
+    background-color: white;
+    display: flex;
+    color: black;
+    box-shadow: $index-shadow;
+
+    &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: $index-hover-shadow;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__image-tag {
+  }
+  &__image {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+  }
+  &__name {
+    width: 25%;
+    align-self: center;
+    margin: 0 2% 0 4%;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+  &__genre {
+    width: 40%;
+    margin-right: 7%;
+    align-self: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__genre-title {
+    font-size: 15px;
+  }
+  &__genre-item {
+    font-size: 13px;
+  }
+  &__follow {
+    width: 120px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
+  }
+  &__follow-message {
+    width: 120px;
+    position: absolute;
+    bottom: 1px;
+    right: 15px;
+    font-size: 12px;
+    color: red;
+  }
+
+
+  // adminで使用
+  &__status {
+    width: 80px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
+
+    &--green {
+      color: green;
+    }
+    &--red {
+      color: red;
+    }
+  }
+
+
+}
+.user-show {
+  &__link {
+    text-decoration: none;
+  }
+  &__item {
+    height: 140px;
+    position: relative;
+    margin-bottom: 1%;
+    padding: 1% 3%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    color: black;
+    box-shadow: $index-shadow;
+
+    &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: $index-hover-shadow;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__name {
+    width: 25%;
+    margin: 0 2% 0 4%;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+  &__evaluation {
+    min-width: 142px;
+    margin-right: 3%;
+  }
+  &__evaluation-score {
+    text-align: center;
+    margin-bottom: 6px;
+    color: red;
+  }
+  &__genre {
+    width: 40%;
+    word-wrap: break-word;
+  }
+  &__reaction {
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    color: green;
+    font-size: 13px;
+  }
+}
+.post {
+  &__container {
+    width: 97%;
+    min-height: 97%;
+    margin: 1% auto;
+    background-color: white;
+    box-shadow: $foreground-shadow;
+  }
+  &__table {
+    margin: 50px auto;
+  }
+  &__name {
+    padding: 20px 0;
+  }
+  &__name-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__genre {
+    padding: 20px 0;
+  }
+  &__genre-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__evaluation {
+    padding: 20px 0;
+  }
+  &__area-label {
+    vertical-align: top;
+    padding: 20px 60px 0 0;
+  }
+  &__area {
+    padding: 20px 0;
+  }
+  &__area-input {
+    width: 350px;
+    height: 100px;
+    resize: none;
+  }
+}
+.post-index {
+  &__link {
+    text-decoration: none;
+  }
+  &__item {
+    height: 140px;
+    position: relative;
+    margin-bottom: 1%;
+    padding: 1% 3%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    color: black;
+    box-shadow: $index-shadow;
+
+    &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: $index-hover-shadow;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__name {
+    width: 25%;
+    margin: 0 2% 0 4%;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+  &__evaluation {
+    min-width: 142px;
+    margin-right: 3%;
+  }
+  &__evaluation-score {
+    text-align: center;
+    margin-bottom: 6px;
+    color: red;
+  }
+  &__genre {
+    width: 40%;
+    word-wrap: break-word;
+  }
+  &__sub {
+    height: 30px;
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &__user {
+    display: flex;
+    margin-right: 20px;
+  }
+  &__image {
+    vertical-align: bottom;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px gray;
+
+    &:hover {
+      position: relative;
+      top: -1px;
+      left: -1px;
+      box-shadow: 3px 3px gray;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__user-name {
+    margin: 0 10px;
+    font-size: 13px;
+    align-self: flex-end;
+  }
+  &__reaction {
+    color: green;
+    font-size: 13px;
+  }
+}
+.post-show {
+  &__content {
+    width: 90%;
+    margin: 8% auto 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    box-shadow: $foreground-shadow;
+  }
+  &__main {
+    width: 60%;
+    margin-bottom: 15px;
+  }
+  &__name {
+    height: 90px;
+    word-wrap: break-word;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &__genre {
+    height: 70px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  &__link {
+    color: blue;
+    text-decoration: none;
+  }
+  &__evaluation {
+    max-width: 220px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__evaluation-score {
+    color: red;
+  }
+  &__introduce {
+    max-width: 400px;
+    min-height: 190px;
+    padding-top: 20px;
+    margin: 0 auto;
+    word-wrap: break-word;
+  }
+  &__introduce-item {
+    font-size: 14px;
+  }
+  &__sub {
+    width: 20%;
+    text-align: center;
+    position: relative;
+  }
+  &__edit {
+    padding-top: 30px;
+  }
+  &__delete {
+    padding-top: 30px;
+  }
+  &__favorite {
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+  }
+
+
+  // adminで使用
+  &__reaction {
+    width: 160px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+  }
+
+
+  &__time {
+    width: 200px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+}
+.comment {
+  width: 85%;
+  margin: 1% auto;
+  &__index {
+    margin-bottom: 5%;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    color: green;
+  }
+  &__link {
+    text-decoration: none;
+    color: blue;
+  }
+  &__item {
+    min-height: 120px;
+    margin-bottom: 2%;
+    background-color: white;
+    display: flex;
+    position: relative;
+    box-shadow: $foreground-shadow;
+  }
+  &__image-tag {
+    width: 15%;
+    padding-top: 30px;
+    text-align: center;
+  }
+  &__image {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px gray;
+
+    &:hover {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    box-shadow: 3px 3px gray;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      box-shadow: none;
+    }
+  }
+  &__main {
+    width: 70%;
+  }
+  &__name {
+    padding-top: 5px;
+    word-wrap: break-word;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &__area {
+    width: 95%;
+    min-height: 85px;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+  }
+  &__delete-tag {
+    width: 15%;
+  }
+  &__delete {
+    position: absolute;
+    top: 47px;
+    right: 10px;
+  }
+  &__time {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    font-size: 10px;
+  }
+  &__form {
+    border-top: 1px solid black;
+    padding: 40px 70px;
+    margin: 60px 0;
+  }
+  &__form-input {
+    resize: none;
+    width: 100%;
+    min-height: 100px;
+    margin: 10px 0;
+  }
+  &__form-caution {
+    padding: 5px;
+    background-color: rgba(165, 131, 209, 0.45);
+  }
+  &__form-submit {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+.add-genre {
+  &__container {
+    width: 97%;
+    min-height: 97%;
+    margin: 1% auto;
+    padding-top: 100px;
+    background-color: white;
+    position: relative;
+    box-shadow: $foreground-shadow;
+  }
+
+
+  // adminで使用
+  &__item {
+    width: 90%;
+    height: 50px;
+    position: relative;
+    margin: 2% auto;
+    padding: 1% 3%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    box-shadow: $foreground-shadow;
+  }
+  &__name {
+    min-width: 25%;
+    align-self: center;
+    margin: 0 2% 0 4%;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+  }
+  &__buttons {
+    width: 100px;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__form-admin {
+    max-width: 500px;
+    margin: 40px auto;
+  }
+
+
+  &__hr {
+    margin: 50px 0;
+  }
+  &__form {
+    height: 400px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  &__table {
+    width: 100%;
+  }
+  &__caution {
+    height: 60px;
+  }
+  &__genre {
+    padding: 15px 0;
+  }
+  &__genre-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__submit {
+    height: 60px;
+  }
+}
+.confirm {
+  width: 60%;
+  margin: 60px auto;
+
+  &__title {
+    margin: 20px 0;
+  }
+  &__content {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__caution {
+    margin-top: 80px;
+    margin-bottom: 60px;
+    color: red;
+  }
+  &__buttons {
+    width: 270px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.paginate {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.footer {
+  width: 100%;
+  height: 5vh;
+  background-color: #efbe69;
+}
