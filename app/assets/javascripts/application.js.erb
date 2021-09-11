@@ -37,7 +37,9 @@ $(document).on("turbolinks:load", function() {
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+    starOn: "<%= image_url("star-on.png") %>",
+    starOff: "<%= image_url("star-off.png") %>",
+    starHalf: "<%= image_url("star-half.png") %>"
   });
 
   <!--public/youtubers/_form-->
@@ -46,9 +48,9 @@ $(document).on("turbolinks:load", function() {
     score: function() {
       return $(this).attr('data-score');
     },
-    starOn: "<%= asset_path("star-on.png") %>",
-    starOff: "<%= asset_path("star-off.png") %>",
-    starHalf: "<%= asset_path("star-half.png") %>",
+    starOn: "<%= image_url("star-on.png") %>",
+    starOff: "<%= image_url("star-off.png") %>",
+    starHalf: "<%= image_url("star-half.png") %>",
     scoreName: 'youtuber[evaluation]',
     number: 5,
     half: true
