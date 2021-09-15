@@ -73,8 +73,6 @@ gem 'kaminari', '~> 1.2.1'
 gem "jquery-rails"
 gem 'dotenv-rails'
 gem 'faker'
-gem 'omniauth-google-oauth2'
-
 
 group :production do
   gem 'mysql2'
