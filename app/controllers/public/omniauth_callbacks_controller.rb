@@ -3,7 +3,19 @@
 class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
+  
+  def google_oauth2
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication 
+      set_flash_message(:notice, :success, kind: 'google') if is_navigational_format?
+    else
+      session["devise.google_data"] = request.env["omniauth.auth"][:info]
+      redirect_to 新規登録ページ
+    end
+  end
+  
   # You should also create an action method in this controller like this:
   # def twitter
   # end
