@@ -96,14 +96,17 @@
     border: $border;
   }
   @mixin slim-btn($background, $color, $border) {
-    width: 100px;
+    max-width: 200px;
+    min-width: 100px;
     height: 30px;
     border-radius: 2px;
-    padding: 1px 5px;
+    padding: 1px 15px;
     background-color: $background;
     color: $color;
     border: $border;
     margin-top: 10px;
+    font-size: 14px;
+    line-height: 30px;
   }
   @mixin small-btn($background, $color, $border) {
     height: 25px;
@@ -516,8 +519,24 @@
     margin: 20px 0;
   }
   &__form {
-    width: 500px;
     margin: 80px auto;
+    display: flex;
+    justify-content: center;
+  }
+  &__email {
+    width: 500px;
+    padding: 1px;
+    border: 1px solid lightgray;
+  }
+  &__email-top {
+    background-color: $background-gray;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+    padding: 5px 0;
+    text-align: center;
+  }
+  &__form-table {
+    margin: 25px 20px;
   }
   &__form-item {
     padding: 10px 30px 10px 0;
@@ -525,6 +544,22 @@
   &__form-input {
     width: 200px;
     height: 30px;
+  }
+  &__sns {
+    width: 30%;
+    height: 150px;
+    border: 1px solid lightgray;
+    margin-left: 5%;
+    text-align: center;
+  }
+  &__sns-top {
+    padding: 5px 0;
+    background-color: $background-gray;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+  }
+  &__sns-item {
+    margin-top: 20px;
   }
 }
 .mypage-edit {

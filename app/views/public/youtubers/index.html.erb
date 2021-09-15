@@ -16,6 +16,9 @@
     <% end %>
 
     <div class="container__content">
+      
+      <%= render "common/flash" %>
+      
       <% @youtubers.each do |youtuber| %>
         <%= link_to youtuber_path(youtuber), class: "post-index__link" do %>
 
