@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions',
     passwords: 'public/passwords',
+    omniauth_callbacks: 'public/omniauth_callbacks'
   }
 
   namespace :admin do
