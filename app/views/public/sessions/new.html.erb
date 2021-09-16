@@ -1,36 +1,48 @@
 <div class="sign-up-in">
-  <h2 class="sign-up-in_title">ログイン</h2>
+  <h2 class="sign-up-in__title">ログイン</h2>
   <div class="sign-up-in__form">
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    
-      <%= render "public/shared/error_messages", resource: resource %>
-
-      <table>
-        <tr>
-          <td class="sign-up-in__form-item">メールアドレス</td>
-          <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
-          <td>
-            <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
-          </td>
-        </tr>
-        
-        <tr>
-          <td></td>
-          <td>
-            <%= f.submit "ログイン", class: "btn btn__slim--blue" %>
-          </td>
-        </tr>
-      </table>
+    <div class="sign-up-in__email">
+      <div class="sign-up-in__email-top">
+        <p>メールアドレスとパスワードでログイン</p>
+      </div>
       
-    <% end %>
-    
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <table class="sign-up-in__form-table">
+          <tr>
+            <td class="sign-up-in__form-item">メールアドレス</td>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up-in__form-input" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sign-up-in__form-item">パスワード(6文字以上)</td>
+            <td>
+              <%= f.password_field :password, autocomplete: "current-password", class: "sign-up-in__form-input" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <%= f.submit "ログイン", class: "btn btn__slim--blue" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="sign-up-in__sns">
+      <div class="sign-up-in__sns-top">
+        <p>SNSアカウントでログイン</p>
+      </div>
+      <div class="sign-up-in__sns-item">
+        <%= link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn__slim--blue" %>
+      </div>
+    </div>
+
   </div>
 </div>
 
