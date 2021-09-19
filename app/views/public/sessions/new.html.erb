@@ -6,7 +6,7 @@
       <div class="sign-up-in__email-top">
         <p>メールアドレスとパスワードでログイン</p>
       </div>
-      
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <table class="sign-up-in__form-table">
@@ -38,8 +38,11 @@
       <div class="sign-up-in__sns-top">
         <p>SNSアカウントでログイン</p>
       </div>
-      <div class="sign-up-in__sns-item">
+      <div class="sign-up-in__sns-gmail">
         <%= link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn__slim--blue" %>
+      </div>
+      <div class="sign-up-in__sns-twitter">
+        <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn__slim--light-blue" %>
       </div>
     </div>
 

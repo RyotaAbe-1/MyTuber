@@ -9,11 +9,19 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def google_oauth2
+    authorization("Google")
+  end
+  
+  def twitter
+    authorization("Twitter")
+  end
+  
+  def authorization(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
-      flash[:notice] = "Googleアカウントによる認証に成功しました。"
+      flash[:notice] = "#{provider}アカウントによる認証に成功しました。"
     else
       session["devise.google_data"] = request.env["omniauth.auth"][:info]
       flash[:error] = "会員登録をしてください"
