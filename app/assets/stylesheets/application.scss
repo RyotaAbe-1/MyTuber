@@ -17,6 +17,7 @@
   $red: rgb(230, 66, 61);
   $green: rgb(90, 200, 90);
   $blue: rgb(20, 80, 201);
+  $light-blue: rgb(29, 161, 242);
   $orange: orange;
   $white: white;
   $black: black;
@@ -151,6 +152,9 @@
     }
     &--blue {
       @include slim-btn($blue, $white, none);
+    }
+    &--light-blue {
+      @include slim-btn($light-blue, $white, none)
     }
   }
   &__small {
@@ -547,7 +551,7 @@
   }
   &__sns {
     width: 30%;
-    height: 150px;
+    min-height: 150px;
     border: 1px solid lightgray;
     margin-left: 5%;
     text-align: center;
@@ -558,8 +562,12 @@
     border-bottom: 1px solid lightgray;
     font-weight: bold;
   }
-  &__sns-item {
+  &__sns-gmail {
     margin-top: 20px;
+  }
+  &__sns-twitter {
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 }
 .mypage-edit {
