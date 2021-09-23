@@ -25,7 +25,7 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session["devise.google_data"] = request.env["omniauth.auth"][:info]
       flash[:error] = "会員登録をしてください"
-      redirect_to new_user_registration_path
+      render "public/registrations/new"
     end
   end
 
