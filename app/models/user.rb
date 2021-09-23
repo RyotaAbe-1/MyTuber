@@ -39,11 +39,6 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20],
         user_name: auth.info.name,
       )
-      SnsCredential.new(
-        provider: auth.provider,
-        uid: auth.uid,
-        user_id: user.id
-      )
     end
     user
   end
