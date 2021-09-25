@@ -4,7 +4,7 @@ class Admin::GenresController < ApplicationController
   def new
     @genres = Genre.where(application_status: false)
     @genre = Genre.new
-    @genre_all = Genre.all
+    @genre_all = Genre.where(application_status: true)
   end
 
   def create
