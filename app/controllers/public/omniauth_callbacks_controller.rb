@@ -19,9 +19,12 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def authorization(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
-    if @user.persisted?
+    if (@user.persisted?) && (@user.is_active == true)
       sign_in_and_redirect @user, event: :authentication
       flash[:notice] = "#{provider}アカウントによる認証に成功しました。"
+    elsif (@user.persisted?) && (@user.is_active == false)
+      flash[:error] = "退会済みです"
+      redirect_to new_user_registration_path
     else
       session["devise.google_data"] = request.env["omniauth.auth"][:info]
       flash[:error] = "会員登録をしてください"
