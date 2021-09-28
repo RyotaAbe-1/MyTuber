@@ -97,8 +97,18 @@
     border: $border;
   }
   @mixin slim-btn($background, $color, $border) {
-    max-width: 200px;
     min-width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    padding: 1px 15px;
+    background-color: $background;
+    color: $color;
+    border: $border;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  @mixin wide-btn($background, $color, $border) {
+    width: 150px;
     height: 30px;
     border-radius: 2px;
     padding: 1px 15px;
@@ -155,6 +165,17 @@
     }
     &--light-blue {
       @include slim-btn($light-blue, $white, none)
+    }
+  }
+  &__wide {
+    &--red {
+      @include wide-btn($red, $white, none);
+    }
+    &--blue {
+      @include wide-btn($blue, $white, none);
+    }
+    &--light-blue {
+      @include wide-btn($light-blue, $white, none)
     }
   }
   &__small {
@@ -567,7 +588,9 @@
   }
   &__sns-twitter {
     margin-top: 10px;
-    margin-bottom: 20px;
+  }
+  &__sns-yahoo {
+    margin-top: 10px;
   }
 }
 .mypage-edit {

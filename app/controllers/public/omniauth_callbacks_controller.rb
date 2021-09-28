@@ -11,11 +11,15 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     authorization("Google")
   end
-  
+
   def twitter
     authorization("Twitter")
   end
   
+  def yahoojp
+    authorization("Yahoo")
+  end
+
   def authorization(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
