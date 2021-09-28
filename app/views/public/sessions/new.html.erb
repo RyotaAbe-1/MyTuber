@@ -39,10 +39,13 @@
         <p>SNSアカウントでログイン</p>
       </div>
       <div class="sign-up-in__sns-gmail">
-        <%= link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn__slim--blue" %>
+        <%= link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn__wide--blue" %>
       </div>
       <div class="sign-up-in__sns-twitter">
-        <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn__slim--light-blue" %>
+        <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn__wide--light-blue" %>
+      </div>
+      <div class="sign-up-in__sns-yahoo">
+        <%= link_to "Yahooでログイン", user_yahoojp_omniauth_authorize_path, method: :post, class: "btn btn__wide--red" %>
       </div>
     </div>
 

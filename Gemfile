@@ -77,6 +77,7 @@ gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem 'omniauth-yahoojp'
 
 group :production do
   gem 'mysql2'

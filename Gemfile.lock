@@ -133,6 +133,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
+    httpauth (0.2.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
@@ -213,6 +214,10 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    omniauth-yahoojp (0.2.1)
+      httpauth
+      omniauth (>= 1.0)
+      omniauth-oauth2 (>= 1.1)
     orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.2.0)
@@ -394,6 +399,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   omniauth-twitter
+  omniauth-yahoojp
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.5)
