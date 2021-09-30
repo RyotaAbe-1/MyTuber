@@ -26,22 +26,29 @@ users.each do |user|
   end
 end
 
+first_user = User.first
+last_user = User.last
+first_genre = Genre.first
+last_genre = Genre.last
 
-20.times do
-  first_user = User.first
-  last_user = User.last
-  first_genre = Genre.first
-  last_genre = Genre.last
+200.times do
+  follower = User.find(rand(first_user.id..last_user.id))
+  followed = User.find(rand(first_user.id..last_user.id))
+  if (follower != followed) && (Relationship.where(follower_id: follower.id, followed_id: followed.id).empty?)
+    Relationship.create!(follower_id: follower.id, followed_id: followed.id)
+  end
+end
+
+80.times do
   user = User.find(rand(first_user.id..last_user.id))
   genre = Genre.find(rand(first_genre.id..last_genre.id))
   Youtuber.create!(user_id: user.id, genre_id: genre.id, name: Faker::Lorem.characters(number: 10), evaluation: rand(1..5), content: Faker::Lorem.characters(number:100))
 end
 
-50.times do
-  first_user = User.first
-  last_user = User.last
-  first_youtuber = Youtuber.first
-  last_youtuber = Youtuber.last
+first_youtuber = Youtuber.first
+last_youtuber = Youtuber.last
+
+200.times do
   user = User.find(rand(first_user.id..last_user.id))
   youtuber = Youtuber.find(rand(first_youtuber.id..last_youtuber.id))
   Comment.create!(youtuber_id: youtuber.id, user_id: user.id, content: Faker::Lorem.characters(number: 50))
