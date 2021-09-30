@@ -46,7 +46,7 @@ https://docs.google.com/spreadsheets/d/1YGDH1a3zvSwrRfFufOaR_6SkBiZQgjOnr5dvkLhp
 - テスト(Rspec, factory_bot, faker)
 - コードチェック(rubocop-airbnb, bullet, pry-byebug)
 - SNS認証(omniauth)
-- 各種API(Google, Twitter)
+- 各種API(Google, Twitter, Yahoo)
 - 自動デプロイ(GitHub Actions)
 
 ## 開発環境
