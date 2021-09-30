@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
     elsif sort == "followers"
       @users = @user_profile.followers.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
     else
-      @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres)
+      @users = User.where.not(id: current_user.id).page(params[:page]).includes(:genres).order("id DESC")
     end
   end
 
