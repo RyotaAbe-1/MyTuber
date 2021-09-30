@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
       @user_profile = User.find(params[:user_id])
       @users = @user_profile.followers.page(params[:page]).includes(:genres).order("relationships.created_at DESC")
     else
-      @users = User.page(params[:page]).includes(:genres)
+      @users = User.page(params[:page]).includes(:genres).order("id DESC")
     end
   end
 
