@@ -53,3 +53,11 @@ last_youtuber = Youtuber.last
   youtuber = Youtuber.find(rand(first_youtuber.id..last_youtuber.id))
   Comment.create!(youtuber_id: youtuber.id, user_id: user.id, content: Faker::Lorem.characters(number: 50))
 end
+
+100.times do
+  user = User.find(rand(first_user.id..last_user.id))
+  youtuber = Youtuber.find(rand(first_youtuber.id..last_youtuber.id))
+  if Favorite.where(user_id: user.id, youtuber_id: youtuber.id).empty?
+    Favorite.create!(user_id: user.id, youtuber_id: youtuber.id)
+  end
+end
