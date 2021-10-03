@@ -1,0 +1,20 @@
+<%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+
+  <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
+  <%= f.hidden_field :email, value: "#{current_user.email}" %>
+  
+  <div>
+    <%= f.label :subject, "件名" %>
+    <%= f.text_field :subject %>
+  </div>
+
+  <div>
+    <%= f.label :message, "お問い合わせ内容" %>
+    <%= f.text_area :message, size: "10x10" %>
+  </div>
+
+  <div>
+    <%= f.submit "入力内容確認" %>
+  </div>
+  
+<% end %>

@@ -33,6 +33,11 @@ Rails.application.routes.draw do
     post '/follow/:id' => 'relationships#follow', as: 'follow'
     post '/unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     get '/search' => 'searches#search', as: 'search'
+    
+    resources :contacts, only: [:new, :create]
+    post '/contacts/confirm' => 'contacts#confirm', as: 'confirm'
+    post '/contacts/back' => 'contacts#back', as: 'back'
+    get '/done', to: 'contacts#done', as: 'done'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
