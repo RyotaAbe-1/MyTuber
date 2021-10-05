@@ -1,20 +1,40 @@
-<%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+<div class="contact">
+  <h2 class="contact__title">お問い合わせフォーム</h2>
 
-  <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
-  <%= f.hidden_field :email, value: "#{current_user.email}" %>
-  
-  <div>
-    <%= f.label :subject, "件名" %>
-    <%= f.text_field :subject %>
+  <div class="contact__content">
+    <table class="contact__table">
+
+      <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+        <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
+        <%= f.hidden_field :email, value: "#{current_user.email}" %>
+
+        <tr>
+          <td class="contact__subject">
+            <%= f.label :subject, "件名" %>
+          </td>
+          <td>
+            <%= f.text_field :subject, class: "contact__subject-input" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="contact__message">
+            <%= f.label :message, "内容" %>
+          </td>
+          <td class="contact__message-label">
+            <%= f.text_area :message, size: "25x10", class: "contact__message-input" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "入力内容確認", class: "btn btn__big--green" %>
+          </td>
+        </tr>
+      <% end %>
+
+    </table>
   </div>
 
-  <div>
-    <%= f.label :message, "お問い合わせ内容" %>
-    <%= f.text_area :message, size: "10x10" %>
-  </div>
-
-  <div>
-    <%= f.submit "入力内容確認" %>
-  </div>
-  
-<% end %>
+</div>

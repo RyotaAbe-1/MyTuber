@@ -822,11 +822,11 @@
   &__evaluation {
     padding: 20px 0;
   }
-  &__area-label {
+  &__area {
     vertical-align: top;
     padding: 20px 60px 0 0;
   }
-  &__area {
+  &__area-label {
     padding: 20px 0;
   }
   &__area-input {
@@ -1211,6 +1211,47 @@
   justify-content: center;
   margin-top: 2%;
 }
+
+.contact {
+  width: 900px;
+  margin: 60px auto;
+  border: 1px solid lightgray;
+
+  &__title {
+    padding: 5px 0;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+    background-color: $background-gray;
+  }
+  &__content {
+    width: 60%;
+    margin: 0 auto;
+  }
+  &__table {
+    margin: 50px auto;
+  }
+  &__subject {
+    min-width: 100px;
+    padding: 20px 0;
+  }
+  &__subject-input {
+    width: 250px;
+    height: 30px;
+  }
+  &__message {
+    vertical-align: top;
+    padding: 20px 0;
+  }
+  &__message-label {
+    padding: 20px 0;
+  }
+  &__message-input {
+    width: 350px;
+    height: 100px;
+    resize: none;
+  }
+}
+
 .footer {
   width: 100%;
   height: 5vh;
