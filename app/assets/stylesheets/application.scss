@@ -157,6 +157,9 @@
     }
   }
   &__slim {
+    &--red {
+      @include slim-btn($red, $white, none);
+    }
     &--green {
       @include slim-btn($green, $white, none);
     }
@@ -1225,10 +1228,18 @@
   }
   &__content {
     width: 60%;
-    margin: 0 auto;
+    margin: 50px auto;
   }
   &__table {
-    margin: 50px auto;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &__name {
+    width: 150px;
+    padding: 20px 0;
+  }
+  &__email {
+    padding: 20px 0;
   }
   &__subject {
     min-width: 100px;
@@ -1249,6 +1260,15 @@
     width: 350px;
     height: 100px;
     resize: none;
+  }
+  &__message-confirm {
+    word-break: break-all;
+  }
+  &__confirm-btn {
+    width: 60%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
   }
 }
 
