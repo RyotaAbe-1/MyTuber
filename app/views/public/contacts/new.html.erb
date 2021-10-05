@@ -2,12 +2,22 @@
   <h2 class="contact__title">お問い合わせフォーム</h2>
 
   <div class="contact__content">
-    <table class="contact__table">
 
-      <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
-        <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
-        <%= f.hidden_field :email, value: "#{current_user.email}" %>
+    <% if @contact.errors.any? %>
+      <div class="error">
+        <% @contact.errors.full_messages.each do |message| %>
+          <p class="error__messages">
+            <%= message %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
 
+    <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+      <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
+      <%= f.hidden_field :email, value: "#{current_user.email}" %>
+
+      <table class="contact__table">
         <tr>
           <td class="contact__subject">
             <%= f.label :subject, "件名" %>
@@ -32,9 +42,9 @@
             <%= f.submit "入力内容確認", class: "btn btn__big--green" %>
           </td>
         </tr>
-      <% end %>
+      </table>
 
-    </table>
+    <% end %>
   </div>
 
 </div>
