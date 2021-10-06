@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     post '/contacts/confirm' => 'contacts#confirm', as: 'confirm'
     post '/contacts/back' => 'contacts#back', as: 'back'
-    get '/done', to: 'contacts#done', as: 'done'
+    get '/contacts/done', to: 'contacts#done', as: 'done'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

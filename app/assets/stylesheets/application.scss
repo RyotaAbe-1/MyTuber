@@ -1216,10 +1216,12 @@
 }
 
 .contact {
-  width: 900px;
-  margin: 60px auto;
-  border: 1px solid lightgray;
 
+  &__container {
+    width: 900px;
+    margin: 60px auto;
+    border: 1px solid lightgray;
+  }
   &__title {
     padding: 5px 0;
     text-align: center;
@@ -1269,6 +1271,13 @@
     margin: 20px auto;
     display: flex;
     justify-content: space-around;
+  }
+  &__done {
+    margin-top: 12%;
+    text-align: center;
+  }
+  &__done-text {
+    margin-top: 30px;
   }
 }
 
