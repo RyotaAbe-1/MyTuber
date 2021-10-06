@@ -13,6 +13,9 @@ ja:
         content: "おすすめポイント"
       comment:
         content: "コメント"
+      contact:
+        subject: "件名"
+        message: "内容"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
