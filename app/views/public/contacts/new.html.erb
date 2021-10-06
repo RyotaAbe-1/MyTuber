@@ -1,0 +1,52 @@
+<div class="contact">
+  <div class="contact__container">
+    <h2 class="contact__title">お問い合わせフォーム</h2>
+  
+    <div class="contact__content">
+  
+      <% if @contact.errors.any? %>
+        <div class="error">
+          <% @contact.errors.full_messages.each do |message| %>
+            <p class="error__messages">
+              <%= message %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+  
+      <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+        <%= f.hidden_field :name, value: "#{current_user.user_name}" %>
+        <%= f.hidden_field :email, value: "#{current_user.email}" %>
+  
+        <table class="contact__table">
+          <tr>
+            <td class="contact__subject">
+              <%= f.label :subject, "件名" %>
+            </td>
+            <td>
+              <%= f.text_field :subject, class: "contact__subject-input" %>
+            </td>
+          </tr>
+  
+          <tr>
+            <td class="contact__message">
+              <%= f.label :message, "内容" %>
+            </td>
+            <td class="contact__message-label">
+              <%= f.text_area :message, size: "25x10", class: "contact__message-input" %>
+            </td>
+          </tr>
+  
+          <tr>
+            <td></td>
+            <td>
+              <%= f.submit "入力内容確認", class: "btn btn__big--green" %>
+            </td>
+          </tr>
+        </table>
+  
+      <% end %>
+    </div>
+    
+  </div>
+</div>
