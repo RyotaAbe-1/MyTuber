@@ -60,9 +60,11 @@
 
     <div class="footer">
       <p class="footer__copyright">Copyright © MyTuber 2021</p>
-      <div class="footer__contact">
-        <%= link_to "お問い合わせ", new_contact_path, class: "footer__contact-link" %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="footer__contact">
+          <%= link_to "お問い合わせ", new_contact_path, class: "footer__contact-link" %>
+        </div>
+      <% end %>
     </div>
 
   </body>
