@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
     resources :genres, except: [:index, :show, :edit]
     get '/search' => 'searches#search', as: 'search'
+    
+    resources :contacts, except: [:edit, :update, :destroy]
   end
 
   scope module: :public do
