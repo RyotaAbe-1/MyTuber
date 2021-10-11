@@ -5,6 +5,6 @@ class Admin::ContactsController < ApplicationController
   before_action :set_genres
 
   def index
-    @contacts = Contact.all.includes(:user).order("created_at DESC")
+    @contacts = Contact.all.page(params[:page]).includes(:user).order("created_at DESC")
   end
 end
