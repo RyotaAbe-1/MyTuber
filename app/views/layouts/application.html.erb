@@ -18,7 +18,7 @@
 
       <div class="nav">
         <% if user_signed_in? %>
-          <div class="nav__upper">
+          <div class="nav__upper--user">
             <%= link_to "マイページ", user_path(current_user), class: "btn btn__big--red" %>
             <%= link_to "ユーザー一覧", users_path(user_id: current_user.id), class: "btn btn__big--red" %>
             <%= link_to "タイムライン", youtubers_path(sort: "timeline"), class: "btn btn__big--red" %>
@@ -32,10 +32,11 @@
             <% end %>
           </div>
         <% elsif admin_signed_in? %>
-          <div class="nav__upper">
+          <div class="nav__upper--admin">
             <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn__big--red" %>
             <%= link_to "投稿一覧", admin_youtubers_path, class: "btn btn__big--red" %>
             <%= link_to "ジャンル追加", new_admin_genre_path, class: "btn btn__big--red" %>
+            <%= link_to "お問い合わせ", admin_contacts_path, class: "btn btn__big--red" %>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn__big--red" %>
           </div>
           <div class="nav__lower search">
@@ -60,9 +61,11 @@
 
     <div class="footer">
       <p class="footer__copyright">Copyright © MyTuber 2021</p>
-      <div class="footer__contact">
-        <%= link_to "お問い合わせ", new_contact_path, class: "footer__contact-link" %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="footer__contact">
+          <%= link_to "お問い合わせ", new_contact_path, class: "footer__contact-link" %>
+        </div>
+      <% end %>
     </div>
 
   </body>

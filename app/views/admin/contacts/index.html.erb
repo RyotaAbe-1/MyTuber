@@ -1,0 +1,44 @@
+<div class="contact container">
+
+  <div class="left"></div>
+
+  <div class="center">
+    <div class="title--blue">お問い合わせ一覧</div>
+
+    <div class="container__content">
+      <% @contacts.each do |contact| %>
+
+        <%= link_to admin_contact_path(contact), class: "contact__link" do %>
+          <div class="contact__item">
+            <div>
+              <%= attachment_image_tag contact.user, :image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "contact__image" %>
+            </div>
+            <div class="contact__name">
+              <%= contact.name %>
+            </div>
+            <div class="contact__subject">
+              <%= "件名：#{contact.subject}" %>
+            </div>
+            <div class="contact__time">
+              <%= "日時：#{contact.created_at.strftime('%Y/%m/%d %H:%M:%S')}" %>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+      
+      <div class="paginate">
+        <%= paginate @contacts %>
+      </div>
+    </div>
+    
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>
