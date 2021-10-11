@@ -1,0 +1,49 @@
+<div class="admin-contact container">
+
+  <%= render "common/admin_profile_bar", user: @user_profile %>
+
+  <div class="center">
+    
+    <p class="title--green"><%= "#{@user_profile.user_name}さんのお問い合わせ" %></p>
+    
+    <div class="admin-contact__content">
+      
+      <div class="admin-contact__main">
+        <p class="admin-contact__show-name">
+          <%= @contact.name %>
+        </p>
+    
+        <p class="admin-contact__show-email">
+          <%= @contact.email %>
+        </p>
+        
+        <p class="admin-contact__show-subject">
+          <%= "件名：#{@contact.subject}" %>
+        </p>
+    
+        <div class="admin-contact__show-message">
+          <p>内容：</p>
+          <div class="admin-contact__show-message-item">
+            <%= @contact.message %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="admin-contact__sub">
+        <div class="admin-contact__time">
+          <%= "日時：#{@contact.created_at.strftime('%Y/%m/%d %H:%M:%S')}" %>
+        </div>
+      </div>
+
+    </div>
+    
+    <a href="#" class="back-top__link">
+      <div class=back-top__arrow-back>
+        <div class="back-top__arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <%= render "common/genre_search_bar", genres: @genres %>
+
+</div>
