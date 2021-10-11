@@ -1285,9 +1285,25 @@
   &__done-text {
     margin-top: 30px;
   }
+  &__link {
+    text-decoration: none;
+  }
+}
 
+.admin-contact {
+  // 共通
+  &__time {
+    width: 200px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
 
-  // adminで使用
+  // indexで使用
+  &__link {
+    text-decoration: none;
+  }
   &__item {
     height: 80px;
     position: relative;
@@ -1311,15 +1327,12 @@
       box-shadow: none;
     }
   }
-  &__link {
-    text-decoration: none;
-  }
   &__image {
     border-radius: 50%;
     border: 1px solid;
     border-color: rgba(100, 100, 100, 0.1);
   }
-  &__name {
+  &__index-name {
     width: 25%;
     align-self: center;
     margin: 0 2% 0 4%;
@@ -1327,7 +1340,7 @@
     font-weight: bold;
     word-wrap: break-word;
   }
-  &__subject {
+  &__index-subject {
     width: 40%;
     margin-right: 7%;
     align-self: center;
@@ -1335,12 +1348,53 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  &__time {
-    width: 200px;
-    font-size: 12px;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
+
+  // showで使用
+  &__content {
+    width: 90%;
+    margin: 8% auto 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    box-shadow: $foreground-shadow;
+  }
+  &__main {
+    width: 60%;
+    margin-bottom: 25px;
+  }
+  &__show-name {
+    height: 90px;
+    word-wrap: break-word;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &__show-email {
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 50px;
+  }
+  &__show-subject {
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+  }
+  &__show-message {
+    max-width: 400px;
+    min-height: 190px;
+    padding-top: 20px;
+    margin: 0 auto;
+    word-wrap: break-word;
+  }
+  &__show-message-item {
+    font-size: 14px;
+  }
+  &__sub {
+    width: 20%;
+    text-align: center;
+    position: relative;
   }
 }
 
