@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_03_094451) do
+ActiveRecord::Schema.define(version: 2021_10_13_222938) do
+
+  create_table "admin_contacts", force: :cascade do |t|
+    t.integer "contact_id", null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

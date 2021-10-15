@@ -37,6 +37,13 @@
 
     </div>
     
+    <div class="admin-contact__form">
+      <%= form_with model: @admin_contact, url: admin_contacts_confirm_path(user_id: @contact.user_id), local: true do |f| %>
+        <%= f.text_field :message %>
+        <%= f.submit "入力内容確認" %>
+      <% end %>
+    </div>
+    
     <a href="#" class="back-top__link">
       <div class=back-top__arrow-back>
         <div class="back-top__arrow"></div>
