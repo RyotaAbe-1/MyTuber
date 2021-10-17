@@ -12,15 +12,16 @@ class Admin::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @user_profile = User.find(@contact.user_id)
     @admin_contact =  AdminContact.new
-    @admin_contacts = AdminContact.where(contact_id: @contact.id)
+    @admin_contacts = AdminContact.where(contact_id: @contact.id).page(params[:page]).per(1).order("created_at DESC")
   end
 
   def confirm
     @contact = Contact.find(params[:contact_id])
-    @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
     @admin_contact.contact_id = @contact.id
     if @admin_contact.invalid?
+      @user_profile = User.find(@contact.user_id)
+      @admin_contacts = AdminContact.where(contact_id: @contact.id).page(params[:page]).per(1).order("created_at DESC")
       render :show
     end
   end
@@ -29,18 +30,20 @@ class Admin::ContactsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
+    @admin_contacts = AdminContact.where(contact_id: @contact.id).page(params[:page]).per(1).order("created_at DESC")
     render :show
   end
   
   def create
     @contact = Contact.find(params[:contact_id])
-    @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
     @admin_contact.contact_id = @contact.id
       if @admin_contact.save
         AdminContactMailer.admin_send_mail(@admin_contact, @contact).deliver_now
         redirect_to admin_contact_path(@contact)
       else
+        @user_profile = User.find(@contact.user_id)
+        @admin_contacts = AdminContact.where(contact_id: @contact.id).page(params[:page]).per(1).order("created_at DESC")
         render :show
       end
   end
