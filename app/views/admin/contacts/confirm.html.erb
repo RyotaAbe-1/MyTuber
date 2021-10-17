@@ -32,13 +32,13 @@
   
       <div class="contact__confirm-btn">
         <div>
-          <%= form_with model: @admin_contact, url: admin_contacts_path(user_id: @contact.user_id), local: true do |f| %>
+          <%= form_with model: @admin_contact, url: admin_contacts_path(contact_id: @contact.id), local: true do |f| %>
             <%= f.hidden_field :message %>
             <%= f.submit "送信", class: "btn btn__slim--green" %>
           <% end %>
         </div>
         <div>
-          <%= form_with model: @admin_contact, url: admin_contacts_back_path(user_id: @contact.user_id), local: true do |f| %>
+          <%= form_with model: @admin_contact, url: admin_contacts_back_path(contact_id: @contact.id), local: true do |f| %>
             <%= f.hidden_field :message %>
             <%= f.submit "入力画面に戻る", class: "btn btn__slim--red" %>
           <% end %>

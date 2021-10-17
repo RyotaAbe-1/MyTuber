@@ -12,11 +12,12 @@ class Admin::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @user_profile = User.find(@contact.user_id)
     @admin_contact =  AdminContact.new
+    @admin_contacts = AdminContact.where(contact_id: @contact.id)
   end
 
   def confirm
-    @user_profile = User.find(params[:user_id])
-    @contact = Contact.find_by(user_id: params[:user_id])
+    @contact = Contact.find(params[:contact_id])
+    @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
     @admin_contact.contact_id = @contact.id
     if @admin_contact.invalid?
@@ -25,14 +26,15 @@ class Admin::ContactsController < ApplicationController
   end
   
   def back
-    @contact = Contact.find_by(user_id: params[:user_id])
+    @contact = Contact.find(params[:contact_id])
     @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
     render :show
   end
   
   def create
-    @contact = Contact.find_by(user_id: params[:user_id])
+    @contact = Contact.find(params[:contact_id])
+    @user_profile = User.find(@contact.user_id)
     @admin_contact = AdminContact.new(admin_contact_params)
     @admin_contact.contact_id = @contact.id
       if @admin_contact.save
