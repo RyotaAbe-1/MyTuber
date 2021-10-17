@@ -46,7 +46,7 @@
           <%= link_to "返信する", {anchor: "reply"}, class: "admin-contact__link" %>
         </div>
       </div>
-      
+
       <% @admin_contacts.each do |admin_contact| %>
         <div class="admin-contact__reply-item">
           <%= admin_contact.message %>
@@ -55,16 +55,19 @@
           </div>
         </div>
       <% end %>
-      
+
       <div class="paginate">
         <%= paginate @admin_contacts %>
       </div>
     </div>
 
     <div class="admin-contact__form" id="reply">
+      <h4>返信フォーム(1000文字以内)</h4>
       <%= form_with model: @admin_contact, url: admin_contacts_confirm_path(contact_id: @contact.id), local: true do |f| %>
-        <%= f.text_field :message %>
-        <%= f.submit "入力内容確認" %>
+        <%= f.text_area :message, class: "admin-contact__form-input" %>
+        <div class="admin-contact__form-submit">
+          <%= f.submit "入力内容確認", class: "btn btn__big--green" %>
+        </div>
       <% end %>
     </div>
 

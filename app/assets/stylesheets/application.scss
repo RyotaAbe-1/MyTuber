@@ -1417,6 +1417,22 @@
     position: relative;
     box-shadow: $foreground-shadow;
   }
+  &__form {
+    width: 85%;
+    border-top: 1px solid black;
+    padding: 40px 70px;
+    margin: 60px auto;
+  }
+  &__form-input {
+    resize: none;
+    width: 100%;
+    min-height: 300px;
+    margin: 10px 0;
+  }
+  &__form-submit {
+    margin-top: 20px;
+    text-align: center;
+  }
 }
 
 .footer {
