@@ -16,6 +16,8 @@ ja:
       contact:
         subject: "件名"
         message: "内容"
+      admin_contact:
+        message: "返信内容"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

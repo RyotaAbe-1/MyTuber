@@ -1025,6 +1025,7 @@
 .comment {
   width: 85%;
   margin: 1% auto;
+
   &__index {
     margin-bottom: 5%;
   }
@@ -1303,6 +1304,7 @@
   // indexで使用
   &__link {
     text-decoration: none;
+    color: blue;
   }
   &__item {
     height: 80px;
@@ -1395,6 +1397,41 @@
     width: 20%;
     text-align: center;
     position: relative;
+  }
+  &__reply {
+    width: 85%;
+    margin: 1% auto;
+  }
+  &__reply-top {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    color: green;
+  }
+  &__reply-item {
+    min-height: 400px;
+    margin-bottom: 2%;
+    padding: 5% 5%;
+    background-color: white;
+    display: flex;
+    position: relative;
+    box-shadow: $foreground-shadow;
+  }
+  &__form {
+    width: 85%;
+    border-top: 1px solid black;
+    padding: 40px 70px;
+    margin: 60px auto;
+  }
+  &__form-input {
+    resize: none;
+    width: 100%;
+    min-height: 300px;
+    margin: 10px 0;
+  }
+  &__form-submit {
+    margin-top: 20px;
+    text-align: center;
   }
 }
 

@@ -1,0 +1,50 @@
+<div class="contact">
+  <div class="contact__container">
+    <h2 class="contact__title">返信内容確認</h2>
+
+    <div class="contact__content">
+      <table class="contact__table">
+        <tr>
+          <td class="contact__name">お名前</td>
+          <td class="contact__name-confirm"><%= @contact.name %></td>
+        </tr>
+  
+        <tr>
+          <td class="contact__email">メールアドレス</td>
+          <td class="contact__email-confirm"><%= @contact.email %></td>
+        </tr>
+  
+        <tr>
+          <td class="contact__subject">件名</td>
+          <td class="contact__subject-confirm"><%= @contact.subject %></td>
+        </tr>
+  
+        <tr>
+          <td class="contact__message">内容</td>
+          <td class="contact__message-confirm"><%= @contact.message %></td>
+        </tr>
+        
+        <tr>
+          <td>返信内容</td>
+          <td><%= @admin_contact.message %></td>
+        </tr>
+      </table>
+  
+      <div class="contact__confirm-btn">
+        <div>
+          <%= form_with model: @admin_contact, url: admin_contacts_path(contact_id: @contact.id), local: true do |f| %>
+            <%= f.hidden_field :message %>
+            <%= f.submit "送信", class: "btn btn__slim--green" %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: @admin_contact, url: admin_contacts_back_path(contact_id: @contact.id), local: true do |f| %>
+            <%= f.hidden_field :message %>
+            <%= f.submit "入力画面に戻る", class: "btn btn__slim--red" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :genres, except: [:index, :show, :edit]
     get '/search' => 'searches#search', as: 'search'
     
-    resources :contacts, except: [:edit, :update, :destroy]
+    resources :contacts, only: [:index, :show, :create]
+    post '/contacts/confirm' => 'contacts#confirm'
+    post '/contacts/back' => 'contacts#back'
   end
 
   scope module: :public do
@@ -39,7 +41,7 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     post '/contacts/confirm' => 'contacts#confirm', as: 'confirm'
     post '/contacts/back' => 'contacts#back', as: 'back'
-    get '/contacts/done', to: 'contacts#done', as: 'done'
+    get '/contacts/done' => 'contacts#done', as: 'done'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

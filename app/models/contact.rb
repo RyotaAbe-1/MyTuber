@@ -3,4 +3,5 @@ class Contact < ApplicationRecord
   validates :message, presence: true, length: { maximum: 400 }
   
   belongs_to :user
+  has_many :admin_contacts
 end
