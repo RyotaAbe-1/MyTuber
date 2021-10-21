@@ -6,17 +6,17 @@
       <table class="contact__table">
         <tr>
           <td class="contact__name">お名前</td>
-          <td class="contact__name-confirm"><%= @contact.name %></td>
+          <td><%= @contact.name %></td>
         </tr>
   
         <tr>
           <td class="contact__email">メールアドレス</td>
-          <td class="contact__email-confirm"><%= @contact.email %></td>
+          <td><%= @contact.email %></td>
         </tr>
   
         <tr>
           <td class="contact__subject">件名</td>
-          <td class="contact__subject-confirm"><%= @contact.subject %></td>
+          <td><%= @contact.subject %></td>
         </tr>
   
         <tr>
@@ -25,7 +25,7 @@
         </tr>
         
         <tr>
-          <td>返信内容</td>
+          <td class="contact__reply">返信内容</td>
           <td><%= @admin_contact.message %></td>
         </tr>
       </table>

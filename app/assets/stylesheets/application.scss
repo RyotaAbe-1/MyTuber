@@ -1273,6 +1273,9 @@
   &__message-confirm {
     word-break: break-all;
   }
+  &__reply {
+    padding: 20px 0;
+  }
   &__confirm-btn {
     width: 60%;
     margin: 20px auto;
@@ -1410,7 +1413,7 @@
   }
   &__reply-item {
     min-height: 400px;
-    margin-bottom: 2%;
+    margin-bottom: 60px;
     padding: 5% 5%;
     background-color: white;
     display: flex;
@@ -1421,7 +1424,7 @@
     width: 85%;
     border-top: 1px solid black;
     padding: 40px 70px;
-    margin: 60px auto;
+    margin: 0 auto 50px auto;
   }
   &__form-input {
     resize: none;
