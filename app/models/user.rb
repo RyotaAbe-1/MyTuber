@@ -33,12 +33,10 @@ class User < ApplicationRecord
           uid: auth.uid
         )
       end
-    elsif
+    else
       user = User.new(
-        id: User.all.last.id + 1,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
         user_name: auth.info.name,
+        email: auth.info.email
       )
     end
     user
